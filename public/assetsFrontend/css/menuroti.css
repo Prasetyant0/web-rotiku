@@ -2,7 +2,7 @@ body{
     /* height: 2000px; */
 }
 a{
-    color: black;
+    color: black !important;
 }
 
 a:hover{
@@ -57,6 +57,10 @@ a:hover{
     position: absolute;
     opacity: .5;
 }
+.wp-profile{
+    display: flex;
+}
+
 .src-input{
     margin-top: 20px;
     width: 66%;
@@ -71,6 +75,71 @@ a:hover{
 .src-input:focus{
     border: 1px solid #d38800;
     outline: none;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    border-radius: 10px;
+    padding: 3px;
+    bottom: 15px;
+    margin-right: 50px;
+  }
+  .profile:hover{
+    background-color: #eaeaeaea;
+  } 
+  
+  .wp-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .foto-profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .name-profile {
+    position: relative;
+    margin-left: 10px;
+  }
+  
+  .items-profile {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+  
+  .items-profile option {
+    color: #d38800;
+  }
+
+  
+  .items-profile::after {
+    content: '\25BE';
+    position: absolute;
+    top: 50%;    
+    right: 0;
+  }  
+
+  .btn-profile{
+    background-color: transparent; 
+    border:none;
+  }
+
+
+
+  select.items-profile option:checked {
+    border: none; /* Menghilangkan border pada opsi yang dipilih */
+    background-color: #ccc; /* Ganti dengan gaya latar belakang yang diinginkan */
 }
 .src-button{
     border: 1px solid #ccc;

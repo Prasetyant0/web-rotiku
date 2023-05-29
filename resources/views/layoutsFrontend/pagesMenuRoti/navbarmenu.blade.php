@@ -40,9 +40,29 @@
                         </g>
                      </svg>
                     </svg>
+                    
+                    <div class="profile">
+                        <div class="wp-profile">
+                            <div class="foto-profile-cont">
+                                <img class="foto-profile" src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}">
+                            </div>
+                            <div class="name-profile">
+                                <div class="dropdown">
+                                    <a class="btn-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Tono Andika 
+                                    </a>
+                                  
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="{{ route('logout.google') }}">Logout</a></li>
+                                    </ul>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    
 
-                    <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a>
-                    <a href="#" type="submit" class="button-daftar">Daftar</a>
+                    {{-- <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a> --}}
+                    {{-- <a href="#" type="submit" class="button-daftar">Daftar</a> --}}
                 </form>
             </div>
             <div class="category-row">
