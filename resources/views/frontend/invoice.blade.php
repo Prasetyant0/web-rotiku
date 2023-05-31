@@ -12,8 +12,8 @@
             <div class="description-infoice">
                 <h1 class="title">{{ $invoice->roti }}</h1>
                 <p class="stok">Stok {{ $invoice->stok }}</p>
-                <div class="harga-invoice">Rp <span id="harga"><input id="harga" type="number"
-                            value="{{ $invoice->harga }}" style="border: none;" disabled></span></div>
+                <div class="harga-invoice">Rp <span id="harga"><input class="harga-invoice"  id="harga" type="number"
+                            value="{{ $invoice->harga }}" style="border: none; background-color:transparent;" disabled></span></div>
                 <div class="detail">
                     <div class="class rincian">
                         <hr style="position: relative; top:20px;">
@@ -62,7 +62,7 @@
                         <p class="subtotal-text">
                             Sub Total: <span
                                 style="font-weight: bold; position: absolute; right:0; margin-right:20px;">Rp
-                                <span id="subtotal"><input type="number"  value="{{ $invoice->harga }}"
+                                <span id="subtotal"><input style="font-weight: bold;" type="number"  value="{{ $invoice->harga }}"
                                         class="input-intrac-style" disabled></span></span>
                         </p>
                         <ul>

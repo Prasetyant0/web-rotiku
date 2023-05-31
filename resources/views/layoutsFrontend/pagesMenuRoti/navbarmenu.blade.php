@@ -22,7 +22,7 @@
                     <div class="searchResults"></div>
                     <svg class="shopping_cart" style="position: absolute; margin-top:25px; margin-left:30px;" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                         <defs>
                             <path
                                 d="M20.47 5a1.5 1.5 0 0 1 1.48 1.9l-1.83 6.52A3.58 3.58 0 0 1 16.66 16H8.93c-.94 0-1.76-.63-1.99-1.52L4.26 4H3.02C2.46 4 2 3.55 2 3s.46-1 1.02-1H5.1c.47 0 .88.31.99.76L6.65 5h13.82zM9 17.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
@@ -39,7 +39,7 @@
                             </g>
                         </g>
                      </svg>
-                    </svg>
+                    </svg> --}}
 
                     <div class="profile">
                         <div class="wp-profile">
@@ -75,23 +75,3 @@
         </div>
     </div>
 </nav>
-<script>
-    const searchInput = document.getElementById('searchInput');
-const menuItems = document.querySelectorAll('.category-text');
-
-searchInput.addEventListener('keyup', function() {
-    const keyword = searchInput.value.toLowerCase();
-
-    for (let i = 0; i < menuItems.length; i++) {
-        const menuItem = menuItems[i];
-        const menuName = menuItem.innerText.toLowerCase();
-
-        if (menuName.includes(keyword)) {
-            menuItem.style.display = 'block';
-        } else {
-            menuItem.style.display = 'none';
-        }
-    }
-});
-
-</script>
