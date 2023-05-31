@@ -25,6 +25,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('user.dashboard');
 Route::get('about', [FrontendController::class, 'about'])->name('user.about');
 Route::get('menu', [RotiController::class, 'showMenu'])->name('menu');
 Route::get('invoice/{id_roti}', [InvoiceController::class, 'index'])->name('invoice.menu');
+Route::get('search', [MenuController::class, 'search'])->name('search');
 
 
 Route::middleware('auth')->group(function () {

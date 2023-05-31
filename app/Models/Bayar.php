@@ -10,13 +10,13 @@ class Bayar extends Model
 {
     use HasFactory;
     protected $table = 'bayar';
-    protected $primaryKey = 'id_beli';
-    protected $fillable = [
-        'id_beli',
+    protected $primaryKey = 'id';
+    protected $guarded = [
+        // 'id',
         'stok',
         'total_bayar',
         'id_roti',
-        'alamat',
+        'alamat'
     ];
 
     public function beliRoti()

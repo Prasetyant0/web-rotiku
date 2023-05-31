@@ -13,13 +13,13 @@
         </div>
         <div class="search">
             <div>
-                <form action="" method="post">
                     <div class="icon-src"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                             height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path
                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg></div>
-                    <input type="search" name="src" id="" class="src-input">
+                    <input type="search" name="src" id="searchInput" class="src-input">
+                    <div class="searchResults"></div>
                     <svg class="shopping_cart" style="position: absolute; margin-top:25px; margin-left:30px;" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -40,7 +40,7 @@
                         </g>
                      </svg>
                     </svg>
-                    
+
                     <div class="profile">
                         <div class="wp-profile">
                             <div class="foto-profile-cont">
@@ -49,9 +49,9 @@
                             <div class="name-profile">
                                 <div class="dropdown">
                                     <a class="btn-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      Tono Andika 
+                                      Soni son
                                     </a>
-                                  
+
                                     <ul class="dropdown-menu">
                                       <li><a class="dropdown-item" href="{{ route('logout.google') }}">Logout</a></li>
                                     </ul>
@@ -59,11 +59,8 @@
                             </div>
                         </div>
                     </div>
-                    
-
                     {{-- <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a> --}}
                     {{-- <a href="#" type="submit" class="button-daftar">Daftar</a> --}}
-                </form>
             </div>
             <div class="category-row">
                 <div class="category-list">
@@ -78,3 +75,23 @@
         </div>
     </div>
 </nav>
+<script>
+    const searchInput = document.getElementById('searchInput');
+const menuItems = document.querySelectorAll('.category-text');
+
+searchInput.addEventListener('keyup', function() {
+    const keyword = searchInput.value.toLowerCase();
+
+    for (let i = 0; i < menuItems.length; i++) {
+        const menuItem = menuItems[i];
+        const menuName = menuItem.innerText.toLowerCase();
+
+        if (menuName.includes(keyword)) {
+            menuItem.style.display = 'block';
+        } else {
+            menuItem.style.display = 'none';
+        }
+    }
+});
+
+</script>

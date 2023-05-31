@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -86,5 +87,20 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/')->with('message', 'Anda berhasil logout');
+    }
+
+    public function showProfile() {
+        $accessToken = session('google_access_token');
+
+        $response = Http::withToken($accessToken)->get('https://www.googleapis.com/oauth2/v1/userinfo');
+
+        if ($response->ok()) {
+            $userData = $response->json();
+
+            $name = $userData['name'];
+            $profilePicture = $userData['foto'];
+
+            return view('frontend.layoutFrontend.pagesMenuRoti.navbarmenu')->with(['name' => $name, 'foto' => $profilePicture]);
+        }
     }
 }

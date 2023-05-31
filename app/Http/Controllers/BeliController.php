@@ -11,8 +11,9 @@ class BeliController extends Controller
 {
     public function index(Request $request)
     {
-        $bayar = session('bayar');
-        return view('frontend.beli', compact('bayar'));
+        $bayar = $request->session()->get('bayar');
+        $roti = Roti::findOrFail($bayar['id_roti']);
+        return view('frontend.beli', compact('bayar', 'roti'));
     }
 
     public function beli(Request $request)
@@ -35,7 +36,7 @@ class BeliController extends Controller
             'alamat' => $alamat,
         ];
 
-        session(['bayar' => $bayar]);
+       $request->session()->put('bayar', $bayar);
 
         return redirect()->route('beli');
     }
@@ -45,16 +46,17 @@ class BeliController extends Controller
             'alamat' => 'required',
         ]);
 
-        $bayarData = session('bayar');
+        $bayarData = $request->session()->get('bayar');
 
         $bayar = new Bayar();
+        $bayar->id = Bayar::latest()->value('id') + 1;
         $bayar->id_roti = $bayarData['id_roti'];
         $bayar->stok = $bayarData['stok'];
         $bayar->alamat = $request->input('alamat');
         $bayar->total_bayar = $bayarData['total_bayar'];
         $bayar->save();
 
-        session()->forget('bayar');
+        $request->session()->forget('bayar');
 
         return redirect()->route('menu')->with('success', 'Pesanan berhasil dikirim, harap tunggu dan siapkan uang pas!');
     }

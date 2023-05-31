@@ -14,8 +14,7 @@ class CreateBayarTable extends Migration
     public function up()
     {
         Schema::create('bayar', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_beli');
+            $table->bigIncrements('id_beli');
             $table->integer('stok');
             $table->integer('total_bayar');
             $table->unsignedBigInteger('id_roti');
