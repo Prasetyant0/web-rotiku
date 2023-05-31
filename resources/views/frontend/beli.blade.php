@@ -43,7 +43,7 @@
                         <div class="descriprion-menu">
                             <p class="merek">{{ $roti->roti }}</p>
                             {{-- <p class="berat">800gr</p> --}}
-                            <h5 class="harga">Rp <input id="hargaRill" type="number" disabled
+                            <h5 class="harga">Rp <input  id="hargaRill" type="number" disabled
                                     class="textinputhargarill" value="{{ $roti->harga }}"></h5>
                         </div>
                     </div>

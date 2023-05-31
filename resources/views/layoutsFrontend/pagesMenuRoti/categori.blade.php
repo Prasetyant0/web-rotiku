@@ -1,4 +1,4 @@
-<div class="pCategori">
+<div class="pCategori ">
     <div class="subCate">
         <h2 class="judulCate">Kategori Pilihan</h2>
         <div class="container-card-category">
