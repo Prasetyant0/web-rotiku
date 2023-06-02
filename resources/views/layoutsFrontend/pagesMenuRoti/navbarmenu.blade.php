@@ -48,13 +48,13 @@
                             <div class="name-profile"> --}}
 
                                     @if (Auth::check())
+                                    <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a>
                                     <img src="{{ Auth::user()->photo }}" alt="{{ Auth::user()->name }}" class="foto-profile">
                                     <a class="btn-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       {{ Auth::user()->name}}
                                     </a>
-                                     <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a>
                                         @else
-                                        <a href="{{ route('login.admin') }}" type="submit" class="button-daftar" >Masuk</a>
+                                        <a href="{{ route('login.admin') }}" type="submit" class="btn-masuk" >Masuk</a>
                                     @endif
                                   </div>
                         </div>
