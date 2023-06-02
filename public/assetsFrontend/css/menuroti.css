@@ -88,25 +88,25 @@ a:hover{
   }
   .profile:hover{
     background-color: #eaeaeaea;
-  } 
-  
+  }
+
   .wp-profile {
     position: relative;
     display: flex;
     align-items: center;
   }
-  
+
   .foto-profile {
     width: 30px;
     height: 30px;
     border-radius: 50%;
   }
-  
+
   .name-profile {
     position: relative;
     margin-left: 10px;
   }
-  
+
   .items-profile {
     appearance: none;
     background-color: transparent;
@@ -117,21 +117,21 @@ a:hover{
     border: none;
     padding: 0;
   }
-  
+
   .items-profile option {
     color: #d38800;
   }
 
-  
+
   .items-profile::after {
     content: '\25BE';
     position: absolute;
-    top: 50%;    
+    top: 50%;
     right: 0;
-  }  
+  }
 
   .btn-profile{
-    background-color: transparent; 
+    background-color: transparent;
     border:none;
   }
 
@@ -168,7 +168,7 @@ a:hover{
 }
 
 .button-daftar{
-    margin-left: 10px;
+    position: absolute;
     color: black;
     border-radius: 10px;
     font-weight: 600;

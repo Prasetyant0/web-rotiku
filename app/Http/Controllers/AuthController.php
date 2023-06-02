@@ -65,7 +65,7 @@ class AuthController extends Controller
 
             if ($user) {
                 Auth::login($user);
-                return redirect()->route('user.dashboard');
+                return redirect()->route('menu');
             } else {
                 $new_user = User::create([
                     'name' => ucwords($google_user->name),
@@ -76,7 +76,7 @@ class AuthController extends Controller
                 ]);
 
                 Auth::login($new_user);
-                return redirect()->route('user.dashboard');
+                return redirect()->route('menu');
             }
         } catch (\Throwable $th) {
             abort(404);

@@ -27,7 +27,6 @@ Route::get('menu', [RotiController::class, 'showMenu'])->name('menu');
 Route::get('invoice/{id_roti}', [InvoiceController::class, 'index'])->name('invoice.menu');
 Route::get('search', [MenuController::class, 'search'])->name('search');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
     Route::get('/beli', [BeliController::class, 'index'])->name('beli');

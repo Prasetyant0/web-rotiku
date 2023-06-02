@@ -56,7 +56,7 @@
                         <div class="tambahcatatan-container">
 
                             <input class="catatan-input" type="text" autocomplete="off" name="alamat" id="catatan"
-                                placeholder="Contoh: Kelas 12 RPL">
+                                placeholder="Contoh: Kelas 12 RPL" required>
 
                         </div>
                         <p class="subtotal-text">

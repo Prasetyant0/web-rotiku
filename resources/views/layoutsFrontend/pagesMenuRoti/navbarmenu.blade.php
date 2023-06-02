@@ -18,10 +18,10 @@
                             <path
                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg></div>
-                    <input type="search" name="src" id="searchInput" class="src-input">
-                    <div class="searchResults"></div>
-                    <svg class="shopping_cart" style="position: absolute; margin-top:25px; margin-left:30px;" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144">
+                        <input type="search" name="src" id="searchInput" class="src-input">
+                        <div class="searchResults"></div>
+                    {{-- <svg class="shopping_cart" style="position: absolute; margin-top:25px; margin-left:30px;" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144"> --}}
                     {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                         <defs>
                             <path
@@ -40,27 +40,25 @@
                         </g>
                      </svg>
                     </svg> --}}
-
                     <div class="profile">
-                        <div class="wp-profile">
+                        {{-- <div class="wp-profile">
                             <div class="foto-profile-cont">
                                 <img class="foto-profile" src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}">
                             </div>
-                            <div class="name-profile">
-                                <div class="dropdown">
-                                    <a class="btn-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      Soni son
-                                    </a>
+                            <div class="name-profile"> --}}
 
-                                    <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="{{ route('logout.google') }}">Logout</a></li>
-                                    </ul>
+                                    @if (Auth::check())
+                                    <img src="{{ Auth::user()->photo }}" alt="{{ Auth::user()->name }}" class="foto-profile">
+                                    <a class="btn-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      {{ Auth::user()->name}}
+                                    </a>
+                                     <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a>
+                                        @else
+                                        <a href="{{ route('login.admin') }}" type="submit" class="button-daftar" >Masuk</a>
+                                    @endif
                                   </div>
-                            </div>
                         </div>
                     </div>
-                    {{-- <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a> --}}
-                    {{-- <a href="#" type="submit" class="button-daftar">Daftar</a> --}}
             </div>
             <div class="category-row">
                 <div class="category-list">
