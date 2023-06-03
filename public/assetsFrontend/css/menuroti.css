@@ -83,7 +83,8 @@ a:hover{
     right: 0;
     border-radius: 10px;
     padding: 3px;
-    bottom: 15px;
+    bottom: 0px;
+    top: 20px;
     margin-right: 50px;
   }
   .profile:hover{
@@ -153,17 +154,22 @@ a:hover{
 .src-input:focus{
     border:  1px solid #FFCA60;
 }
-.card-icon{
-
-}
 
 .button-masuk{
-    margin-left: 80px;
     border: 2px solid #FFCA60;
     color: black;
     border-radius: 10px;
     font-weight: 600;
     background-color: none;
+    padding: 3px;
+    margin-right: 20px;
+}
+.btn-masuk{
+    color: black;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 2px solid #FFCA60;
+    background-color: #FFCA60;
     padding: 3px;
 }
 
@@ -185,6 +191,10 @@ a:hover{
 
 .breadcrumb{
     padding: 4px;
+}
+.category-row{
+    position: relative;
+    bottom: 30px;   
 }
 .category-list{
     display: flex;
@@ -213,9 +223,13 @@ a:hover{
     .shopping_cart{
         display: none;
     }
+    .btn-masuk{
+        display: none;
+    }
     .src-input{
         width: 60%;
     }
+
 
 }
 
@@ -239,7 +253,7 @@ a:hover{
     }
     .src-input{
         width: 88%;
-        margin-top: 100px;
+        margin-top: 80px;
         opacity: .2;
         padding: 3px;
         position: relative;

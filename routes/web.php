@@ -14,6 +14,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HelpandsupportController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PesananController;
 
 Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
 Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');
@@ -44,6 +45,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/dataroti/{id_roti}/edit', [RotiController::class, 'edit'])->name('admin.dataroti.edit');
     Route::put('/dataroti/{id_roti}', [RotiController::class, 'update'])->name('admin.dataroti.update');
     Route::get('/dataroti/{id_roti}', [RotiController::class, 'destroy'])->name('admin.dataroti.destroy');
+
+    // PesananController
+    Route::get('/pesanan', [PesananController::class, 'index'])->name('admin.pesanan.index');
 
     // KategoriController
     Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');

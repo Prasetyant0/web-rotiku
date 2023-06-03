@@ -26,8 +26,9 @@
                                         <th class="d-none d-xl-table-cell">Description</th>
                                         <th class="d-none d-xl-table-cell">Kategori</th>
                                         <th class="d-none d-xl-table-cell">Harga</th>
+                                        <th class="d-none d-xl-table-cell">Stok</th>
                                         <th class="d-none d-md-table-cell">Edit</th>
-                                        <th class="d-none d-md-table-cell">Hapus</th>
+                                        <th class="d-none d-md-table-cell">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
