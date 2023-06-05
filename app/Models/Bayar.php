@@ -11,8 +11,8 @@ class Bayar extends Model
     use HasFactory;
     protected $table = 'bayar';
     protected $primaryKey = 'id';
-    protected $guarded = [
-        // 'id',
+    protected $fillable = [
+        'id',
         'stok',
         'total_bayar',
         'id_roti',

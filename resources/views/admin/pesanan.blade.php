@@ -22,26 +22,22 @@
                                     <tr>
                                         <th class="d-none d-xl-table-cell">No</th>
                                         <th class="d-none d-md-table-cell">Alamat dan Nama Pemesan</th>
-                                        <th class="d-none d-xl-table-cell">Roti</th>
+                                        <th class="d-none d-xl-table-cell">Produk</th>
                                         <th class="d-none d-xl-table-cell">Jumlah Barang yang Dibeli</th>
                                         <th class="d-none d-md-table-cell">Total Pembayaran</th>
                                         <th class="d-none d-md-table-cell">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($kategori as $d) --}}
+                                    @foreach ($pesanan as $data)
                                     <tr>
-                                        {{-- {{ $loop->iteration }} --}}
-                                        <td>1</td>
-                                        {{-- {{ $d->kategori }} --}}
-                                        <td class="d-none d-xl-table-cell">Sony XI RPL 2</td>
-                                        <td class="d-none d-xl-table-cell">Roti Bakar</td>
-                                        <td class="d-none d-xl-table-cell">1</td>
-                                        <td class="d-none d-xl-table-cell">20000</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="d-none d-xl-table-cell">{{ $data->alamat }}</td>
+                                        <td class="d-none d-xl-table-cell">{{ $data->beliRoti->roti }}</td>
+                                        <td class="d-none d-xl-table-cell">{{ $data->stok }}</td>
+                                        <td class="d-none d-xl-table-cell">{{ $data->total_bayar }}</td>
                                         <td class="d-none d-md-table-cell">
-
-                                            {{-- {{ route('admin.kategori.destroy',$d->id_kategori) }} --}}
-                                            <a href="" class="btn btn-danger" id="delete">
+                                            <a href="{{ route('delete', $data->id) }}" class="btn btn-danger" id="delete">
                                                 <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -52,9 +48,9 @@
                                             </svg>
                                             </a>
                                         </td>
-                                        
+
                                     </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

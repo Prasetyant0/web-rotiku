@@ -47,7 +47,8 @@ Route::middleware('admin')->group(function () {
     Route::get('/dataroti/{id_roti}', [RotiController::class, 'destroy'])->name('admin.dataroti.destroy');
 
     // PesananController
-    Route::get('/pesanan', [PesananController::class, 'index'])->name('admin.pesanan.index');
+    Route::get('/pesanan', [PesananController::class, 'show'])->name('admin.pesanan.index');
+    Route::get('/pesanan/{id}', [PesananController::class, 'delete'])->name('delete');
 
     // KategoriController
     Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');

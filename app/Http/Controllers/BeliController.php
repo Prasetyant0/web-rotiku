@@ -49,7 +49,6 @@ class BeliController extends Controller
         $bayarData = $request->session()->get('bayar');
 
         $bayar = new Bayar();
-        $bayar->id = Bayar::latest()->value('id') + 1;
         $bayar->id_roti = $bayarData['id_roti'];
         $bayar->stok = $bayarData['stok'];
         $bayar->alamat = $request->input('alamat');
@@ -58,6 +57,7 @@ class BeliController extends Controller
 
         $request->session()->forget('bayar');
 
-        return redirect()->route('menu')->with('success', 'Pesanan berhasil dikirim, harap tunggu dan siapkan uang pas!');
+        return redirect()->route('menu');
+        // ->with('success', 'Pesanan berhasil dikirim, harap tunggu dan siapkan uang pas!')
     }
 }
