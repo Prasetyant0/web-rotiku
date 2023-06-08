@@ -41,7 +41,7 @@
 }
 .description-infoice{
     margin-left: 30px;
-    width: 450px;
+    width:658px;
 }
 .description-text{
     margin-top: 50px;
@@ -54,7 +54,7 @@
     width: 260px;
     height: 450px;
     position: relative;
-    left: 38px;
+    left: 20px;
 }
 .cardnyam{
     border:1px solid silver;
@@ -156,6 +156,7 @@ li{
 .btn-beli-menu{
     color: #FFC107;
     text-align: center;
+    width: 100%;
 }
 .input-intrac-style{
     border: none;

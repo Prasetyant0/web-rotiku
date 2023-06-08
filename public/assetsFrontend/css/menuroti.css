@@ -53,10 +53,18 @@ a:hover{
 
 .icon-src{
     margin-left: 250px;
-    margin-top: 26px;
+    margin-top: 23px;
     position: absolute;
     opacity: .5;
 }
+
+.shopping_cart{
+    position: absolute; 
+    top: 23px;
+    right: 0px; 
+    margin-right: 220px;   
+}
+
 .wp-profile{
     display: flex;
 }
@@ -87,9 +95,7 @@ a:hover{
     top: 20px;
     margin-right: 50px;
   }
-  .profile:hover{
-    background-color: #eaeaeaea;
-  }
+
 
   .wp-profile {
     position: relative;
@@ -99,6 +105,7 @@ a:hover{
 
   .foto-profile {
     width: 30px;
+    background-color: white;
     height: 30px;
     border-radius: 50%;
   }
@@ -155,7 +162,7 @@ a:hover{
     border:  1px solid #FFCA60;
 }
 
-.button-masuk{
+.button-logout{
     border: 2px solid #FFCA60;
     color: black;
     border-radius: 10px;
@@ -213,7 +220,7 @@ a:hover{
     .category-list{
         display: none;
     }
-    .button-masuk{
+    .button-logout{
         display: none;
     }
     .button-daftar{
@@ -457,11 +464,11 @@ a:hover{
 }
 
 .kotak{
-	position: relative;
+	position: relative  !important;
 	min-width: 100px;
 	height: 110px;
 	margin: 10px;
-    margin-left: 10px;
+    margin-left: 15px;
 	border: 1px solid silver;
 	border-radius: 10px;
 }
@@ -502,3 +509,6 @@ a:hover{
 	height: 2px;
 }
 /* section */
+
+
+

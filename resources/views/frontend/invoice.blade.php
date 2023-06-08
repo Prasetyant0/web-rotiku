@@ -12,8 +12,9 @@
             <div class="description-infoice">
                 <h1 class="title">{{ $invoice->roti }}</h1>
                 <p class="stok">Stok {{ $invoice->stok }}</p>
-                <div class="harga-invoice">Rp <span id="harga"><input class="harga-invoice"  id="harga" type="number"
-                            value="{{ $invoice->harga }}" style="border: none; background-color:transparent;" disabled></span></div>
+                <div class="harga-invoice">Rp <span id="harga"><input class="harga-invoice" id="harga"
+                            type="number" value="{{ $invoice->harga }}"
+                            style="border: none; background-color:transparent;" disabled></span></div>
                 <div class="detail">
                     <div class="class rincian">
                         <hr style="position: relative; top:20px;">
@@ -62,16 +63,16 @@
                         <p class="subtotal-text">
                             Sub Total: <span
                                 style="font-weight: bold; position: absolute; right:0; margin-right:20px;">Rp
-                                <span id="subtotal"><input style="font-weight: bold;" type="number"  value="{{ $invoice->harga }}"
-                                        class="input-intrac-style" disabled></span></span>
+                                <span id="subtotal"><input style="font-weight: bold;" type="number"
+                                        value="{{ $invoice->harga }}" class="input-intrac-style"
+                                        disabled></span></span>
                         </p>
-                        <ul>
-                            {{-- <li><a href="#" class="btn-beli-dan-keranjang btn-tambah-keranjang"
+                        {{-- <li><a href="#" class="btn-beli-dan-keranjang btn-tambah-keranjang"
                                     style="text-align: center;" onclick="tambahKeKeranjang()">Tambah Ke Keranjang</a>
                             </li> --}}
-                            <li><button class="btn-beli-dan-keranjang btn-beli-menu" type="submit">Beli
-                                    Langsung</button></li>
-                        </ul>
+
+                        <button class="btn-beli-dan-keranjang btn-beli-menu" type="submit">Beli
+                            Langsung</button>
                     </div>
     </form>
 </div>
@@ -150,51 +151,3 @@
             });
     });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <div class="bodyContent">
-<div class="container mt-5 mb-5" style="background: #eaeaea; border-radius:10px;">
-    <div class="content d-flex flex-wrap p-5">
-        <div class="imageWrapper">
-            <img src="{{asset('gallery/' . $invoice->gambar )}}" alt="{{ $invoice->roti }}" style="width: 400px; height:390px; border-radius:10px;" max-width="500" max-height="500">
-        </div>
-        <div class="contetIsnteraction" style="margin-left: 30px">
-            <h3 style="font-weight: bold; color:#7B7B7B;">{{ $invoice->roti }}</h3> --}}
-{{-- <h5 style="font-weight: bold; color:#7B7B7B;">{{ $invoice->kategori }}</h5> --}}
-{{-- <h2 class="mt-5" style="font-weight: bold;">Rp{{ $invoice->harga }}</h1>
-            <button   type="button" class="btn btn-primary button" style="width: 30%; top:5px;" data-toggle="modal" data-target=".bd-example-modal-lg">
-                <span class="">Pesan</span>
-            </button>
-            <p style="width:550px; margin-top:50px;">{{ $invoice->description }}</p>
-        </div>
-    </div>
-</div>
-</div> --}}
-{{-- @includeIf('layoutsFrontend.footer') --}}

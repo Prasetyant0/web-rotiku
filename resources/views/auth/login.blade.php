@@ -7,7 +7,7 @@
         <div class="wr-login">
             <div class="text-masuk-dan-daftar">
                 <h3 class="text-masuk">Masuk</h1>
-                <p class="text-daftar">Daftar</p>
+                <a href="{{route('daftar.user')}}" class="text-daftar">Daftar</a>
             </div>
             <div class="form-login">
                 <form action="{{ route('login.post') }}" method="post" novalidate>

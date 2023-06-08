@@ -9,12 +9,15 @@ use App\Http\Controllers\JumlahController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\PromosiController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HelpandsupportController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PesananController;
+
+Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
 Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');

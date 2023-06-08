@@ -20,9 +20,10 @@
                         </svg></div>
                         <input type="search" name="src" id="searchInput" class="src-input">
                         <div class="searchResults"></div>
-                    {{-- <svg class="shopping_cart" style="position: absolute; margin-top:25px; margin-left:30px;" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144"> --}}
-                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                        
+                    <svg class="shopping_cart" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                         <defs>
                             <path
                                 d="M20.47 5a1.5 1.5 0 0 1 1.48 1.9l-1.83 6.52A3.58 3.58 0 0 1 16.66 16H8.93c-.94 0-1.76-.63-1.99-1.52L4.26 4H3.02C2.46 4 2 3.55 2 3s.46-1 1.02-1H5.1c.47 0 .88.31.99.76L6.65 5h13.82zM9 17.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
@@ -39,7 +40,7 @@
                             </g>
                         </g>
                      </svg>
-                    </svg> --}}
+                    </svg>
                     <div class="profile">
                         {{-- <div class="wp-profile">
                             <div class="foto-profile-cont">
@@ -47,12 +48,26 @@
                             </div>
                             <div class="name-profile"> --}}
 
+                                
                                     @if (Auth::check())
-                                    <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a>
+                                    @php
+                                        $name = Auth::user()->name;
+                                        $firstName = explode(' ',$name)[0];
+                                    @endphp
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}" alt="" class="foto-profile">
+                                            {{ $firstName }}
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                          <li><button class="dropdown-item" onclick= "openGoogleByMethod()" type="button">Logout</button></li>
+                                        </ul>
+                                      </div>
+                                    {{-- <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a> 
                                     <img src="{{ Auth::user()->photo }}" alt="{{ Auth::user()->name }}" class="foto-profile">
                                     <a class="btn-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      {{ Auth::user()->name}}
-                                    </a>
+                                      
+                                    </a> --}}
                                         @else
                                         <a href="{{ route('login.admin') }}" type="submit" class="btn-masuk" >Masuk</a>
                                     @endif
@@ -73,3 +88,11 @@
         </div>
     </div>
 </nav>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+<script>
+    function openGoogleByMethod(){
+    window.location.href = "<?= route('logout.google') ?>";
+   }
+</script>
