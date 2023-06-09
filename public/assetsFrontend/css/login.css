@@ -24,6 +24,10 @@
     text-decoration: none;
     position: absolute;
 }
+.text-daftar:hover{
+    color: #ffb801;
+    text-decoration: none;
+}
 .logo{
     text-align: center;
 }

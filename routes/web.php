@@ -18,6 +18,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PesananController;
 
 Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
+Route::post('/daftar/store', [DaftarController::class, 'store'])->name('daftar.store');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
 Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');

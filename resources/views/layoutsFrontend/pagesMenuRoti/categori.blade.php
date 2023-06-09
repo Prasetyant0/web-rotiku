@@ -24,9 +24,7 @@
                 <a href="" class="catetext">Roti Coklat Ya Di coklatin</a>
                 <a href="" class="catetext">Roti Bakar</a>
                 <a href="" class="catetext">Roti Susu Keju</a>
-                <a href="" class="catetext">Roti Kering Rasa Pisang</a>
-                <a href="" class="catetext">Roti Kering </a>
-
+                <a href="" class="catetext">Roti Kering Rasa Pisang Susu Cok..</a>
             </div>
         </div>
     </div>
