@@ -3,7 +3,7 @@
         <div class="container">
             <h3 class="text-white font-weight-bold mb-3">Feel the Pleasure Of Our Bread</h3>
             <p class="text-light">with the softness of the bread and cream and the toppings are so abundant.</p>
-            <button type="button" class="btn btn-primary button mt-md-5 mt-4" data-toggle="modal" onclick="window.location= '{{route('menu')}}'" data-target=".bd-example-modal-lg">
+            <button type="button" class="btn btn-primary button mt-md-5 mt-4" style="border-radius: 20px;" data-toggle="modal" onclick="window.location= '{{route('menu')}}'" data-target=".bd-example-modal-lg">
                 <span>Order Now!</span>
             </button>
         </div>

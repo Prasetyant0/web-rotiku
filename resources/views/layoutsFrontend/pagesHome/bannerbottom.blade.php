@@ -13,9 +13,9 @@
 
                         Roti tawar kami dipanggang dengan hati-hati menggunakan bahan-bahan terbaik, menghasilkan roti yang segar dan lezat setiap hari. Jadikan sarapan Anda lebih nikmat dengan roti tawar yang berkualitas.
                     </p>
-                    <button type="button" class="btn btn-primary button mt-md-5 mt-4" onclick="window.location= '{{route('menu')}}'">
+                    {{-- <button type="button" class="btn btn-primary button mt-md-5 mt-4" onclick="window.location= '{{route('menu')}}'">
                         <span>Beli Sekarang</span>
-                    </button>
+                    </button> --}}
                 </div>
                 <div class="col-lg-6 about-img text-lg-enter">
                     <img src="{{ asset('assetsFrontend/images/rekomendasi/1.jpg')}}" alt="" class="img-fluid">

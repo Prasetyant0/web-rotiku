@@ -27,9 +27,9 @@
     @include('layoutsFrontend.pagesAbout.aboutbottom')
 	<!-- //about bottom -->
 
-	<!-- team -->
+	<!-- address -->
 	@include('layoutsFrontend.pagesAbout.team')
-	<!-- team -->
+	<!-- address -->
 
 	<!-- footer -->
 	@include('layoutsFrontend.footer')

@@ -29,7 +29,7 @@
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Data Kategori</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ request()->routeIs('admin.carousel') ? 'active' : '' }}">
+            {{-- <li class="sidebar-item {{ request()->routeIs('admin.carousel') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('admin.carousel') }}">
                     <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Carousel</span>
                 </a>
@@ -38,7 +38,7 @@
                 <a class="sidebar-link" href="{{ route('admin.promosi.index') }}">
                     <i class="align-middle" data-feather="bookmark"></i> <span class="align-middle">Promosi</span>
                 </a>
-            </li>
+            </li> --}}
             
             {{-- <li class="sidebar-item {{ request()->routeIs('admin.help') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('admin.help') }}">

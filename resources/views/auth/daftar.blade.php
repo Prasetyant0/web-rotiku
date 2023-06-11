@@ -1,11 +1,11 @@
 @include('layoutsFrontend.head')
 <div class="containersig">
 	<div class="nan">
-		<div class="imgl">
+		{{-- <div class="imgl">
 			<div class="imgld">
 				<a href="{{route('menu')}}"><img class="imgldc" src="{{asset('assetsFrontend/images/logo/logorotiku.png')}}" width="200"></a>
 			</div>
-		</div>
+		</div> --}}
 		<div class="imgsig">
 			<div class="imgs">
 				<img src="{{asset('assetsFrontend/images/daftar/sigin3.webp')}}" class="imgsig position">
@@ -31,6 +31,9 @@
 						</li>
 						<li>
 							<input type="password" name="password"  class="inel" id="password" placeholder="password">
+						</li>
+						<li>
+							<input type="confirm" name="confirm"  class="inel" id="confirm" placeholder="confirm password">
 						</li>
                         <li>
                             <button type="submit" name="sigin" class="butdaf" style="width: 100%">Daftar</button>    
