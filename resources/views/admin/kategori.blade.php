@@ -22,6 +22,7 @@
                                 <thead>
                                     <tr>
                                         <th class="d-none d-xl-table-cell">No</th>
+                                        <th class="d-none d-xl-table-cell">Gambar</th>
                                         <th class="d-none d-xl-table-cell">Kategori Roti</th>
                                         <th class="d-none d-md-table-cell">Edit</th>
                                         <th class="d-none d-md-table-cell">Delete</th>
@@ -31,6 +32,9 @@
                                     @foreach ($kategori as $d)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <img class="img" width="100" height="100" src="{{ asset('gallery/' . $d->gambar) }}" alt="{{ $d->roti }}">
+                                        </td>
                                         <td class="d-none d-xl-table-cell">{{ $d->kategori }}</td>
                                         <td class="d-none d-md-table-cell"><a href="{{ route('admin.kategori.edit', $d->id_kategori) }}"
                                                 class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg"

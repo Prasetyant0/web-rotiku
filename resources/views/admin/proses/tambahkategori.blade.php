@@ -29,8 +29,13 @@
                                     <div class="row">
                                         <div class="">
                                             <div class="mb-3">
-                                                <form action="{{ route('admin.kategori.store') }}" method="POST">
+                                                <form action="{{ route('admin.kategori.store') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
+                                                    <img id="preview" src="{{ asset('jk-placeholder-image.jpg') }}"
+                                                        alt="Gambar Roti" style="max-width: 200px; margin-top: 10px;">
+                                                    <input type="file" id="gambar" name="gambar" onchange="previewImage(event)" class="form-control mt-2">
+                                            </div>
+                                            <div class="mb-3">
                                                     <label class="form-label" for="kategori">Kategori Roti</label>
                                                     <input id="kategori" name="kategori" type="text"
                                                         class="form-control" placeholder="kategori roti">

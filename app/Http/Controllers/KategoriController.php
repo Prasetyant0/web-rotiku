@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class KategoriController extends Controller
 {
@@ -22,11 +23,30 @@ class KategoriController extends Controller
     {
         $request->validate([
             'kategori' => 'required|unique:kategori',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        Kategori::create($request->all());
+        if ($request->gambar) {
+            $gambar = $request->file('gambar');
+            $extension = $gambar->getClientOriginalExtension();
+            $filename = time(). '.' . $extension;
+            $gambar->move('gallery', $filename);  
+            
+            $kategori = new Kategori();
+            $kategori->kategori = $request->input('kategori');
+            $kategori->gambar = $filename;
 
-        return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil ditambahkan');
+            $kategori->save();
+                 return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil ditambahkan');
+
+        }
+
+        return redirect()->back()->withInput()->with('error', 'Gagal mengunggah foto!');
+
+
+        // Kategori::create($request->all());
+
+        // return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
     public function edit($id_kategori)
@@ -42,18 +62,38 @@ class KategoriController extends Controller
 
         $isChanged = false;
 
+        if ($request->hasFile('gambar')) {
+            if ($kategori->gambar) {
+                $imagePath = public_path('gallery/', $kategori->gambar);
+                if (File::exists($imagePath)) {
+                    File::delete($imagePath);
+                }
+            }
+
+            $gambar = $request->file('gambar');
+            $gambarName = time() . '.' . $gambar->getClientOriginalExtension();
+            $gambar->move(public_path('gallery'), $gambarName);
+            $kategori->gambar = $gambarName;
+            $isChanged = true;
+        }
+
+
+
         if ($kategori->kategori != $request->input('kategori')) {
             $kategori->kategori = $request->input('kategori');
             $isChanged = true;
         }
 
+
+
         if (!$isChanged) {
             return redirect()->route('admin.kategori.index')->with('info', 'Tidak ada perubahan data!');
         }
 
-        $kategori->update($data);
-
+        $kategori->save();
         return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil diupdate');
+
+        // $kategori->update($data);
     }
 
     public function destroy($id_kategori)

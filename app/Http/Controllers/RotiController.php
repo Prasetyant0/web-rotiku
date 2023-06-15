@@ -129,6 +129,7 @@ class RotiController extends Controller
 
     public function showMenu() {
         $menu = Roti::all();
-        return view('frontend.menuroti', compact('menu'));
+        $kategori = Kategori::all();
+        return view('frontend.menuroti', compact('menu', 'kategori'));
     }
 }

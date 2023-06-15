@@ -63,11 +63,14 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   
-
+	{{-- bootstap  --}}
 	<link rel="stylesheet" href="{{asset('assetsFrontend/css/daftar.css')}}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	{{-- bootstap  --}}
 
-
+	{{-- filter  --}}
+	<link rel="stylesheet" href="{{asset('assetsFrontend/css/filter.css')}}">
+	{{-- //filter  --}}
 
 	{{-- Jquery --}}
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

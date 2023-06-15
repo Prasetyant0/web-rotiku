@@ -13,6 +13,7 @@ use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FiltermenuController;
 use App\Http\Controllers\HelpandsupportController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PesananController;
@@ -31,6 +32,8 @@ Route::get('about', [FrontendController::class, 'about'])->name('user.about');
 Route::get('menu', [RotiController::class, 'showMenu'])->name('menu');
 Route::get('invoice/{id_roti}', [InvoiceController::class, 'index'])->name('invoice.menu');
 Route::get('search', [MenuController::class, 'search'])->name('search');
+Route::get('filterView/{id_kategori}/filter', [FiltermenuController::class, 'filterView'])->name('filter.menu');
+Route::get('filter', [FiltermenuController::class, 'filter'])->name('filter');
 
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
