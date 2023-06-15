@@ -7,15 +7,14 @@
                     @foreach ($kategori as $k)
                         <a href="#" class="kotak" data-aos="fade-up"><img src="{{ asset('gallery/' . $k->gambar) }}" style="width:100px;" alt=""></a>
                     @endforeach
+                </div>
             </div>
-            </div>
-            <div class="botcate"></div>
+            <div class="botcate">
                 <a href="" class="catetext">Semua Kategori</a>
             @foreach ($kategori as $k)
                 <a href="{{route('filter.menu', $k->id_kategori)}}" class="catetext">{{$k->kategori}}</a>
             @endforeach
-            {{-- {{ route('invoice.menu', $k->id}} --}}
             </div>
         </div>
-    </div>
+        </div>
 </div>
