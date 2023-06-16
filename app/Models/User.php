@@ -14,7 +14,7 @@ class User extends Authenticatable
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'name', 'email','photo', 'password', 'role'
+        'name', 'photo', 'email', 'password', 'role',
     ];
 
     protected $hidden = [
@@ -28,6 +28,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role === 'admin';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
     }
 
 }

@@ -20,9 +20,9 @@
                         </svg></div>
                         <input type="search" name="src" id="searchInput" class="src-input">
                         <div class="searchResults"></div>
-                        
+
                     <svg class="shopping_cart" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144"> 
+                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                         <defs>
                             <path
@@ -48,7 +48,7 @@
                             </div>
                             <div class="name-profile"> --}}
 
-                                
+
                                     @if (Auth::check())
                                     @php
                                         $name = Auth::user()->name;
@@ -56,18 +56,18 @@
                                     @endphp
                                     <div class="dropdown">
                                         <button class="dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            @if (Auth::user()->photo)
+                                            <img src="{{ Auth::user()->photo }}" alt="" class="foto-profile">
+                                            @else
                                             <img src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}" alt="" class="foto-profile">
+                                            @endif
+
                                             {{ $firstName }}
                                         </button>
                                         <ul class="dropdown-menu">
                                           <li><button class="dropdown-item" onclick= "openGoogleByMethod()" type="button">Logout</button></li>
                                         </ul>
                                       </div>
-                                    {{-- <a href="{{ route('logout.google') }}" type="submit" class="button-masuk">Logout</a> 
-                                    <img src="{{ Auth::user()->photo }}" alt="{{ Auth::user()->name }}" class="foto-profile">
-                                    <a class="btn-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      
-                                    </a> --}}
                                         @else
                                         <a href="{{ route('login.admin') }}" type="submit" class="btn-masuk" >Masuk</a>
                                     @endif

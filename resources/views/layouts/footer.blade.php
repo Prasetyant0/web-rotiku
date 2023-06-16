@@ -13,6 +13,7 @@
 </div>
 </div>
 
+{{-- cdn sweatalert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('assets/js/app.js') }}"></script>
 
@@ -67,6 +68,7 @@
         });
     });
 </script>
+{{-- sweatalert2 --}}
 @include('sweetalert::alert')
 
 </body>

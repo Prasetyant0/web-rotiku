@@ -24,7 +24,7 @@ class CreateRotiTable extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 
-            $table->foreign('id_kategori')->references('id_kategori')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_kategori')->references('id_kategori')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -38,7 +38,7 @@ class CreateRotiTable extends Migration
          Schema::table('roti', function (Blueprint $table) {
          $table->dropForeign(['id_kategori']);
          });
-         
+
         Schema::dropIfExists('roti');
     }
 }

@@ -22,7 +22,7 @@ class CreateBayarTable extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 
-            $table->foreign('id_roti')->references('id_roti')->on('roti')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_roti')->references('id_roti')->on('roti')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -36,7 +36,7 @@ class CreateBayarTable extends Migration
         Schema::table('bayar', function (Blueprint $table) {
         $table->dropForeign(['id_roti']);
         });
-        
+
         Schema::dropIfExists('bayar');
     }
 }

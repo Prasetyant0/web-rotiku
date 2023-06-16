@@ -20,8 +20,9 @@ class AuthController extends Controller
     {
         if ($user->isAdmin()) {
             return redirect()->route('admin.dashboard');
-        }
-        return redirect()->route('user.dashboard');
+        } elseif(Auth::check('user')) {
+        return redirect()->route('menu');
+    }
     }
 
     public function postlogin(Request $request)
@@ -31,15 +32,15 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            if ($user->role === 'admin') {
+            if ($user->isAdmin()) {
                 return redirect('/dashboard');
-            } elseif ($user->role === 'user') {
-                return redirect()->route('user.dashboard');
+            } elseif ($user->isUser()) {
+                return redirect()->route('menu');
             } else {
                 return redirect()->route('login.admin')->with('message', 'Username or password incorrect');
             }
         } else {
-            return redirect()->back()->withInput()->withErrors('Login failed');
+            return redirect('/login')->with('error', 'Password anda salah!');
         }
     }
 
@@ -69,6 +70,7 @@ class AuthController extends Controller
             } else {
                 $new_user = User::create([
                     'name' => ucwords($google_user->name),
+                    'photo' => $google_user->avatar,
                     'email' => $google_user->email,
                     'email_verified_at' => now(),
                     'password' => bcrypt(Str::random(10)),

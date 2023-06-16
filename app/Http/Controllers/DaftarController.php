@@ -14,39 +14,33 @@ class DaftarController extends Controller
     }
 
     public function store(Request $request)
-    {
+{
+    $validateData = $request->validate([
+        'name'      => 'required',
+        'email'     => 'required|email|unique:users',
+        'password'  => 'required|min:8',
+        'confirm'   => 'required|min:8',
+    ]);
 
-        $validateData = $request->validate([
-            'name'      =>  'required',
-            'email'     =>  'required|email|unique:users',
-            'password'  =>  'required|min:8',
-            'confirm'   =>  'required|min:8',
-        ]);
+    $existingUser = User::where('email', $validateData['email'])->first();
 
+    if (!$existingUser) {
+        if ($validateData['password'] === $validateData['confirm']) {
+            $hashedPassword = Hash::make($validateData['password']);
 
-        $user = User::where('email', $validateData['email'])->get();
+            User::create([
+                'name'      => $validateData['name'],
+                'email'     => $validateData['email'],
+                'password'  => $hashedPassword,
+            ]);
 
-        if ($user->isEmpty()) {
-
-            if ($validateData['password'] === $validateData['confirm']) {
-
-                $hasePassword = Hash::make($validateData['password']);
-
-                User::create([
-                    'name'      =>  $validateData['name'],
-                    'email'     =>  $validateData['email'],
-                    'password'  => $hasePassword,
-                ]);
-                return redirect('/login');
-
-            }
-            else{
-                return "password lu gak sama njirs";
-            }
-        }else{
-            return "akun sudah terdaftar";
-            // return redirect()->route('daftar.user')->with('message', 'Username Telah Digunakan');
+            return redirect('/login')->with('success', 'Akun berhasil dibuat, silahkan login.');
+        } else {
+            return redirect('/daftar')->with('error', 'Confirm password tidak sama!');
         }
-
+    } else {
+        return redirect()->route('daftar.user')->with('message', 'Username telah digunakan');
     }
+}
+
 }

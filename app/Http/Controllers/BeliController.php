@@ -57,7 +57,7 @@ class BeliController extends Controller
 
         $request->session()->forget('bayar');
 
-        return redirect()->route('menu');
-        // ->with('success', 'Pesanan berhasil dikirim, harap tunggu dan siapkan uang pas!')
+        return redirect()->route('menu')
+        ->with('success', 'Pesanan berhasil dikirim, harap tunggu dan siapkan uang pas!');
     }
 }
