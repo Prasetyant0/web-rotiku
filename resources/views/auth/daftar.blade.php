@@ -35,12 +35,12 @@
                     </li>
                     <li>
                         <input type="password" name="password" class="inel" id="password" placeholder="password">
-                        <div id="show">
+                        {{-- <div id="show">
                             <i class="fa fa-eye"></i>
-                        </div>
+                        </div> --}}
                     </li>
                     <li>
-                        <input type="confirm" name="confirm" class="inel" id="confirm"
+                        <input type="password" name="confirm" class="inel" id="confirm"
                             placeholder="confirm password">
                     </li>
                     <li>

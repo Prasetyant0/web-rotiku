@@ -36,7 +36,7 @@
                 </form>
             </div>
         </div>
-        <div class="search-menu">
+        {{-- <div class="search-menu">
                 <div class="icon-src-filter">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                         height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -45,7 +45,7 @@
                     </svg>
                 </div>
                 <input type="search" placeholder="search {{$kategori->kategori = strtolower($kategori->kategori)}}" class="src-menu-filter " name="search-menu-filter" id="searchInput">
-        </div>
+        </div> --}}
         <div class="containerCard menu-card">
             @foreach ( $menu as $mFilter)
                 <a  href="{{ route('invoice.menu', $mFilter->id_roti) }}" class="card card-margin">

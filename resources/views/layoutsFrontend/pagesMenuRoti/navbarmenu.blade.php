@@ -57,9 +57,9 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             @if (Auth::user()->photo)
-                                            <img src="{{ Auth::user()->photo }}" alt="" class="foto-profile">
+                                                <img src="{{ Auth::user()->photo }}" alt="" class="foto-profile">
                                             @else
-                                            <img src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}" alt="" class="foto-profile">
+                                                <img src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}" alt="" class="foto-profile">
                                             @endif
 
                                             {{ $firstName }}

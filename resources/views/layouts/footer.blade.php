@@ -45,6 +45,34 @@
     });
 </script>
 
+<script type="text/javascript">
+    $(function() {
+        $(document).on('click', '#kirim', async function(e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+
+            const swalResult = await Swal.fire({
+                title: 'Apakah Pesanan Sudah Siap Di kirim?',
+                text: "Jika Sudah dikirm maka tidak dapat di cancel!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Kirim Pesanan!'
+            });
+
+            if (swalResult.isConfirmed) {
+                await Swal.fire(
+                    'Dikirm!',
+                    'Pesanan Berhasil Di Kirim!',
+                    'success'
+                );
+                window.location.href = link;
+            }
+        });
+    });
+</script>
+
 <script>
     function previewImage(event) {
         var reader = new FileReader();

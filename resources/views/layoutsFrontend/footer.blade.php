@@ -26,12 +26,6 @@
 
 
 
-{{-- jumlah barang yang di beli --}}
-
-
-
-{{-- //jumlah barang yang di beli --}}
-
 <!-- Js files -->
 <!-- JavaScript -->
 <script src="{{ asset('assetsFrontend/js/jquery-2.2.3.min.js') }}"></script>

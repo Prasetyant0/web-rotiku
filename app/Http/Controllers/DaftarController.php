@@ -20,6 +20,13 @@ class DaftarController extends Controller
         'email'     => 'required|email|unique:users',
         'password'  => 'required|min:8',
         'confirm'   => 'required|min:8',
+    ], [
+        'name.required'     => 'Nama harus diisi',
+        'email.required'    => 'Email harus diisi',
+        'email.unique'      => 'Email sudah digunakan',
+        'password.required' => 'Password harus diisi',
+        'password.min'      => 'Password minimal 8 karakter',
+        'confirm.required'  => 'Konfirmasi password harus diisi',
     ]);
 
     $existingUser = User::where('email', $validateData['email'])->first();
@@ -35,12 +42,9 @@ class DaftarController extends Controller
             ]);
 
             return redirect('/login')->with('success', 'Akun berhasil dibuat, silahkan login.');
-        } else {
-            return redirect('/daftar')->with('error', 'Confirm password tidak sama!');
         }
-    } else {
-        return redirect()->route('daftar.user')->with('message', 'Username telah digunakan');
-    }
+    } 
 }
+
 
 }

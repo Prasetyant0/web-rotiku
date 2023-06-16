@@ -176,3 +176,10 @@
     background-color: transparent;
 
 }
+.container-btn-t-k-stok-beli{
+    display: flex;
+}
+.tambah-beli{
+    width: 25px;
+    margin-left: 60px;
+}

@@ -28,10 +28,14 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+    
+        if (!$request->filled('email') || !$request->filled('password')) {
+            return redirect('/login')->with('warning', 'Email dan password harus diisi');
+        }
+    
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-
+    
             if ($user->isAdmin()) {
                 return redirect('/dashboard');
             } elseif ($user->isUser()) {
@@ -40,7 +44,7 @@ class AuthController extends Controller
                 return redirect()->route('login.admin')->with('message', 'Username or password incorrect');
             }
         } else {
-            return redirect('/login')->with('error', 'Password anda salah!');
+            return redirect('/login')->with('error', 'Username atau password salah');
         }
     }
 
