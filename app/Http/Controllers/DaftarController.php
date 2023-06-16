@@ -17,19 +17,19 @@ class DaftarController extends Controller
     {
 
         $validateData = $request->validate([
-            'name'      =>  'required', 
-            'email'     =>  'required|email|unique:users', 
-            'password'  =>  'required|min:8', 
-            'confirm'   =>  'required|min:8', 
+            'name'      =>  'required',
+            'email'     =>  'required|email|unique:users',
+            'password'  =>  'required|min:8',
+            'confirm'   =>  'required|min:8',
         ]);
 
 
         $user = User::where('email', $validateData['email'])->get();
 
         if ($user->isEmpty()) {
-            
+
             if ($validateData['password'] === $validateData['confirm']) {
-          
+
                 $hasePassword = Hash::make($validateData['password']);
 
                 User::create([
@@ -38,7 +38,7 @@ class DaftarController extends Controller
                     'password'  => $hasePassword,
                 ]);
                 return redirect('/login');
-                
+
             }
             else{
                 return "password lu gak sama njirs";
