@@ -28,20 +28,20 @@
             <div class="elSigin">
                 <ul>
                     <li>
-                        <input type="name" name="name"class="inel" placeholder="name">
+                        <input type="name" name="name" class="inel" placeholder="name" value="{{ old('name') }}">
                     </li>
                     <li>
-                        <input type="email" name="email"class="inel" placeholder="email">
+                        <input type="email" name="email" class="inel" placeholder="email" value="{{ old('email') }}">
                     </li>
                     <li>
-                        <input type="password" name="password" class="inel" id="password" placeholder="password">
+                        <input type="password" name="password" class="inel" id="password" placeholder="password" value="{{ old('password') }}">
                         {{-- <div id="show">
                             <i class="fa fa-eye"></i>
                         </div> --}}
                     </li>
                     <li>
                         <input type="password" name="confirm" class="inel" id="confirm"
-                            placeholder="confirm password">
+                            placeholder="confirm password" value="{{ old('confirm') }}">
                     </li>
                     <li>
                         <button type="submit" name="sigin" class="butdaf" style="width: 100%">Daftar</button>

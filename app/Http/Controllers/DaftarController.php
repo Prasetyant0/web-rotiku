@@ -19,7 +19,7 @@ class DaftarController extends Controller
         'name'      => 'required',
         'email'     => 'required|email|unique:users',
         'password'  => 'required|min:8',
-        'confirm'   => 'required|min:8',
+        'confirm'   => 'required',
     ], [
         'name.required'     => 'Nama harus diisi',
         'email.required'    => 'Email harus diisi',
@@ -42,8 +42,11 @@ class DaftarController extends Controller
             ]);
 
             return redirect('/login')->with('success', 'Akun berhasil dibuat, silahkan login.');
+        } else {
+            $request->flashOnly('name', 'email', 'password', 'confirm');
+            return redirect()->back()->with('error', 'Akun gagal dibuat, masukkan data yang sesuai!');
         }
-    } 
+    }
 }
 
 

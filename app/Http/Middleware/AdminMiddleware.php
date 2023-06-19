@@ -10,7 +10,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!$request->user() || !$request->user()->isAdmin()) {
-            abort(403, 'Unauthorized');
+            abort(403, 'Anda Bukan Admin!');
         }
 
         return $next($request);

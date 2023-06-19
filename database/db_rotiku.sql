@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2023 at 05:22 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Jun 16, 2023 at 04:33 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,9 +42,7 @@ CREATE TABLE `bayar` (
 --
 
 INSERT INTO `bayar` (`id`, `stok`, `total_bayar`, `id_roti`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, 4, 60000, 16, 'bissmillah jadi', '2023-05-30 06:56:25', '2023-05-30 06:56:25'),
-(2, 3, 93000, 14, 'Soni 12 rpl 2', '2023-05-30 07:02:05', '2023-05-30 07:02:05'),
-(6, 1, 26000, 20, 'Soni XI Rpl 2', '2023-06-09 03:10:17', '2023-06-09 03:10:17');
+(10, 2, 52000, 20, 'pras', '2023-06-16 07:24:55', '2023-06-16 07:24:55');
 
 --
 -- Triggers `bayar`
@@ -55,27 +53,6 @@ CREATE TRIGGER `update_stok` AFTER INSERT ON `bayar` FOR EACH ROW BEGIN
 END
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `carousel`
---
-
-CREATE TABLE `carousel` (
-  `id_carousel` bigint(20) UNSIGNED NOT NULL,
-  `title` text NOT NULL,
-  `description` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `carousel`
---
-
-INSERT INTO `carousel` (`id_carousel`, `title`, `description`, `created_at`, `updated_at`) VALUES
-(5, 'Molenpan', 'baoncikadap', '2023-05-19 02:31:51', '2023-05-19 02:31:51');
 
 -- --------------------------------------------------------
 
@@ -91,36 +68,6 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `help`
---
-
-CREATE TABLE `help` (
-  `id_help` bigint(20) UNSIGNED NOT NULL,
-  `subtitle` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jumlah`
---
-
-CREATE TABLE `jumlah` (
-  `id_jumlah` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `foto` varchar(225) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -198,45 +145,6 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promosi`
---
-
-CREATE TABLE `promosi` (
-  `id_promosi` bigint(20) UNSIGNED NOT NULL,
-  `title` text NOT NULL,
-  `subtitle` text NOT NULL,
-  `description` text NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `promosi`
---
-
-INSERT INTO `promosi` (`id_promosi`, `title`, `subtitle`, `description`, `foto`, `created_at`, `updated_at`) VALUES
-(1, 'Molenpan', 'Molen mang dudung', 'baoncikadap', '1684488566.jpg', '2023-05-19 01:43:30', '2023-05-19 02:29:26');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `quotes`
---
-
-CREATE TABLE `quotes` (
-  `id_quotes` bigint(20) UNSIGNED NOT NULL,
-  `title_quotes` text NOT NULL,
-  `quotes` text NOT NULL,
-  `text_by` text NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `roti`
 --
 
@@ -263,7 +171,7 @@ INSERT INTO `roti` (`id_roti`, `roti`, `description`, `id_kategori`, `gambar`, `
 (17, 'Roti Brioche', 'Roti ini memiliki tekstur empuk dan rasa yang kaya serta sedikit manis. Dibuat dari telur, mentega, ragi, tepung, dan terkadang ditambahkan juga buah kering atau kacang-kacangan.', 4, '1684821865.jpg', 1000000, 15, '2023-05-22 23:04:25', '2023-05-22 23:04:25'),
 (18, 'Roti Challah', 'Roti ini memiliki tekstur empuk dan rasa yang kaya serta sedikit manis. Dibuat dari telur, mentega, ragi, tepung, dan terkadang ditambahkan juga buah kering atau kacang-kacangan.', 4, '1684821969.jpg', 1500000, 12, '2023-05-22 23:06:09', '2023-05-22 23:06:09'),
 (19, 'Roti Bakar Varian Coklat', 'Roti bakar mantap anjir ah siah mantap men', 4, '1684889220.PNG', 25000, 9, '2023-05-23 17:47:01', '2023-05-23 17:47:01'),
-(20, 'Roti Bakar Varian Buah', 'Roti bakar varian buah dengan kelemutan rotinya dan kepadatan rotinya akan menambah sensasi kenyang ketika di makan dan akan terdapat beberapa rasa ketika di kunyah seperti asam manis dan gurih', 4, '1684889489.PNG', 26000, 1, '2023-05-23 17:51:29', '2023-05-23 17:51:29');
+(20, 'Roti Bakar Varian Buah', 'Roti bakar varian buah dengan kelemutan rotinya dan kepadatan rotinya akan menambah sensasi kenyang ketika di makan dan akan terdapat beberapa rasa ketika di kunyah seperti asam manis dan gurih', 4, '1684889489.PNG', 26000, 9, '2023-05-23 17:51:29', '2023-06-15 23:07:39');
 
 -- --------------------------------------------------------
 
@@ -274,6 +182,7 @@ INSERT INTO `roti` (`id_roti`, `roti`, `description`, `id_kategori`, `gambar`, `
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
+  `photo` varchar(250) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
@@ -287,14 +196,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
-(4, 'prasetyanto', 'prasetyantotp@gmail.com', NULL, '$2y$10$KgAH7fBu5SSODJCO6DZYReJiHnCjVZVk22/TzKyLYM0xEp.miKKoe', NULL, '2023-05-24 21:47:58', '2023-05-24 21:47:58', 'admin'),
-(6, 'Bowo Gaming', 'ihot849@gmail.com', NULL, '$2y$10$j9ajegXjf8UP6iVmuX0TauLQ2iT5TkN37mHXb.zaWZlz1ErlRGvzq', NULL, '2023-05-27 01:40:41', '2023-05-27 01:40:41', 'user'),
-(7, 'Power Bet', 'powerbet31@gmail.com', NULL, '$2y$10$PpxOg..QXVVx07ufutUPc.kSlWSOiIHwYSXYbY21ordfjIVnW9PyW', NULL, '2023-05-27 06:37:34', '2023-05-27 06:37:34', 'user'),
-(16, 'Sony Sudrajat', 'sonysudrajat94@gmail.com', NULL, '$2y$10$6qxY5ufaeYve/gHpeXTv..8bnzrcKCUEP3ZYcCqns/gis7zb2C3aa', NULL, '2023-06-11 05:00:18', '2023-06-11 05:00:18', 'user'),
-(17, 'soo', 'sonysudrajat97@gmail.com', NULL, '$2y$10$SwpYjBxAZJGxt.r.Y/8i3eBEzzwRSc5cnaiy/DlZljawFUq0PMnPO', NULL, '2023-06-11 05:14:38', '2023-06-11 05:14:38', 'user'),
-(18, 'asd', 'asd@gmail.com', NULL, '$2y$10$ufkDWeDNdpoBB8EBvafYc.0jh4Rym2CEAvoJUhq/k6clNnD44vBMa', NULL, '2023-06-11 05:33:43', '2023-06-11 05:33:43', 'user'),
-(20, 'caff', 'caff@gmail.com', NULL, '$2y$10$e4Q.CCGFlLhhHD4Z1mAPl.EGkTlc5P6o23zLVU3ukuPT9K/cDJc/C', NULL, '2023-06-12 08:01:41', '2023-06-12 08:01:41', 'admin');
+INSERT INTO `users` (`id`, `name`, `photo`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
+(4, 'prasetyanto', NULL, 'prasetyantotp@gmail.com', NULL, '$2y$10$KgAH7fBu5SSODJCO6DZYReJiHnCjVZVk22/TzKyLYM0xEp.miKKoe', NULL, '2023-05-24 21:47:58', '2023-05-24 21:47:58', 'admin'),
+(16, 'Sony Sudrajat', NULL, 'sonysudrajat94@gmail.com', NULL, '$2y$10$6qxY5ufaeYve/gHpeXTv..8bnzrcKCUEP3ZYcCqns/gis7zb2C3aa', NULL, '2023-06-11 05:00:18', '2023-06-11 05:00:18', 'user'),
+(17, 'soo', NULL, 'sonysudrajat97@gmail.com', NULL, '$2y$10$SwpYjBxAZJGxt.r.Y/8i3eBEzzwRSc5cnaiy/DlZljawFUq0PMnPO', NULL, '2023-06-11 05:14:38', '2023-06-11 05:14:38', 'user'),
+(18, 'asd', NULL, 'asd@gmail.com', NULL, '$2y$10$ufkDWeDNdpoBB8EBvafYc.0jh4Rym2CEAvoJUhq/k6clNnD44vBMa', NULL, '2023-06-11 05:33:43', '2023-06-11 05:33:43', 'user'),
+(20, 'caff', NULL, 'caff@gmail.com', NULL, '$2y$10$e4Q.CCGFlLhhHD4Z1mAPl.EGkTlc5P6o23zLVU3ukuPT9K/cDJc/C', NULL, '2023-06-12 08:01:41', '2023-06-12 08:01:41', 'admin'),
+(25, 'Bowo Gaming', 'https://lh3.googleusercontent.com/a/AAcHTtfoeGrlcbAqYl3YGTwaJxQEE1Q2Yid3icUQZ9vl=s96-c', 'ihot849@gmail.com', NULL, '$2y$10$ev9vMEOpuXdWc9VK5RBAIujTmLKZS.fWt7ZOSy2Aod6xcPJIz58zW', NULL, '2023-06-16 01:00:04', '2023-06-16 01:00:04', 'user'),
+(26, 'asdd', NULL, 'asdd@gmail.com', NULL, '$2y$10$bDtPm/2Rx4caKwCDQeQHkuYuC3IDdLg820WeM3GvmzB.jbNaIgZAm', NULL, '2023-06-16 01:06:55', '2023-06-16 01:06:55', 'user'),
+(28, 'Elfan', NULL, 'elfan123@gamil.com', NULL, '$2y$10$y5juA5vSHFVu1Az3Fq445u6lxL/PlgXkp1Nw3xgmQq2U2p0ZheOzO', NULL, '2023-06-16 07:22:24', '2023-06-16 07:22:24', 'user');
 
 --
 -- Indexes for dumped tables
@@ -308,29 +218,11 @@ ALTER TABLE `bayar`
   ADD KEY `id_roti` (`id_roti`);
 
 --
--- Indexes for table `carousel`
---
-ALTER TABLE `carousel`
-  ADD PRIMARY KEY (`id_carousel`);
-
---
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indexes for table `help`
---
-ALTER TABLE `help`
-  ADD PRIMARY KEY (`id_help`);
-
---
--- Indexes for table `jumlah`
---
-ALTER TABLE `jumlah`
-  ADD PRIMARY KEY (`id_jumlah`);
 
 --
 -- Indexes for table `kategori`
@@ -349,18 +241,6 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `promosi`
---
-ALTER TABLE `promosi`
-  ADD PRIMARY KEY (`id_promosi`);
-
---
--- Indexes for table `quotes`
---
-ALTER TABLE `quotes`
-  ADD PRIMARY KEY (`id_quotes`);
 
 --
 -- Indexes for table `roti`
@@ -384,31 +264,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bayar`
 --
 ALTER TABLE `bayar`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `carousel`
---
-ALTER TABLE `carousel`
-  MODIFY `id_carousel` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `help`
---
-ALTER TABLE `help`
-  MODIFY `id_help` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `jumlah`
---
-ALTER TABLE `jumlah`
-  MODIFY `id_jumlah` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -423,18 +285,6 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `promosi`
---
-ALTER TABLE `promosi`
-  MODIFY `id_promosi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `quotes`
---
-ALTER TABLE `quotes`
-  MODIFY `id_quotes` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `roti`
 --
 ALTER TABLE `roti`
@@ -444,7 +294,7 @@ ALTER TABLE `roti`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables

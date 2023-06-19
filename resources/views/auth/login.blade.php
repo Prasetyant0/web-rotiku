@@ -10,15 +10,15 @@
                 <a href="{{route('daftar.user')}}" class="text-daftar">Daftar</a>
             </div>
             <div class="form-login">
-                <form action="{{ route('login.post') }}" method="post" novalidate>
+                <form action="{{ route('login.post') }}" method="post" >
                     @csrf
                     <div class="mb-3">
                         <label class="form-label email">Email</label>
-                        <input class="input-form form-email" type="email" id="email" name="email"/>
+                        <input class="input-form form-email" type="email" id="email" name="email" value="{{ old('email') }}" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label password">Password</label>
-                        <input class="input-form form-password" type="password" id="password" name="password"/>
+                        <input class="input-form form-password" type="password" id="password" name="password" value="{{ old('password') }}"/>
                     </div>
                     <div >
                         <button type="submit" class="btn-lg login-btn"><strong>Login</strong></button>
