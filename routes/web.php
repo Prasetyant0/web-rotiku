@@ -17,9 +17,9 @@ Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
 Route::post('/daftar/store', [DaftarController::class, 'store'])->name('daftar.store');
 
 Route::middleware(['web'])->group(function () {
-Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
-Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
+    Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
@@ -33,13 +33,19 @@ Route::get('filterView/{id_kategori}/filter', [FiltermenuController::class, 'fil
 Route::get('filter', [FiltermenuController::class, 'filter'])->name('filter');
 
 Route::middleware('auth')->group(function () {
+
+    die('Sebagai User');
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
     Route::get('/beli', [BeliController::class, 'index'])->name('beli');
     Route::post('/confirm', [BeliController::class, 'beli'])->name('confirm');
     Route::post('/bayar', [BeliController::class, 'bayar'])->name('bayar');
 });
 
+
+// admin/dataroti
+
 Route::middleware('admin')->group(function () {
+    die('Sebagai Admin');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // RotiController

@@ -54,21 +54,25 @@
                                         $name = Auth::user()->name;
                                         $firstName = explode(' ',$name)[0];
                                     @endphp
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            @if (Auth::user()->photo)
-                                                <img src="{{ Auth::user()->photo }}" alt="" class="foto-profile">
-                                            @else
-                                                <img src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}" alt="" class="foto-profile">
-                                            @endif
+                                        @if (Auth::user()->role == 'user')
+                                            <div class="dropdown">
+                                                <button class="dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    @if (Auth::user()->photo)
+                                                        <img src="{{ Auth::user()->photo }}" alt="" class="foto-profile">
+                                                    @else
+                                                        <img src="{{ asset('assetsFrontend/images/fotoprofile/profile.jpg') }}" alt="" class="foto-profile">
+                                                    @endif
 
-                                            {{ $firstName }}
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                          <li><button class="dropdown-item" onclick= "openGoogleByMethod()" type="button">Logout</button></li>
-                                        </ul>
-                                      </div>
+                                                    {{ $firstName }}
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                <li><button class="dropdown-item" onclick= "openGoogleByMethod()" type="button">Logout</button></li>
+                                                </ul>
+                                            </div>
                                         @else
+                                        <a href="{{ route('login.admin') }}" type="submit" class="btn-masuk" >Masuk</a>
+                                        @endif
+                                    @else
                                         <a href="{{ route('login.admin') }}" type="submit" class="btn-masuk" >Masuk</a>
                                     @endif
                                   </div>

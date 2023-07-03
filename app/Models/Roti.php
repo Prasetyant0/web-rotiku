@@ -36,4 +36,8 @@ class Roti extends Model
         return $this->hasMany(Bayar::class, 'id_roti');
     }
 
+    public function id_roti()
+    {
+        return $this->hasMany(Cart::class, 'id_roti');
+    }
 }

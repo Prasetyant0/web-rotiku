@@ -27,12 +27,16 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role === 'admin';
+        return $this->role == 'admin';
     }
 
     public function isUser()
     {
-        return $this->role === 'user';
+        return $this->role == 'user';
     }
 
+    public function id_user()
+    {
+        return $this->hasMany(Cart::class, 'id_user');
+    }
 }
