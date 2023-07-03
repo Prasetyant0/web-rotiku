@@ -21,7 +21,9 @@
                         <input type="search" name="src" id="searchInput" class="src-input">
                         <div class="searchResults"></div>
 
-                    <svg class="shopping_cart" xmlns="http://www.w3.org/2000/svg"
+                        
+                    <a href="{{route('user.cart.view')}}">
+                        <svg class="shopping_cart" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="144">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                         <defs>
@@ -41,6 +43,7 @@
                         </g>
                      </svg>
                     </svg>
+                    </a>
                     <div class="profile">
                         {{-- <div class="wp-profile">
                             <div class="foto-profile-cont">

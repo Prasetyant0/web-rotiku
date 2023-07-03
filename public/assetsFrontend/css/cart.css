@@ -1,0 +1,92 @@
+.cart-container{
+    background-color: white;
+    /* height: 200px; */
+    position: relative;
+    top: 140px;
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, .2); */
+    border-radius: 8px;
+}
+.subcontainer-cart{
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-itmes-and-description{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+.title-and-subtitle-cart{
+    margin-left: 25px;
+}
+.title-cart{
+    font-size: 15px;
+    font-weight: bold;
+}
+.title-intrac-cart{
+    font-size: 17px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.subtitle-cart{
+    width: 300px;
+}
+.jumlah-dan-stok-cart{
+    display: flex;
+}
+.stok-cart{
+    margin-left: 20px;
+}
+.vertikal-cart{
+    width: 3px;
+    border-radius: 20px;
+    margin-left: 20px;
+    background-color: rgba(0, 0, 0, .5);
+}
+.hapus-cart{
+    /* color: grey; */
+    position: relative;
+    top: 20px;
+    border-bottom: 2px solid rgba(0, 0, 0, .2);
+}
+.harga-cart{
+    margin-left: 310px;
+}
+.beli-intrac-cart{
+    padding: 10px;
+    /* border: 1px solid black; */
+    /* border-left: 2px solid rgba(0, 0, 0, .1); */
+    width: 345px;
+    /* border-radius: 20px; */
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.total-harga-intrac-cart{
+    display: flex;
+}
+.harga-intrac-cart{
+    position: relative;
+    margin-left: 65px;
+}
+.biaya-transaksi{
+    display: flex;
+}
+.harga-biaya-transaksi{
+    position: relative;
+    margin-left: 100px;
+
+}
+.biaya-jasa-aplikasi{
+    display: flex;
+}
+.biaya-jasa-aplikasi-harga-cart{
+    position: relative;
+    margin-left: 73px;
+}
+.not-cart-harga{
+    color: rgba(0, 0, 0, .2);
+}
+.btn-bayar-cart{
+    border: none;
+    margin-top: 25px;
+}

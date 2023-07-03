@@ -75,4 +75,13 @@
 	{{-- Jquery --}}
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	{{-- //Jquery --}}
+
+	{{-- notif --}}
+	<link rel="stylesheet" href="{{asset('assetsFrontend/css/notif.css')}}">
+	{{-- //notif --}}
+
+	{{-- cart --}}
+	<link rel="stylesheet" href="{{asset('assetsFrontend/css/cart.css')}}">
+	{{-- //cart --}}
+	
 </head>

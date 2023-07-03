@@ -7,7 +7,7 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Authenticate
+class Authenticate 
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
@@ -17,13 +17,13 @@ class Authenticate
      */
     protected function redirectTo($request)
     {
-        die("Sebagai User");
+        // die("Sebagai User");
         // jika data session itu user/customer
         // maka masuk ke hal frontend
 
-        // if (! $request->expectsJson()) {
-        //     return route('login');
-        // }
+        if (! $request->expectsJson()) {
+            return route('login');
+        }
 
     }
 
@@ -36,6 +36,7 @@ class Authenticate
             die("Anda belum login");
         }
         if (!$request->user()->isUser()) {
+            // return view('layoutsFrontend.pagesMenuRoti.notif');
             abort(403, 'Anda Bukan User!');
             die("Anda bukan user");
         }
