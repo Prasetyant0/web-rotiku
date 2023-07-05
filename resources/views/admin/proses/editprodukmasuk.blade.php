@@ -50,6 +50,11 @@
                                                 <input id="catatan" name="catatan" value="{{ $produkMasuk->catatan }}" type="text" class="form-control"
                                                     placeholder="Masukkan catatan!">
                                             </div>
+                                            <div class="mb-3">
+                                                <label class="form-labeal" for="harga">Catatan</label>
+                                                <input id="harga" name="catatan" type="text" class="form-control"
+                                                    placeholder="catatan">
+                                            </div>
                                         </div>
                                     </div>
                                     <hr>

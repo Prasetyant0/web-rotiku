@@ -76,4 +76,17 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/produk_masuk/edit/{id_pemasukan}', [ProdukMasukController::class, 'editForm'])->name('admin.produk_masuk.edit');
     Route::put('/produk_masuk/{id_pemasukan}', [ProdukMasukController::class, 'updateProduk'])->name('admin.produk_masuk.update');
     Route::get('/produk_masuk/{id_pemasukan}', [ProdukMasukController::class, 'destroy'])->name('admin.produk_masuk.destroy');
+
+    // Produk Keluar
+    Route::get('/produkkeluar', function(){
+        return view('admin.produkkeluar');
+    })->name('admin.produkkeuar.index');
+
+    Route::get('/produkkeluar/create', function(){
+        return view('admin.proses.tambahprodukkeluar');
+    })->name('admin.produkkeluar.create');
+
+    Route::get('/produkkeluar/edit', function(){
+        return view('admin.proses.editprodukkeluar');
+    })->name('admin.produkkeluar.edit');
 });
