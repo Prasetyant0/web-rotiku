@@ -29,6 +29,16 @@
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Data Kategori</span>
                 </a>
             </li>
+            <li class="sidebar-item {{ request()->routeIs('admin.produkmasuk.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.produkmasuk.index') }}">
+                    <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Produk Masuk</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ request()->routeIs('admin.produkmasuk.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.produkmasuk.index') }}">
+                    <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Produk Keluar</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
