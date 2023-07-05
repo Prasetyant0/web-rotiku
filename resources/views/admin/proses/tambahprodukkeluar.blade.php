@@ -13,7 +13,7 @@
             <main class="content">
                 <div class="container-fluid p-0">
                     <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Tambah Data Produk Masuk</h1>
+                        <h1 class="h3 d-inline align-middle">Tambah Data Produk Keluar</h1>
                         <p class="badge bg-primary ms-2" target="_blank"> rotiku <i
                                 class="fas fa-fw fa-external-link-alt"></i></p>
                     </div>
@@ -21,14 +21,14 @@
                         <div class="col-md-12">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">Tambah Data Produk Masuk</h5>
-                                    <h6 class="card-subtitle text-muted">Isi form berikut untuk menambahkan data produk yang masuk</h6>
+                                    <h5 class="card-title">Tambah Data Produk Keluar</h5>
+                                    <h6 class="card-subtitle text-muted">Isi form berikut untuk menambahkan data produk yang keluar</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="">
                                             <form action="" method="post" id="FormData">
-                                                @csrf
+                                            @csrf
                                             <div class="mb-3">
                                                 <label class="form-label" for="roti">Nama Roti</label>
                                                 <select class="form-select" id="roti" name="id_roti">
@@ -37,14 +37,13 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="jumlah_masuk">Jumlah Masuk</label>
-                                                <input id="jumlah_masuk" name="jumlah_masuk" type="number" class="form-control"
-                                                    placeholder="jumlah masuk">
+                                                <label class="form-label" for="jumlah_keluar">Jumlah Keluar</label>
+                                                <input id="jumlah_keluar" name="jumlah_keluar" type="number" class="form-control"
+                                                    placeholder="jumlah keluar">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-labeal" for="catatan">Catatan</label>
-                                                <input id="catatan" name="catatan" type="text" class="form-control"
-                                                    placeholder="catatan">
+                                                <input id="catatan" name="catatan" type="text" class="form-control" placeholder="catatan">
                                             </div>
                                         </div>
                                     </div>

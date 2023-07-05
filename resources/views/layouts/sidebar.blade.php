@@ -34,8 +34,8 @@
                     <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Produk Masuk</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ request()->routeIs('admin.produkmasuk.index') ? 'active' : '' }}">
-                <a class="sidebar-link" href="{{ route('admin.produkmasuk.index') }}">
+            <li class="sidebar-item {{ request()->routeIs('admin.produkkeuar.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.produkkeuar.index') }}">
                     <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Produk Keluar</span>
                 </a>
             </li>

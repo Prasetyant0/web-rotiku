@@ -68,7 +68,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::put('/kategori/{id_kategori}', [KategoriController::class, 'update'])->name('admin.kategori.update');
     Route::get('/kategori/{id_kategori}', [KategoriController::class, 'destroy'])->name('admin.kategori.destroy');
 
-    // produkmasuk
+    // Produk Masuk
     Route::get('/produkmasuk', function(){
         return view('admin.produkmasuk');
     })->name('admin.produkmasuk.index');
@@ -80,4 +80,17 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/produkmasuk/edit', function(){
         return view('admin.proses.editprodukmasuk');
     })->name('admin.produkmasuk.edit');
+
+    // Produk Keluar
+    Route::get('/produkkeluar', function(){
+        return view('admin.produkkeluar');
+    })->name('admin.produkkeuar.index');
+
+    Route::get('/produkkeluar/create', function(){
+        return view('admin.proses.tambahprodukkeluar');
+    })->name('admin.produkkeluar.create');
+
+    Route::get('/produkkeluar/edit', function(){
+        return view('admin.proses.editprodukkeluar');
+    })->name('admin.produkkeluar.edit');
 });

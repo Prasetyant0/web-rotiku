@@ -41,14 +41,9 @@
                                                     placeholder="jumlah masuk">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="roti">Tanggal Masuk</label>
-                                                <input id="roti" name="tanggal_masuk" type="date" class="form-control"
-                                                    placeholder="description">
-                                            </div>
-                                            <div class="mb-3">
                                                 <label class="form-labeal" for="harga">Catatan</label>
                                                 <input id="harga" name="catatan" type="text" class="form-control"
-                                                    placeholder="Harga">
+                                                    placeholder="catatan">
                                             </div>
                                         </div>
                                     </div>
