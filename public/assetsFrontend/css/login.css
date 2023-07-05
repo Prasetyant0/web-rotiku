@@ -18,10 +18,15 @@
 .text-daftar{
     color: #ffb801;
     right: 0;
+    text-decoration: none;
     margin-right: 20px;
     margin-top: 10px;
     text-decoration: none;
     position: absolute;
+}
+.text-daftar:hover{
+    color: #ffb801;
+    text-decoration: none;
 }
 .logo{
     text-align: center;

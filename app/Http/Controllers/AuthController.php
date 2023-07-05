@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -19,27 +20,31 @@ class AuthController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->isAdmin()) {
-            return redirect()->route('admin.dashboard');
-        }
-        return redirect()->route('user.dashboard');
+            return redirect()->route('dashboard');
+        } else {
+            return redirect()->route('menu');
+    }
     }
 
     public function postlogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
+        if (!$request->filled('email') || !$request->filled('password')) {
+            return redirect('/login')->with('warning', 'Email dan password harus diisi');
+        }
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            if ($user->role === 'admin') {
-                return redirect('/dashboard');
-            } elseif ($user->role === 'user') {
-                return redirect()->route('user.dashboard');
+            if ($user->isAdmin()) {
+                return redirect('admin/dashboard');
             } else {
-                return redirect()->route('login.admin')->with('message', 'Username or password incorrect');
+                return redirect()->route('menu');
             }
         } else {
-            return redirect()->back()->withInput()->withErrors('Login failed');
+            $request->flashOnly('email', 'password');
+            return redirect()->back()->with('error', 'Username atau password salah');
         }
     }
 
@@ -49,7 +54,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'Anda berhasil logout');
+        return redirect('/menu')->with('message', 'Anda berhasil logout');
     }
 
     public function login()
@@ -69,6 +74,7 @@ class AuthController extends Controller
             } else {
                 $new_user = User::create([
                     'name' => ucwords($google_user->name),
+                    'photo' => $google_user->avatar,
                     'email' => $google_user->email,
                     'email_verified_at' => now(),
                     'password' => bcrypt(Str::random(10)),
@@ -86,7 +92,7 @@ class AuthController extends Controller
     public function logoutGoogle()
     {
         Auth::logout();
-        return redirect('/')->with('message', 'Anda berhasil logout');
+        return redirect('/menu')->with('message', 'Anda berhasil logout');
     }
 
     public function showProfile() {

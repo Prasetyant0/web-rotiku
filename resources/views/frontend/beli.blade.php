@@ -47,13 +47,13 @@
                                     class="textinputhargarill" value="{{ $roti->harga }}"></h5>
                         </div>
                     </div>
-                    <div class="container-btn-t-k-stok">
+                    <div class="container-btn-t-k-stok-beli">
                         <label for="" style="margin-left: 95px;">|</label>
                         <div class="jumlah-beli-Container">
                             <button type="button" id="kurang" class="tambah-dan-kurang">-</button>
                             <input id="jumlah" class="jumlah jumlah-input" value="{{ session('bayar.stok') }}"
                                 disabled>
-                            <button type="button" id="tambah" class="tambah-dan-kurang tambah">+</button>
+                            <button type="button" id="tambah" class="tambah-dan-kurang tambah-beli">+</button>
                         </div>
                     </div>
                 </div>

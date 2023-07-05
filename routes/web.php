@@ -3,46 +3,57 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeliController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RotiController;
-use App\Http\Controllers\JumlahController;
-use App\Http\Controllers\QuotesController;
-use App\Http\Controllers\PromosiController;
-use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HelpandsupportController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\PesananController;
+use App\Http\Controllers\FiltermenuController;
+use App\Http\Controllers\ProdukMasukController;
 
-Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
-Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
+Route::post('/daftar/store', [DaftarController::class, 'store'])->name('daftar.store');
+
+Route::middleware(['web'])->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
+    Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+});
+
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
 Route::get('/google/callback', [AuthController::class, 'callback'])->name('login.google.callback');
-
 Route::get('/', [FrontendController::class, 'index'])->name('user.dashboard');
 Route::get('about', [FrontendController::class, 'about'])->name('user.about');
 Route::get('menu', [RotiController::class, 'showMenu'])->name('menu');
 Route::get('invoice/{id_roti}', [InvoiceController::class, 'index'])->name('invoice.menu');
 Route::get('search', [MenuController::class, 'search'])->name('search');
+Route::get('filterView/{id_kategori}/filter', [FiltermenuController::class, 'filterView'])->name('filter.menu');
+Route::get('filter', [FiltermenuController::class, 'filter'])->name('filter');
 
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
     Route::get('/beli', [BeliController::class, 'index'])->name('beli');
     Route::post('/confirm', [BeliController::class, 'beli'])->name('confirm');
     Route::post('/bayar', [BeliController::class, 'bayar'])->name('bayar');
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::get('/cart', [CartController::class, 'index'])->name('user.cart.view');
 });
 
-Route::middleware('admin')->group(function () {
+
+// admin/dataroti
+
+Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // RotiController
     Route::get('/dataroti', [RotiController::class, 'index'])->name('admin.dataroti.index');
     Route::get('/dataroti/create', [RotiController::class, 'create'])->name('admin.dataroti.create');
     Route::post('/dataroti', [RotiController::class, 'store'])->name('admin.dataroti.store');
-    Route::get('/dataroti/{id_roti}/edit', [RotiController::class, 'edit'])->name('admin.dataroti.edit');
+    Route::get('/dataroti/{id_roti}/edit', [RotiController::class, 'edit'])->name('admin.dataroti.edit')->where('id_roti', '[0-9]+');
     Route::put('/dataroti/{id_roti}', [RotiController::class, 'update'])->name('admin.dataroti.update');
     Route::get('/dataroti/{id_roti}', [RotiController::class, 'destroy'])->name('admin.dataroti.destroy');
 
@@ -58,28 +69,24 @@ Route::middleware('admin')->group(function () {
     Route::put('/kategori/{id_kategori}', [KategoriController::class, 'update'])->name('admin.kategori.update');
     Route::get('/kategori/{id_kategori}', [KategoriController::class, 'destroy'])->name('admin.kategori.destroy');
 
-    // CarouselController
-    Route::get('/carousel', [CarouselController::class, 'index'])->name('admin.carousel');
-    Route::get('/carousel/create', [CarouselController::class, 'create'])->name('admin.carousel.create');
-    Route::post('/carousel/store', [CarouselController::class, 'store'])->name('admin.carousel.store');
-    Route::get('/carousel/{id_carousel}/edit', [CarouselController::class, 'edit'])->name('admin.carousel.edit');
-    Route::put('/carousel/update/{id_carousel}', [CarouselController::class, 'update'])->name('admin.carousel.update');
-    Route::get('/carousel/destroy/{id_carousel}', [CarouselController::class, 'destroy'])->name('admin.carousel.destroy');
+    // produkmasuk
+    Route::get('/produk_masuk', [ProdukMasukController::class, 'index'])->name('admin.produk_masuk');
+    Route::get('/produk_masuk/add', [ProdukMasukController::class, 'showForm'])->name('admin.produk_masuk.add');
+    Route::post('/produk_masuk/store', [ProdukMasukController::class, 'storeProduk'])->name('admin.produk_masuk.store');
+    Route::get('/produk_masuk/edit/{id_pemasukan}', [ProdukMasukController::class, 'editForm'])->name('admin.produk_masuk.edit');
+    Route::put('/produk_masuk/{id_pemasukan}', [ProdukMasukController::class, 'updateProduk'])->name('admin.produk_masuk.update');
+    Route::get('/produk_masuk/{id_pemasukan}', [ProdukMasukController::class, 'destroy'])->name('admin.produk_masuk.destroy');
 
-    // HelpandsupportController
-    Route::get('/help', [HelpandsupportController::class, 'index'])->name('admin.help');
+    // Produk Keluar
+    Route::get('/produkkeluar', function(){
+        return view('admin.produkkeluar');
+    })->name('admin.produkkeuar.index');
 
-    // JumlahController
-    Route::get('/jumlah', [JumlahController::class, 'index'])->name('admin.jumlah');
+    Route::get('/produkkeluar/create', function(){
+        return view('admin.proses.tambahprodukkeluar');
+    })->name('admin.produkkeluar.create');
 
-    // PromosiController
-    Route::get('/promosi', [PromosiController::class, 'index'])->name('admin.promosi.index');
-    Route::get('/promosi/create', [PromosiController::class, 'create'])->name('admin.promosi.create');
-    Route::post('/promosi/store', [PromosiController::class, 'store'])->name('admin.promosi.store');
-    Route::get('/promosi/{id_promosi}/edit', [PromosiController::class, 'edit'])->name('admin.promosi.edit');
-    Route::put('/promosi/{id_promosi}', [PromosiController::class, 'update'])->name('admin.promosi.update');
-    Route::get('/promosi/{id_promosi}', [PromosiController::class, 'destroy'])->name('admin.promosi.destroy');
-
-    // QuotesController
-    Route::get('/quotes', [QuotesController::class, 'index'])->name('admin.quotes');
+    Route::get('/produkkeluar/edit', function(){
+        return view('admin.proses.editprodukkeluar');
+    })->name('admin.produkkeluar.edit');
 });

@@ -11,7 +11,7 @@
 .troll-container {
     padding: 20px;
     background-color: #f6fff8;
-    width: 710px;
+    width: 880px;
     display: flex;
     margin-top: 40px;
     flex-wrap: wrap;
@@ -175,4 +175,11 @@
     font-weight: bold;
     background-color: transparent;
 
+}
+.container-btn-t-k-stok-beli{
+    display: flex;
+}
+.tambah-beli{
+    width: 25px;
+    margin-left: 60px;
 }

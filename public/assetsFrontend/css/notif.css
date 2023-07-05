@@ -1,0 +1,43 @@
+.navbar-items-notif{
+    display: flex;
+    flex-wrap: wrap;
+}
+.nav-items-container{
+    display: flex;
+}
+.navbar-items{
+    margin-left: 20px;
+}
+.text-user-masuk-notif{
+    font-weight: bold;
+}
+.btn-masuk-user-notif{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #FFC107;
+}
+.container-btn-items{
+    position: absolute;
+    right: 0;   
+    padding: 10px;
+}
+.container-main-notif{
+    text-align: center;
+    margin-top: 300px;
+}
+.container-main-notif > h1 > span{
+    background-color: black;
+    color: #FFC107;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2px;
+}
+.quot-notif{
+    text-align: center;
+    width: 300px;
+    font-size: 11px;
+    margin: 0 auto;
+}
+.quot-notif > span{
+    color: #FFC107;
+}

@@ -11,9 +11,9 @@
                     <p>
                         Kue kring kami dibuat dengan penuh cinta dan menggunakan bahan-bahan segar serta berkualitas tinggi. Dengan aneka varian rasa yang menggugah selera, setiap gigitan akan membawa Anda dalam perjalanan rasa yang memikat.
                     </p>
-                    <button type="button" class="btn btn-primary button mt-md-5 mt-4" onclick="window.location= '{{route('menu')}}'"">
+                    {{-- <button type="button" class="btn btn-primary button mt-md-5 mt-4" onclick="window.location= '{{route('menu')}}'"">
                         <span>Beli Sekarang</span>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </div>

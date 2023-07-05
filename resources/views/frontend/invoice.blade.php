@@ -12,8 +12,9 @@
             <div class="description-infoice">
                 <h1 class="title">{{ $invoice->roti }}</h1>
                 <p class="stok">Stok {{ $invoice->stok }}</p>
-                <div class="harga-invoice">Rp <span id="harga"><input class="harga-invoice"  id="harga" type="number"
-                            value="{{ $invoice->harga }}" style="border: none; background-color:transparent;" disabled></span></div>
+                <div class="harga-invoice">Rp <span id="harga"><input class="harga-invoice" id="harga"
+                            type="number" value="{{ $invoice->harga }}"
+                            style="border: none; background-color:transparent;" disabled></span></div>
                 <div class="detail">
                     <div class="class rincian">
                         <hr style="position: relative; top:20px;">
@@ -39,7 +40,7 @@
                 <div class="card-jumlah-dan-catatan">
                     <div class="contet-interaction-invoice">
                         <h6 class="atur-jumlah-text">Atur jumlah dan catatan</h6>
-                        <p class="kemasan">Whole Utuh</p>
+                        {{-- <p class="kemasan">Whole Utuh</p> --}}
                         <hr>
                         <div class="container-btn-t-k-stok">
                             <div class="jumlah-beli-Container-invoice">
@@ -52,7 +53,7 @@
                                 Stok: <span style="font-weight: bold;">{{ $invoice->stok }}</span>
                             </div>
                         </div>
-                        <p class="min-pembelian">Address</p>
+                        <p class="min-pembelian">Catatan</p>
                         <div class="tambahcatatan-container">
 
                             <input class="catatan-input" type="text" autocomplete="off" name="alamat" id="catatan"
@@ -62,16 +63,16 @@
                         <p class="subtotal-text">
                             Sub Total: <span
                                 style="font-weight: bold; position: absolute; right:0; margin-right:20px;">Rp
-                                <span id="subtotal"><input style="font-weight: bold;" type="number"  value="{{ $invoice->harga }}"
-                                        class="input-intrac-style" disabled></span></span>
+                                <span id="subtotal"><input style="font-weight: bold;" type="number"
+                                        value="{{ $invoice->harga }}" class="input-intrac-style" disabled
+                                        name="totalHarga" id="totalHarga"></span></span>
                         </p>
-                        <ul>
-                            {{-- <li><a href="#" class="btn-beli-dan-keranjang btn-tambah-keranjang"
-                                    style="text-align: center;" onclick="tambahKeKeranjang()">Tambah Ke Keranjang</a>
-                            </li> --}}
-                            <li><button class="btn-beli-dan-keranjang btn-beli-menu" type="submit">Beli
-                                    Langsung</button></li>
-                        </ul>
+                        <li>
+                            <button type="button" class="btn-beli-dan-keranjang btn-tambah-keranjang"
+                                onclick="tambahKeKeranjang()">Tambah Ke Keranjang</button>
+                        </li>
+                        <button class="btn-beli-dan-keranjang btn-beli-menu" type="submit">Beli
+                            Langsung</button>
                     </div>
     </form>
 </div>
@@ -130,9 +131,6 @@
             total_bayar: totalBayar
         };
 
-        // Mengirim data ke backend menggunakan AJAX atau fetch API
-        // Pastikan Anda telah memasukkan token CSRF dalam request POST ini
-
         fetch('{{ route('confirm') }}', {
                 method: 'POST',
                 headers: {
@@ -149,52 +147,38 @@
                 console.error('Error:', error);
             });
     });
+
+    function tambahKeKeranjang() {
+        var jumlah = parseInt(document.getElementById('jumlah').value);
+        var totalHarga = parseInt(document.getElementById('totalHarga').value);
+        var idRoti = <?= $invoice->id_roti?>;
+
+        $.ajax({
+            url: '{{ route('addToCart') }}',
+            method: 'POST',
+            data: {
+                '_token': '{{ csrf_token() }}',
+                'jumlah': jumlah,
+                'totalHarga': totalHarga,
+                'id_roti': idRoti
+            },
+            success: function(response) {
+                Swal.fire('Sukses', response.message, 'success')
+                    .then(() => {
+                        window.location.href = '{{ route('invoice.menu',["id_roti" => $invoice->id_roti]) }}';
+                    });
+            },
+            error: function(xhr, status, error) {
+                Swal.fire('Error', 'Terjadi kesalahan saat menambahkan ke keranjang', 'error');
+            }
+        });
+    }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
 
+@include('sweetalert::alert')
+</body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <div class="bodyContent">
-<div class="container mt-5 mb-5" style="background: #eaeaea; border-radius:10px;">
-    <div class="content d-flex flex-wrap p-5">
-        <div class="imageWrapper">
-            <img src="{{asset('gallery/' . $invoice->gambar )}}" alt="{{ $invoice->roti }}" style="width: 400px; height:390px; border-radius:10px;" max-width="500" max-height="500">
-        </div>
-        <div class="contetIsnteraction" style="margin-left: 30px">
-            <h3 style="font-weight: bold; color:#7B7B7B;">{{ $invoice->roti }}</h3> --}}
-{{-- <h5 style="font-weight: bold; color:#7B7B7B;">{{ $invoice->kategori }}</h5> --}}
-{{-- <h2 class="mt-5" style="font-weight: bold;">Rp{{ $invoice->harga }}</h1>
-            <button   type="button" class="btn btn-primary button" style="width: 30%; top:5px;" data-toggle="modal" data-target=".bd-example-modal-lg">
-                <span class="">Pesan</span>
-            </button>
-            <p style="width:550px; margin-top:50px;">{{ $invoice->description }}</p>
-        </div>
-    </div>
-</div>
-</div> --}}
-{{-- @includeIf('layoutsFrontend.footer') --}}
+</html>

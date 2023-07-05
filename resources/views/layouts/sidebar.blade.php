@@ -29,27 +29,16 @@
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Data Kategori</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ request()->routeIs('admin.carousel') ? 'active' : '' }}">
-                <a class="sidebar-link" href="{{ route('admin.carousel') }}">
-                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Carousel</span>
+            <li class="sidebar-item {{ request()->routeIs('admin.produk_masuk') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.produk_masuk') }}">
+                    <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Produk Masuk</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ request()->routeIs('admin.promosi.index') ? 'active' : '' }}">
-                <a class="sidebar-link" href="{{ route('admin.promosi.index') }}">
-                    <i class="align-middle" data-feather="bookmark"></i> <span class="align-middle">Promosi</span>
+            <li class="sidebar-item {{ request()->routeIs('admin.produkkeuar.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.produkkeuar.index') }}">
+                    <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Produk Keluar</span>
                 </a>
             </li>
-            
-            {{-- <li class="sidebar-item {{ request()->routeIs('admin.help') ? 'active' : '' }}">
-                <a class="sidebar-link" href="{{ route('admin.help') }}">
-                    <i class="align-middle" data-feather="help-circle"></i> <span class="align-middle">Help And Suport</span>
-                </a>
-            </li> 
-            <li class="sidebar-item {{ request()->routeIs('admin.help') ? 'active' : '' }}">
-                <a class="sidebar-link" href="{{ route('admin.help') }}">
-                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Quotes</span>
-                </a>
-            </li>  --}}
         </ul>
     </div>
 </nav>

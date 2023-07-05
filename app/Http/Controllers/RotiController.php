@@ -122,13 +122,15 @@ class RotiController extends Controller
     public function destroy($id_roti)
     {
         $roti = Roti::find($id_roti);
-        $roti->delete($roti);
+        $roti->visibility = 0;
+        $roti->save();
 
         return redirect()->route('admin.dataroti.index');
     }
 
     public function showMenu() {
         $menu = Roti::all();
-        return view('frontend.menuroti', compact('menu'));
+        $kategori = Kategori::all();
+        return view('frontend.menuroti', compact('menu', 'kategori'));
     }
 }

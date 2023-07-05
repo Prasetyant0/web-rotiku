@@ -8,10 +8,10 @@
                     <p>Roti Bialy Plus hadir untuk memberikan Anda pengalaman roti yang tak terlupakan dengan sentuhan
                         ekstra. Nikmati cita rasa autentik roti Bialy yang lezat, dilengkapi dengan bonus istimewa yang
                         membuat setiap gigitan lebih memuaskan!</p>
-                    <button type="button" class="btn btn-primary button mt-md-5 mt-4"
+                    {{-- <button type="button" class="btn btn-primary button mt-md-5 mt-4"
                         onclick="window.location= '{{route('menu')}}'">
                         <span>Beli Sekarang</span>
-                    </button>
+                    </button> --}}
                 </div>
                 <div class="col-lg-6 about-img text-lg-enter">
                     <img src="{{ asset('assetsFrontend/images/rekomendasi/3.png') }}" alt="" class="img-fluid">

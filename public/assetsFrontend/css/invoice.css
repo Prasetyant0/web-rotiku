@@ -41,20 +41,20 @@
 }
 .description-infoice{
     margin-left: 30px;
-    width: 450px;
+    width:658px;
 }
 .description-text{
     margin-top: 50px;
 }
 .line-detail{
-    position: relative; 
+    position: relative;
     top:190px;
 }
 .container-interaction{
     width: 260px;
     height: 450px;
     position: relative;
-    left: 38px;
+    left: 20px;
 }
 .cardnyam{
     border:1px solid silver;
@@ -75,7 +75,7 @@
 }
 .atur-jumlah-text{
     font-weight: bold;
-    
+
 }
 .jumlah-beli-Container-invoice{
     border: 1px solid #ccc;
@@ -113,12 +113,12 @@
 }
 .tambah-dan-kurang:focus{
     outline: none;
-} 
+}
 .stok-in-interaction{
     margin-left: 15px;
 }
-.min-pembelian{   
-    color: #6D7588; 
+.min-pembelian{
+    color: #6D7588;
     margin-top: 20px;
     font-size: 11px;
 }
@@ -134,7 +134,7 @@
 .subtotal-text{
     margin-top: 20px;
     color: black;
-    
+
 }
 .btn-beli-dan-keranjang{
     width: 100%;
@@ -149,13 +149,15 @@ li{
     list-style: none;
 }
 .btn-tambah-keranjang{
-    color: white    ;
+    color: white;
     margin-top: 20px;
     background-color: #FFC107;
+    width: 100%;
 }
 .btn-beli-menu{
     color: #FFC107;
     text-align: center;
+    width: 100%;
 }
 .input-intrac-style{
     border: none;

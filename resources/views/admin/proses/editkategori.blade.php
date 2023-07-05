@@ -27,10 +27,18 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="">
+											<div class="mb-3">
+												{{-- {{ route('admin.dataroti.update', $roti->id_roti) }} --}}
+												<form action="{{ route('admin.kategori.update', $kategori->id_kategori) }}" method="post" enctype="multipart/form-data">
+													@csrf
+													@method('PUT')
+    												
+                                                    <img id="preview" src="{{ asset('gallery/' . $kategori->gambar) }}"
+                                                         style="max-width: 200px; max-height:200px;">
+                                                    <input type="file" name="gambar" style="margin-top: 20px" value="{{ $kategori->gambar }}" onchange="previewImage(event)" class="form-control">
+                                            </div>
+
                                             <div class="mb-3">
-                                                <form action="{{ route('admin.kategori.update', $kategori->id_kategori) }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
 												<label class="form-label" for="kategori">Kategori Roti</label>
 												<input id="kategori" name="kategori" type="text" class="form-control" value="{{ $kategori->kategori }}">
 											</div>
