@@ -30,8 +30,8 @@ class KategoriController extends Controller
             $gambar = $request->file('gambar');
             $extension = $gambar->getClientOriginalExtension();
             $filename = time(). '.' . $extension;
-            $gambar->move('gallery', $filename);  
-            
+            $gambar->move('gallery', $filename);
+
             $kategori = new Kategori();
             $kategori->kategori = $request->input('kategori');
             $kategori->gambar = $filename;
@@ -43,10 +43,6 @@ class KategoriController extends Controller
 
         return redirect()->back()->withInput()->with('error', 'Gagal mengunggah foto!');
 
-
-        // Kategori::create($request->all());
-
-        // return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
     public function edit($id_kategori)

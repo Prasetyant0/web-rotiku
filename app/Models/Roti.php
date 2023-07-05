@@ -68,4 +68,14 @@ class Roti extends Model
 
         return $rotiData;
     }
+
+    public function produkMasuk()
+    {
+        return $this->hasMany(Produk_masuk::class, 'id_roti');
+    }
+
+    public function produkKeluar()
+    {
+        return $this->hasMany(Produk_keluar::class, 'id_roti');
+    }
 }
