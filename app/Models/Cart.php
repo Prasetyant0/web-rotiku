@@ -18,15 +18,16 @@ class Cart extends Model
         'id_cart',
         'id_user',
         'id_roti',
-        'quantity'
+        'jumlah',
+        'total_harga'
     ];
 
-    public function id_user()
+    public function cartItem()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
-    public function id_roti()
+    public function itemRoti()
     {
         return $this->belongsTo(Roti::class, 'id_roti');
     }

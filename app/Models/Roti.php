@@ -18,7 +18,8 @@ class Roti extends Model
         'id_kategori',
         'gambar',
         'harga',
-        'stok'
+        'stok',
+        'visibility'
     ];
 
     public function kategori()
@@ -36,8 +37,35 @@ class Roti extends Model
         return $this->hasMany(Bayar::class, 'id_roti');
     }
 
-    public function id_roti()
+    public function itemRoti()
     {
         return $this->hasMany(Cart::class, 'id_roti');
+    }
+
+    public function getRotiData($id_roti)
+    {
+        $roti = $this->find($id_roti);
+
+        if (!$roti) {
+            return [
+                'roti' => null,
+                'description' => null,
+                'id_kategori' => null,
+                'gambar' => null,
+                'harga' => null,
+                'stok' => null,
+            ];
+        }
+
+        $rotiData = [
+            'roti' => $roti->roti,
+            'description' => $roti->description,
+            'id_kategori' => $roti->id_kategori,
+            'gambar' => $roti->gambar,
+            'harga' => $roti->harga,
+            'stok' => $roti->stok,
+        ];
+
+        return $rotiData;
     }
 }

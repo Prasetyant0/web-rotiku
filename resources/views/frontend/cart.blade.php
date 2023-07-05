@@ -6,29 +6,30 @@
     <div class="cart-container container">
         <div class="subcontainer-cart">
 
-            
+            @foreach ($cart as $data)
             <div class="image-itmes-and-description">
                 <div>
-                    <img src="{{asset('assetsFrontend/images/bayar/1.jpg')}}" width="200" alt="">
+                    <img src="{{asset('gallery/' . $data->itemRoti->gambar)}}" width="200" alt="">
                 </div>
                 <div class="title-and-subtitle-cart">
-                    <h3 class="title-cart">Avocado Bagel Toastt</h3>
-                    <p class="subtitle-cart">This bagel sandwich also completely customizable. Add in any other ingredients that you have on hand</p>
+                    <h3 class="title-cart">{{ $data->itemRoti->roti }}</h3>
+                    <p class="subtitle-cart">{{ $data->itemRoti->description }}</p>
                     <div class="jumlah-dan-stok-cart">
-                        <div>Jumlah 10</div>
+                        <div>Jumlah {{ $data->jumlah }}</div>
                         <div class="vertikal-cart"></div>
-                        <div class="stok-cart">Stok 20</div>
+                        <div class="stok-cart">Stok {{ $data->itemRoti->stok }}</div>
                     </div>
-                    <a href="" class="hapus-cart">Hapus</a>
+                    <a href="" class="btn hapus-cart">Hapus</a>
                 </div>
-                <div class="harga-cart">Rp1500000</div>
+                <div class="harga-cart">Rp{{ $data->itemRoti->harga }}</div>
             </div>
-        
+            @endforeach
+
             <div class="beli-intrac-cart">
                 <h1>Cart</h1>
                 <h3 class="title-intrac-cart">Total Belanja</h3>
                 <div class="total-harga-intrac-cart">
-                    <div>Total Harga (1 Barang)</div>   
+                    <div>Total Harga (1 Barang)</div>
                     <div class="harga-intrac-cart">Rp1500000</div>
                 </div>
 

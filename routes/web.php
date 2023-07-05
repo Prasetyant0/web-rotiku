@@ -17,8 +17,6 @@ use App\Http\Controllers\PesananController;
 Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
 Route::post('/daftar/store', [DaftarController::class, 'store'])->name('daftar.store');
 
-Route::get('/cart', [CartController::class, 'index'])->name('user.cart.view');
-
 Route::middleware(['web'])->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
     Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');
@@ -36,11 +34,12 @@ Route::get('filterView/{id_kategori}/filter', [FiltermenuController::class, 'fil
 Route::get('filter', [FiltermenuController::class, 'filter'])->name('filter');
 
 Route::middleware('auth')->group(function () {
-
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
     Route::get('/beli', [BeliController::class, 'index'])->name('beli');
     Route::post('/confirm', [BeliController::class, 'beli'])->name('confirm');
     Route::post('/bayar', [BeliController::class, 'bayar'])->name('bayar');
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::get('/cart', [CartController::class, 'index'])->name('user.cart.view');
 });
 
 

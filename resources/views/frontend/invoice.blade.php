@@ -40,7 +40,7 @@
                 <div class="card-jumlah-dan-catatan">
                     <div class="contet-interaction-invoice">
                         <h6 class="atur-jumlah-text">Atur jumlah dan catatan</h6>
-                        <p class="kemasan">Whole Utuh</p>
+                        {{-- <p class="kemasan">Whole Utuh</p> --}}
                         <hr>
                         <div class="container-btn-t-k-stok">
                             <div class="jumlah-beli-Container-invoice">
@@ -53,7 +53,7 @@
                                 Stok: <span style="font-weight: bold;">{{ $invoice->stok }}</span>
                             </div>
                         </div>
-                        <p class="min-pembelian">Address</p>
+                        <p class="min-pembelian">Catatan</p>
                         <div class="tambahcatatan-container">
 
                             <input class="catatan-input" type="text" autocomplete="off" name="alamat" id="catatan"
@@ -64,13 +64,13 @@
                             Sub Total: <span
                                 style="font-weight: bold; position: absolute; right:0; margin-right:20px;">Rp
                                 <span id="subtotal"><input style="font-weight: bold;" type="number"
-                                        value="{{ $invoice->harga }}" class="input-intrac-style"
-                                        disabled></span></span>
+                                        value="{{ $invoice->harga }}" class="input-intrac-style" disabled
+                                        name="totalHarga" id="totalHarga"></span></span>
                         </p>
-                        {{-- <li><a href="#" class="btn-beli-dan-keranjang btn-tambah-keranjang"
-                                    style="text-align: center;" onclick="tambahKeKeranjang()">Tambah Ke Keranjang</a>
-                            </li> --}}
-
+                        <li>
+                            <button type="button" class="btn-beli-dan-keranjang btn-tambah-keranjang"
+                                onclick="tambahKeKeranjang()">Tambah Ke Keranjang</button>
+                        </li>
                         <button class="btn-beli-dan-keranjang btn-beli-menu" type="submit">Beli
                             Langsung</button>
                     </div>
@@ -131,9 +131,6 @@
             total_bayar: totalBayar
         };
 
-        // Mengirim data ke backend menggunakan AJAX atau fetch API
-        // Pastikan Anda telah memasukkan token CSRF dalam request POST ini
-
         fetch('{{ route('confirm') }}', {
                 method: 'POST',
                 headers: {
@@ -150,4 +147,38 @@
                 console.error('Error:', error);
             });
     });
+
+    function tambahKeKeranjang() {
+        var jumlah = parseInt(document.getElementById('jumlah').value);
+        var totalHarga = parseInt(document.getElementById('totalHarga').value);
+        var idRoti = <?= $invoice->id_roti?>;
+
+        $.ajax({
+            url: '{{ route('addToCart') }}',
+            method: 'POST',
+            data: {
+                '_token': '{{ csrf_token() }}',
+                'jumlah': jumlah,
+                'totalHarga': totalHarga,
+                'id_roti': idRoti
+            },
+            success: function(response) {
+                Swal.fire('Sukses', response.message, 'success')
+                    .then(() => {
+                        window.location.href = '{{ route('invoice.menu',["id_roti" => $invoice->id_roti]) }}';
+                    });
+            },
+            error: function(xhr, status, error) {
+                Swal.fire('Error', 'Terjadi kesalahan saat menambahkan ke keranjang', 'error');
+            }
+        });
+    }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+
+@include('sweetalert::alert')
+</body>
+
+</html>

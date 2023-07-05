@@ -6,6 +6,7 @@
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="keywords" content="Cakes Bakery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script>
 		addEventListener("load", function () {
@@ -62,7 +63,7 @@
 	{{-- //bootstap-icon --}}
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  
+
 	{{-- bootstap  --}}
 	<link rel="stylesheet" href="{{asset('assetsFrontend/css/daftar.css')}}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -83,5 +84,5 @@
 	{{-- cart --}}
 	<link rel="stylesheet" href="{{asset('assetsFrontend/css/cart.css')}}">
 	{{-- //cart --}}
-	
+
 </head>

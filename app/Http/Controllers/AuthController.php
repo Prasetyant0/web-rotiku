@@ -20,7 +20,7 @@ class AuthController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->isAdmin()) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('dashboard');
         } else {
             return redirect()->route('menu');
     }
@@ -38,7 +38,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->isAdmin()) {
-                return redirect('/dashboard');
+                return redirect('admin/dashboard');
             } else {
                 return redirect()->route('menu');
             }

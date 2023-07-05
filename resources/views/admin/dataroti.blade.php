@@ -33,6 +33,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($roti as $d)
+                                    @if ($d->visibility)
                                         <tr>
                                             <td><img class="img" width="100" height="100"
                                                     src="{{ asset('gallery/' . $d->gambar) }}" alt="{{ $d->roti }}">
@@ -66,6 +67,7 @@
                                                 </a>
                                             </td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

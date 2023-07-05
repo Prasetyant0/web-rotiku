@@ -11,13 +11,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $jumlahRoti = Roti::count();
+        $jumlahRoti = Roti::where('visibility', 1)->count();
         $jumlahKategori = Kategori::count();
-        $totalStok = Roti::sum('stok');
+        $totalStok = Roti::where('visibility', 1)->sum('stok');
 
         $stokRoti = Roti::pluck('stok')->toArray();
         $allStok = Roti::sum('stok');
-        $maxStok = $allStok; 
+        $maxStok = $allStok;
         $chartData = [
             'day' => [
                 'labels' => ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
@@ -33,7 +33,7 @@ class DashboardController extends Controller
             ],
 
         ];
-    
+
         return view('admin.dashboard', compact('jumlahRoti', 'jumlahKategori', 'totalStok', 'chartData', 'maxStok'));
     }
 

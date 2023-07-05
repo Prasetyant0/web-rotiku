@@ -35,7 +35,7 @@ class User extends Authenticatable
         return $this->role == 'user';
     }
 
-    public function id_user()
+    public function cartItem()
     {
         return $this->hasMany(Cart::class, 'id_user');
     }
