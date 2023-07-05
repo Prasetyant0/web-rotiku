@@ -89,7 +89,6 @@ class KategoriController extends Controller
         $kategori->save();
         return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil diupdate');
 
-        // $kategori->update($data);
     }
 
     public function destroy($id_kategori)

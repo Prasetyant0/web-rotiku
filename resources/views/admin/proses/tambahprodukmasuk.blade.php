@@ -27,28 +27,25 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="">
-                                            <form action="" method="post" id="FormData">
+                                            <form action="{{ route('admin.produk_masuk.store') }}" method="post" id="FormData">
+                                                @csrf
                                             <div class="mb-3">
                                                 <label class="form-label" for="roti">Nama Roti</label>
                                                 <select class="form-select" id="roti" name="id_roti">
-                                                        <option value="">Roti Bakar</option>
-                                                        <option value="">Roti Panggang</option>
+                                                    @foreach ($namaRoti as $nama)
+                                                    <option value="{{ $nama->id_roti }}">{{ $nama->roti }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="roti">Jumlah Masuk</label>
-                                                <input id="roti" name="jumlah_masuk" type="number" class="form-control"
+                                                <label class="form-label" for="jumlah_masuk">Jumlah Masuk</label>
+                                                <input id="jumlah_masuk" name="jumlah_masuk" type="number" class="form-control"
                                                     placeholder="jumlah masuk">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="roti">Tanggal Masuk</label>
-                                                <input id="roti" name="tanggal_masuk" type="date" class="form-control"
-                                                    placeholder="description">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-labeal" for="harga">Catatan</label>
-                                                <input id="harga" name="catatan" type="text" class="form-control"
-                                                    placeholder="Harga">
+                                                <label class="form-label" for="catatan">Catatan</label>
+                                                <input id="catatan" name="catatan" type="text" class="form-control"
+                                                    placeholder="Masukkan catatan!">
                                             </div>
                                         </div>
                                     </div>

@@ -49,7 +49,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label" for="id_kategori">Kategori</label>
                                                 <select class="form-select" id="id_kategori" name="id_kategori">
-                                                    @foreach ($kategori as $d)
+                                                    @foreach ($kategori as $d) 
                                                         <option value="{{ $d->id_kategori }}">{{ $d->kategori }}
                                                         </option>
                                                     @endforeach

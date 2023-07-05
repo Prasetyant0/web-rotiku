@@ -7,12 +7,13 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RotiController;
 use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FiltermenuController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\PesananController;
+use App\Http\Controllers\ProdukMasukController;
 
 Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
 Route::post('/daftar/store', [DaftarController::class, 'store'])->name('daftar.store');
@@ -69,15 +70,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/kategori/{id_kategori}', [KategoriController::class, 'destroy'])->name('admin.kategori.destroy');
 
     // produkmasuk
-    Route::get('/produkmasuk', function(){
-        return view('admin.produkmasuk');
-    })->name('admin.produkmasuk.index');
-
-    Route::get('/produkmasuk/create', function(){
-        return view('admin.proses.tambahprodukmasuk');
-    })->name('admin.produkmasuk.create');
-
-    Route::get('/produkmasuk/edit', function(){
-        return view('admin.proses.editprodukmasuk');
-    })->name('admin.produkmasuk.edit');
+    Route::get('/produk_masuk', [ProdukMasukController::class, 'index'])->name('admin.produk_masuk');
+    Route::get('/produk_masuk/add', [ProdukMasukController::class, 'showForm'])->name('admin.produk_masuk.add');
+    Route::post('/produk_masuk/store', [ProdukMasukController::class, 'storeProduk'])->name('admin.produk_masuk.store');
+    Route::get('/produk_masuk/edit/{id_pemasukan}', [ProdukMasukController::class, 'editForm'])->name('admin.produk_masuk.edit');
+    Route::put('/produk_masuk/{id_pemasukan}', [ProdukMasukController::class, 'updateProduk'])->name('admin.produk_masuk.update');
+    Route::get('/produk_masuk/{id_pemasukan}', [ProdukMasukController::class, 'destroy'])->name('admin.produk_masuk.destroy');
 });
