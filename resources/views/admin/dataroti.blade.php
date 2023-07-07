@@ -42,7 +42,13 @@
                                             <td class="d-none d-xl-table-cell">{{ $d->description }}</td>
                                             <td class="d-none d-xl-table-cell">{{ $d->kategori->kategori }}</td>
                                             <td class="d-none d-xl-table-cell">{{ $d->harga }}</td>
-                                            <td class="d-none d-xl-table-cell">{{ $d->stok }}</td>
+                                            <td class="d-none d-xl-table-cell">
+                                                @php
+                                                    $res = DB::select(DB::raw("CALL `hitungStok`(".$d->id_roti.", @output)"));
+                                                    $opt = DB::select(DB::raw("SELECT @output AS hasil"))[0];
+                                                    echo ($opt->hasil == null) ? 0 : $opt->hasil;
+                                                @endphp
+                                            </td>
                                             <td class="d-none d-md-table-cell"><a
                                                     href="{{ route('admin.dataroti.edit', $d->id_roti) }}"
                                                     class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg"

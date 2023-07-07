@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RotiController extends Controller
 {
     public function index()
     {
+        // SET @p0='18'; SET @p1=''; CALL `hitungStok`(@p0, @p1); SELECT @p1 AS `hasil`;
         $roti = Roti::all();
+        // $res = DB::select(DB::raw("CALL `hitungStok`(18, @output)"));
+        // $opt = DB::select(DB::raw("SELECT roti.id_roti, roti.roti as nama_roti, roti.description, kategori.kategori, roti.gambar, roti.harga as hasil FROM roti JOIN kategori ON roti.id_kategori = kategori.id_kategori"));
+        // die(json_encode($opt));
         return view('admin.dataroti', compact('roti'));
     }
 
@@ -129,7 +134,7 @@ class RotiController extends Controller
     }
 
     public function showMenu() {
-        $menu = Roti::all();
+        $menu = Roti::where('visibility', 1)->get();
         $kategori = Kategori::all();
         return view('frontend.menuroti', compact('menu', 'kategori'));
     }

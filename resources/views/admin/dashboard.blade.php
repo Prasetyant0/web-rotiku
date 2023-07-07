@@ -65,7 +65,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h1 class="mt-1 mb-3">{{ $totalStok }}</h1>
+                                                <h1 class="mt-1 mb-3">
+                                                    {{ $hasilStoks }}
+                                                </h1>
                                             </div>
                                         </div>
                                     </div>
@@ -112,13 +114,13 @@
                         </div>
                         <div class="card-body">
                             <div class="chart">
-                                <canvas id="chart" >
+                                <canvas id="chart">
                                 </canvas>
                             </div>
                         </div>
                     </div>
                 </div>
-                <script>
+                {{-- <script>
                     var chartData = @json($chartData);
                     var maxStok = @json($maxStok);
 
@@ -164,7 +166,7 @@
 
                     var initialPeriod = document.getElementById('periodSelect').value;
                     updateChart(initialPeriod);
-                </script>
+                </script> --}}
             </main>
 
             @include('layouts.footer')

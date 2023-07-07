@@ -17,8 +17,8 @@
             </div>
             <div class="content-filter-intrac">
                 <form action="">
-                    <input type="number" class="input-filter" name="hargaMinimum" placeholder="Harga Minmal" id="">
-                    <input type="number" class="input-filter" name="hargaMaximum" placeholder="Harga Maxsimal" id="">
+                    <input type="number" class="input-filter" name="hargaMinimum" placeholder="Harga Min" id="">
+                    <input type="number" class="input-filter" name="hargaMaximum" placeholder="Harga Max" id="">
                     <div class="diskon-filter">
                     <label for="" >Diskon? </label>
                         <div>
@@ -62,7 +62,11 @@
                                 Rp{{number_format($mFilter->harga,0, ',','.')}}
                                 <div class="line-harga"></div>
                             </h2>
-                            <p class="tersediaProduct">Tersedia {{ $mFilter->stok }}</p>
+                            <p class="tersediaProduct">Tersedia @php
+                                    $res = DB::select(DB::raw('CALL `hitungStok`(' . $mFilter->id_roti . ', @output)'));
+                                    $opt = DB::select(DB::raw('SELECT @output AS hasil'))[0];
+                                    echo $opt->hasil == null ? 0 : $opt->hasil;
+                                @endphp</p>
                         </div>
                 </a>
             @endforeach

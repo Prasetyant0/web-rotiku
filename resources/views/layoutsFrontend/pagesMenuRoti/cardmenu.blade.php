@@ -17,7 +17,13 @@
                                         Rp{{number_format($d->harga,0, ',','.')}}
                                         <div class="line-harga"></div>
                                     </h2>
-                                    <p class="tersediaProduct">Tersedia {{ $d->stok }}</p>
+                                    <p class="tersediaProduct">Tersedia
+                                                @php
+                                                    $res = DB::select(DB::raw("CALL `hitungStok`(".$d->id_roti.", @output)"));
+                                                    $opt = DB::select(DB::raw("SELECT @output AS hasil"))[0];
+                                                    echo ($opt->hasil == null) ? 0 : $opt->hasil;
+                                                @endphp
+                                    </p>
                                 </div>
                         </a>
                     @endforeach

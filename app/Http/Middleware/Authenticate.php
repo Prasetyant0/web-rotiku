@@ -6,8 +6,10 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class Authenticate 
+class Authenticate extends Middleware
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
@@ -17,32 +19,25 @@ class Authenticate
      */
     protected function redirectTo($request)
     {
-        // die("Sebagai User");
-        // jika data session itu user/customer
-        // maka masuk ke hal frontend
-
         if (! $request->expectsJson()) {
-            return route('login');
+            Alert::info('Anda belum login!', 'Silahkan login terlebih dahulu.')->persistent(true)->autoclose(3000);
+            return route('login.admin');
         }
-
     }
 
 
-      public function handle(Request $request, Closure $next)
-      {
+    //   public function handle(Request $request, Closure $next)
+    //   {
+    //     if (!$request->user()) {
+    //         abort(403, 'Anda Belum Login!');
+    //         sleep(1);
+    //         return redirect()->route('login');
+    //     }
+    //     if (!$request->user()->isUser()) {
+    //         abort(403, 'Anda Bukan User!');
+    //         die("Anda bukan user");
+    //     }
 
-        if (!$request->user()) {
-            abort(403, 'Anda Belum Login!');
-            die("Anda belum login");
-        }
-        if (!$request->user()->isUser()) {
-            // return view('layoutsFrontend.pagesMenuRoti.notif');
-            abort(403, 'Anda Bukan User!');
-            die("Anda bukan user");
-        }
-
-        // jika rolenya itu admin
-        // maka masuk ke dalam hal admin
-        return $next($request);
-      }
+    //         return $next($request);
+    //   }
 }

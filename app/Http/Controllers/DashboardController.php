@@ -6,6 +6,7 @@ use App\Models\Kategori;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -13,28 +14,18 @@ class DashboardController extends Controller
     {
         $jumlahRoti = Roti::where('visibility', 1)->count();
         $jumlahKategori = Kategori::count();
-        $totalStok = Roti::where('visibility', 1)->sum('stok');
 
-        $stokRoti = Roti::pluck('stok')->toArray();
-        $allStok = Roti::sum('stok');
-        $maxStok = $allStok;
-        $chartData = [
-            'day' => [
-                'labels' => ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-                'data' => $stokRoti,
-            ],
-            'week' => [
-                'labels' => ["Week 1", "Week 2", "Week 3", "Week 4"],
-                'data' => $stokRoti,
-            ],
-            'month' => [
-                'labels' => ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                'data' => $stokRoti,
-            ],
-
-        ];
-
-        return view('admin.dashboard', compact('jumlahRoti', 'jumlahKategori', 'totalStok', 'chartData', 'maxStok'));
+        $roti = Roti::where('visibility', 1)->get();
+         $hasilStoks = 0 ;
+         foreach ($roti as $d) {
+         $hitung = DB::select(DB::raw('CALL hitungStok(?, @output)'), [$d->id_roti]);
+        $hasil = DB::select('select @output as hasil')[0]->hasil;
+        //  $hasilStoks = collect($hasil->hasil)->map(function ($hasil) {
+        //      return $hasil ?: 0;
+        //  })->sum();
+        $hasilStoks += $hasil;
+         }
+        return view('admin.dashboard', compact('jumlahRoti', 'jumlahKategori', 'hasilStoks'));
     }
 
 }
