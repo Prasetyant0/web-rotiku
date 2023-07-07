@@ -1,0 +1,85 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.container-listpesanan{
+    position: relative;
+    /* height: 490px; */
+    height: 100vh;
+    /* background-color: red; */
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 3px;
+    overflow-y: scroll;
+    
+}
+.title-semua-pesanan{
+    margin-left: 15px;
+    color: #757575;
+    margin-right: 15px;
+}
+.link-text{
+    
+    position: relative;
+    bottom: 5px;
+    margin-left: 15px;
+    color: #757575;
+    margin-right: 15px;
+}
+.list-semua-pesnan{
+    font-weight: 600;
+    color: #757575;
+    /* height: 100vh; */
+    font-size: 1px;
+}
+.link-text > a{
+    text-decoration: none;
+
+}
+.link-text > .list-pesanan-link{
+    color:  #fe6401;
+    font-weight: 500;
+}
+.card-semua-pesanan-driver{
+    display: flex;
+    border-radius: 2px;
+    padding: 7px;
+    /* background-color: rgba(255, 255, 255, 1); */
+    margin-top: 1px;
+}
+.card-semua-pesanan-driver:hover{
+    transition: all .3s ease-in-out;
+    /* background-color: rgba(255, 255, 255, .7); */
+}
+
+.img-list-pensanan > img{
+    width: 109.52px;
+    border-radius: 6px;
+    position: relative;
+    height: 111px; 
+}
+.message-text > p {
+    margin-left: 11px;
+    position: relative;
+    font-size: 12px;
+    bottom: 15px;
+}
+.btn-siap-kirim{
+    margin-left: 11px;
+    padding: 8px;
+    position: relative;
+    /* bottom: 1px; */
+    color: black;
+    font-size: 12px;
+    font-weight: 530;
+    text-decoration: none;
+    border-radius: 50px;
+    background: rgb(253,1,1);
+    background: -moz-linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    background: -webkit-linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    background: linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fd0101",endColorstr="#fff300",GradientType=1);
+    
+}
+.btn-siap-kirim>img{
+    width: 13px;
+}

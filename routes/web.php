@@ -25,6 +25,16 @@ Route::middleware(['web'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+Route::get('/driver', function(){
+    return view('driver.home');
+});
+Route::get('/listpesanan', function(){
+    return view('driver.listpesanan');
+});
+Route::get('/transaksi', function(){
+    return view('driver.transaksi');
+});
+
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
 Route::get('/google/callback', [AuthController::class, 'callback'])->name('login.google.callback');
 Route::get('/', [FrontendController::class, 'index'])->name('user.dashboard');

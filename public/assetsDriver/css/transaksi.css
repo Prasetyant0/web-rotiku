@@ -1,0 +1,57 @@
+.title-transaksi{
+    margin-left: 15px;
+    color: #757575;
+    margin-right: 15px;
+}
+.img-menu-transaksi > img{
+    width: 109.52px;
+    height: 111px;
+    border-radius: 6px;
+}
+.container-transaksi-conrent{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.container-product-info-transaksi{
+    display: flex;
+}
+.desctiption-transaksi>p{
+    position: relative;
+    margin-left: 15px;
+    font-size: 12px;
+    bottom: 20px;
+}
+.desctiption-transaksi > h3{
+    position: relative;
+    bottom: 20px;
+    font-size: 14px;
+    margin-left: 15px;
+}
+.desctiption-transaksi > h3 >img{
+    width: 15px;
+
+}
+.form-input-transaksi>input{
+    display: block;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    margin-right: 20px;
+    width: 94%;
+}
+.form-input-transaksi>button{
+    padding: 15px;
+    width: 100%;
+    border-radius: 50px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 550;
+    position: relative;
+    bottom: 10px;
+    color: black;
+    background: rgb(253,1,1);
+    background: -moz-linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    background: -webkit-linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    background: linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fd0101",endColorstr="#fff300",GradientType=1);
+}

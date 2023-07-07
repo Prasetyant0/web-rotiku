@@ -85,6 +85,7 @@
     cursor: not-allowed;
 }
 .login-btn-success{
+    transition: all .5s ease-in-out;
     width: 100%;
     margin-top: 10px;
     padding: 10px !important;
