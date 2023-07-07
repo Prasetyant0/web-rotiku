@@ -12,7 +12,7 @@
                 </div>
                 <div class="desctiption-transaksi">
                     <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit. Quaerat, nostrum illo </p>
-                    <h3>Siap Kirim <img src="{{asset('assetsFrontend/images/icon/verry.png')}}" alt=""></h3>
+                    <h3>Siap Kirim <img src="{{asset(asset('assetsDriver/'))}}" alt=""></h3>
                 </div>
             </div>
             <div>

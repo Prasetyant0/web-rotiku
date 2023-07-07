@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('assetsDriver/css/home.css')}}">
     <link rel="stylesheet" href="{{asset('assetsDriver/css/listpesanan.css')}}">
     <link rel="stylesheet" href="{{asset('assetsDriver/css/transaksi.css')}}">
+    <link rel="stylesheet" href="{{asset('assetsDriver/css/profile.css')}}">
     <title>Rotiku | driver</title>
 </head>
 <body>

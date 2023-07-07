@@ -1,0 +1,38 @@
+.list-profile-link{
+    color:  #fe6401;
+    font-weight: 500;
+}
+.profile-driver-his{
+    margin-top: 15px;
+}
+.profile-profile-driver{
+    width: 100px;
+    position: relative;
+}
+.foto-dan-name{
+    text-align: center;
+    line-height: 20px;
+}
+.foto-dan-name > p{
+    position: relative;
+    bottom: 20px;
+}
+.logout-driver{
+    position: absolute;
+    right: 0;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 9px;
+    top: 85px;
+    width: 90px;
+    text-align: center;
+    color: white;
+    font-size: small;
+    border-radius: 50px;
+    background: rgb(253,1,1);
+    background: -moz-linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    background: -webkit-linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    background: linear-gradient(338deg, rgba(253,1,1,1) 0%, rgba(255,243,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fd0101",endColorstr="#fff300",GradientType=1);
+}

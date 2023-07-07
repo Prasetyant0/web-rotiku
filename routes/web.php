@@ -34,6 +34,9 @@ Route::get('/listpesanan', function(){
 Route::get('/transaksi', function(){
     return view('driver.transaksi');
 });
+Route::get('/profile', function(){
+    return view('driver.profile');
+});
 
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
 Route::get('/google/callback', [AuthController::class, 'callback'])->name('login.google.callback');
