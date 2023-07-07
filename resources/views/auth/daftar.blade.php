@@ -34,17 +34,19 @@
                         <input type="email" name="email" class="inel" placeholder="email" value="{{ old('email') }}">
                     </li>
                     <li>
-                        <input type="password" name="password" class="inel" id="password" placeholder="password" value="{{ old('password') }}">
+                        <input type="password" name="password" class="inel"  id="inputField" placeholder="password" value="{{ old('password') }}">
+                        <label for="" class="notif-field" id="password_error"></label>
                         {{-- <div id="show">
                             <i class="fa fa-eye"></i>
                         </div> --}}
                     </li>
                     <li>
-                        <input type="password" name="confirm" class="inel" id="confirm"
-                            placeholder="confirm password" value="{{ old('confirm') }}">
+                        <input  type="password" name="confirm" class="inel" oninput="checkInput()" id="confirm" placeholder="confirm password" value="{{ old('confirm') }}">
+                        <label for="" class="password_error_confirm"  id="password_error_confirm">konfirmasi password salah</label>
                     </li>
                     <li>
-                        <button type="submit" name="sigin" class="butdaf" style="width: 100%">Daftar</button>
+                        {{-- <button type="submit" name="sigin" class="butdaf" id="daftar" style="width: 100%">Daftar</button> --}}
+                        <button type="submit" class="butdaf" name="sigin" disabled  id="daftar" style="width: 100%">Daftar</button>
                     </li>
                     <li>
                         <div class="daftar-white-google">
@@ -78,6 +80,66 @@
 </div>
 
 <script>
+    var inputfild = document.getElementById('inputField');
+    var password_error = document.getElementById('password_error');
+
+    inputfild.addEventListener('keyup', function(){
+        var password = inputfild.value;
+        if (password.length < 8) {
+            password_error.textContent = 'Password harus 8 karakter';
+            password_error.classList.remove('notif-field')
+            password_error.classList.add('notif-field-show');
+        }else{
+            password_error.textContent = '';
+            password_error.classList.remove('notif-field-show');
+            password_error.classList.add('notif-field')
+        }
+    });
+</script>
+
+
+<script>
+    var inputField = document.getElementById('inputField');
+    var inputField2 = document.getElementById('confirm');
+    var textErr = document.getElementById('password_error_confirm');
+
+    inputField2.addEventListener('keyup', function(){
+        if (inputField.value !== inputField2.value) {
+            textErr.textContent = 'Konfirmasi password tidak sesuai';
+            textErr.classList.remove('password_error_confirm');
+            textErr.classList.add('password_error_confirm_show');
+        } else {
+            textErr.textContent = "";
+            textErr.classList.remove('password_error_confirm_show');
+            textErr.classList.add('password_error_confirm');
+        }
+    });
+</script>
+
+
+
+<script>
+        function checkInput() {
+            var inputField = document.getElementById("inputField");
+            var inputField2 = document.getElementById('confirm');
+            var submitButton = document.getElementById("daftar");
+
+
+            if (inputField.value.length >= 8 &&  inputField.value == inputField2.value) {
+                submitButton.classList.remove("butdaf");
+                submitButton.classList.add("butdaf-success");
+                submitButton.disabled = false;
+            } else {
+                submitButton.classList.remove("butdaf-success");
+                submitButton.classList.add("butdaf");
+                submitButton.disabled = true;
+            }
+        }
+</script>
+
+
+
+{{-- <script>
     const passwordInput = document.getElementById('password');
     const showPassword = document.getElementById('show');
     const eyeIcon = showPassword.querySelector('i');
@@ -93,7 +155,7 @@
             eyeIcon.classList.add('fa-eye');
         }
     });
-</script>
+</script> --}}
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @include('sweetalert::alert')

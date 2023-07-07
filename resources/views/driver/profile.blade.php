@@ -4,7 +4,7 @@
     @include('layoutsDriver.navigation.navbardriver')
     <main>
         <h3 class="title-semua-pesanan">#Profile</h3>
-        <p class="link-text"><a href="">Home</a>/<a class="list-profile-link" href="">Profile</a></p>
+        <p class="link-text"><a href="/driver">Home</a>/<a class="list-profile-link" href="">Profile</a></p>
         <a href="" class="logout-driver">Log-Out</a>
         <div>
             <div class="foto-dan-name">
