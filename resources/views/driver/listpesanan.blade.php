@@ -12,7 +12,7 @@
                     </div>
                     <div class="message-text">
                         <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="/transaksi" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
+                        <a href="/transaksi" class="btn-siap-kirim">Terkirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="card-semua-pesanan-driver">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="message-text">
                         <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
+                        <a href="" class="btn-siap-kirim">Terkirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="card-semua-pesanan-driver">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="message-text">
                         <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
+                        <a href="" class="btn-siap-kirim">Terkirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="card-semua-pesanan-driver">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="message-text">
                         <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
+                        <a href="" class="btn-siap-kirim">Terkirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="card-semua-pesanan-driver">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="message-text">
                         <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
+                        <a href="" class="btn-siap-kirim">Terkirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
                     </div>
                 </div>
             </div>

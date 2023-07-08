@@ -1,4 +1,5 @@
-<nav class="{{ Request::is('driver') ? 'nav-transparent' : 'nav-white' }}">
+{{-- {{request()->routeIs('admin.dashboard') ? 'active' : ''}} --}}
+<nav class="{{ request()->routeIs('driver.home') ? 'nav-transparent' : 'nav-white' }}">
     <div class="profile-container">
          <div ><img class="profile-img" src="{{asset('assetsDriver/images/profile.png')}}" width="35" alt="" srcset=""></div>
          <div class="profile-name">Jajang Perkasa</div>

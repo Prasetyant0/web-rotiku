@@ -27,16 +27,19 @@ Route::middleware(['web'])->group(function () {
 
 Route::get('/driver', function(){
     return view('driver.home');
-});
+})->name('driver.home');
+
 Route::get('/listpesanan', function(){
     return view('driver.listpesanan');
-});
+})->name('driver.listpesanan');
+
 Route::get('/transaksi', function(){
     return view('driver.transaksi');
-});
+})->name('driver.transaksi');
+
 Route::get('/profile', function(){
     return view('driver.profile');
-});
+})->name('driver.profile');
 
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
 Route::get('/google/callback', [AuthController::class, 'callback'])->name('login.google.callback');
