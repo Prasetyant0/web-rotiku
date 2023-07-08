@@ -76,18 +76,23 @@
 }
 
 .login-btn{
-    width: 100%;    
+    width: 100%;
     margin-top: 10px;
     background-color: #E4EBF5;
     color: #c4d2ff;
     border: #E4EBF5;
     padding: 10px !important;
-
     cursor: not-allowed;
 }
-.login-btn:hover{
+.login-btn-success{
+    transition: all .5s ease-in-out;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px !important;
     background-color: #ffb801;
     color: white !important;
+    border: none ;
+    cursor: not-allowed;
 }
 .line{
     margin-top: 40px;
@@ -99,7 +104,7 @@
     margin-left: 90px;
 }
 .login-google{
-    width: 100%;    
+    width: 100%;
     margin-top: 10px;
     padding: 10px !important;
     background-color: white !important;

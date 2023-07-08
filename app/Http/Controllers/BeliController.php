@@ -49,6 +49,7 @@ class BeliController extends Controller
         $bayarData = $request->session()->get('bayar');
 
         $bayar = new Bayar();
+        $bayar->id = rand(11111,99999);
         $bayar->id_roti = $bayarData['id_roti'];
         $bayar->stok = $bayarData['stok'];
         $bayar->alamat = $request->input('alamat');
@@ -59,7 +60,7 @@ class BeliController extends Controller
 
         // return redirect()->route('menu')
         // ->with('success', 'Pesanan berhasil dikirim, harap tunggu dan siapkan uang pas!');
-        
+
         return redirect('menu')->with('success', 'Pesanan berhasil di kirim, harap tunggu dan siapkan uang pas!');
 
     }

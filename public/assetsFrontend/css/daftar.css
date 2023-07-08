@@ -112,11 +112,20 @@
 	cursor: pointer;
 	font-weight: bold;
 	background-color: #E4EBF5;
-	color: #AAB4C8;
+	color: #AAB4C8 !important;
+	cursor: not-allowed !important;
 }
-.butdaf:hover{
-	color: white;
-	background-color: #DD2B1C;
+.butdaf-success{
+    transition: all .5s ease-in-out;
+	margin-top: 20px;
+	padding: 14px 138px;
+	border-radius: 7px;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	background-color:#DD2B1C ;
+	color: #ffffff !important;
+	cursor: pointer !important;
 }
 .privC{
 	position: relative;
@@ -185,6 +194,16 @@
 #nan{
 		display: none;
 	}
+
+.notif-field{
+	font-size: small;
+	color: red;
+	position: relative;
+	right: 93px;
+}
+.notif-field-hide{
+	display: none;
+}
 
 /*\\\\\\\\\\\\\\\\Mobile Style\\\\\\\\\\\\\*/
 @media (min-width: 320px) and (max-width: 767px){
@@ -290,4 +309,27 @@
 
 #password [type="password"] {
 	padding-right: 30px;
+}
+
+.notif-field{
+	position: relative;
+	display: none;
+}
+.notif-field-show{
+	position: relative;
+	display: flex;
+	font-size: small;
+	color: red;
+	font-style: italic;
+}
+.password_error_confirm{
+	position: relative;
+	display: none;
+}
+.password_error_confirm_show{
+	position: relative;
+	display: flex;
+	font-size: small;
+	color: red;
+	font-style: italic;
 }

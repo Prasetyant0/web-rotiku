@@ -11,7 +11,11 @@
             </div>
             <div class="description-infoice">
                 <h1 class="title">{{ $invoice->roti }}</h1>
-                <p class="stok">Stok {{ $invoice->stok }}</p>
+                <p class="stok">Stok @php
+                    $res = DB::select(DB::raw('CALL `hitungStok`(' . $invoice->id_roti . ', @output)'));
+                    $opt = DB::select(DB::raw('SELECT @output AS hasil'))[0];
+                    echo $opt->hasil == null ? 0 : $opt->hasil;
+                @endphp</p>
                 <div class="harga-invoice">Rp <span id="harga"><input class="harga-invoice" id="harga"
                             type="number" value="{{ $invoice->harga }}"
                             style="border: none; background-color:transparent;" disabled></span></div>
@@ -50,10 +54,14 @@
                                 <button type="button" id="tambah" class="tambah-dan-kurang tambah">+</button>
                             </div>
                             <div class="stok-in-interaction">
-                                Stok: <span style="font-weight: bold;">{{ $invoice->stok }}</span>
+                                Stok: <span style="font-weight: bold;"> @php
+                                    $res = DB::select(DB::raw('CALL `hitungStok`(' . $invoice->id_roti . ', @output)'));
+                                    $opt = DB::select(DB::raw('SELECT @output AS hasil'))[0];
+                                    echo $opt->hasil == null ? 0 : $opt->hasil;
+                                @endphp </span>
                             </div>
                         </div>
-                        <p class="min-pembelian">Catatan</p>
+                        <p class="min-pembelian">Catatan*(Wajib diisi!)</p>
                         <div class="tambahcatatan-container">
 
                             <input class="catatan-input" type="text" autocomplete="off" name="alamat" id="catatan"
@@ -67,12 +75,36 @@
                                         value="{{ $invoice->harga }}" class="input-intrac-style" disabled
                                         name="totalHarga" id="totalHarga"></span></span>
                         </p>
-                        <li>
-                            <button type="button" class="btn-beli-dan-keranjang btn-tambah-keranjang"
-                                onclick="tambahKeKeranjang()">Tambah Ke Keranjang</button>
-                        </li>
-                        <button class="btn-beli-dan-keranjang btn-beli-menu" type="submit">Beli
-                            Langsung</button>
+                        <div>
+                            @php
+                                $res = DB::select(DB::raw('CALL `hitungStok`(' . $invoice->id_roti . ', @output)'));
+                                $opt = DB::select(DB::raw('SELECT @output AS hasil'))[0];
+                                $hasil = $opt->hasil == null ? 0 : $opt->hasil;
+                            @endphp
+
+                            @if ($hasil)
+                                <button type="button" class="btn-beli-dan-keranjang btn-tambah-keranjang"
+                                    onclick="tambahKeKeranjang()">Tambah Ke Keranjang</button>
+                                <button class="btn-beli-dan-keranjang btn-beli-menu" type="submit">Beli
+                                    Langsung</button>
+                            @else
+                                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                                    </symbol>
+                                </svg>
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                        aria-label="Info:">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div style="font-style: italic;">
+                                        Stok kosong
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
                     </div>
     </form>
 </div>
@@ -151,7 +183,7 @@
     function tambahKeKeranjang() {
         var jumlah = parseInt(document.getElementById('jumlah').value);
         var totalHarga = parseInt(document.getElementById('totalHarga').value);
-        var idRoti = <?= $invoice->id_roti?>;
+        var idRoti = <?= $invoice->id_roti ?>;
 
         $.ajax({
             url: '{{ route('addToCart') }}',
@@ -165,7 +197,8 @@
             success: function(response) {
                 Swal.fire('Sukses', response.message, 'success')
                     .then(() => {
-                        window.location.href = '{{ route('invoice.menu',["id_roti" => $invoice->id_roti]) }}';
+                        window.location.href =
+                            '{{ route('invoice.menu', ['id_roti' => $invoice->id_roti]) }}';
                     });
             },
             error: function(xhr, status, error) {

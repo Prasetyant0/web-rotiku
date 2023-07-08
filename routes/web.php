@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FiltermenuController;
+use App\Http\Controllers\ProdukKeluarController;
 use App\Http\Controllers\ProdukMasukController;
 
 Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
@@ -22,6 +23,19 @@ Route::middleware(['web'])->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login.admin');
     Route::post('/post', [AuthController::class, 'postlogin'])->name('login.post');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::get('/driver', function(){
+    return view('driver.home');
+});
+Route::get('/listpesanan', function(){
+    return view('driver.listpesanan');
+});
+Route::get('/transaksi', function(){
+    return view('driver.transaksi');
+});
+Route::get('/profile', function(){
+    return view('driver.profile');
 });
 
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
@@ -78,15 +92,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/produk_masuk/{id_pemasukan}', [ProdukMasukController::class, 'destroy'])->name('admin.produk_masuk.destroy');
 
     // Produk Keluar
-    Route::get('/produkkeluar', function(){
-        return view('admin.produkkeluar');
-    })->name('admin.produkkeuar.index');
-
-    Route::get('/produkkeluar/create', function(){
-        return view('admin.proses.tambahprodukkeluar');
-    })->name('admin.produkkeluar.create');
-
-    Route::get('/produkkeluar/edit', function(){
-        return view('admin.proses.editprodukkeluar');
-    })->name('admin.produkkeluar.edit');
+    Route::get('/produk_keluar', [ProdukKeluarController::class, 'index'])->name('admin.produk_keluar');
+    Route::get('/produk_keluar/add', [ProdukKeluarController::class, 'showForm'])->name('admin.produk_keluar.add');
+    Route::post('/produk_keluar/store', [ProdukKeluarController::class, 'storeProduk'])->name('admin.produk_keluar.store');
+    Route::get('/produk_keluar/edit/{id_keluar}', [ProdukKeluarController::class, 'editForm'])->name('admin.produk_keluar.edit');
+    Route::put('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'updateProduk'])->name('admin.produk_keluar.update');
+    Route::get('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'destroy'])->name('admin.produk_keluar.destroy');
 });

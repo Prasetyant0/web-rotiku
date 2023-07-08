@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Roti;
 use App\Models\Produk_masuk;
-use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 
 class ProdukMasukController extends Controller

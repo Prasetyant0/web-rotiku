@@ -27,13 +27,14 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="">
-                                            <form action="" method="post" id="FormData">
+                                            <form action="{{ route('admin.produk_keluar.store') }}" method="post" id="FormData">
                                             @csrf
                                             <div class="mb-3">
                                                 <label class="form-label" for="roti">Nama Roti</label>
                                                 <select class="form-select" id="roti" name="id_roti">
-                                                        <option value="">Roti Bakar</option>
-                                                        <option value="">Roti Panggang</option>
+                                                    @foreach ($namaRoti as $nama)
+                                                    <option value="{{ $nama->id_roti }}">{{ $nama->roti }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="mb-3">
