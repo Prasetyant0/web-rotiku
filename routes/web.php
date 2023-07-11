@@ -75,6 +75,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/pesanan', [PesananController::class, 'show'])->name('admin.pesanan.index');
     Route::get('/pesanan/{id_pesanan}', [PesananController::class, 'delete'])->name('delete');
 
+
+    // History
+    Route::get('/history', [HistoryController::class, 'index'])->name('admin.history.index');
+    Route::view('/history/detail', 'admin.detailhistory')->name('admin.history.detail');
+
     // KategoriController
     Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');
     Route::get('/kategori/create', [KategoriController::class, 'create'])->name('admin.kategori.create');
@@ -98,4 +103,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/produk_keluar/edit/{id_keluar}', [ProdukKeluarController::class, 'editForm'])->name('admin.produk_keluar.edit');
     Route::put('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'updateProduk'])->name('admin.produk_keluar.update');
     Route::get('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'destroy'])->name('admin.produk_keluar.destroy');
+
+
+
 });

@@ -20,8 +20,13 @@
                 </a>
             </li>
             <li class="sidebar-item {{ request()->routeIs('admin.pesanan.index') ? 'active' : '' }}">
-                <a class="sidebar-link" href="{{ route('admin.pesanan.index') }}">
+                <a class="sidebar-link"  href="{{ route('admin.pesanan.index') }}">
                     <i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Pesanan</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ request()->routeIs('admin.history.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.history.index') }}">
+                    <i class="align-middle" data-feather="refresh-ccw"></i> <span class="align-middle">History</span>
                 </a>
             </li>
             <li class="sidebar-item {{ request()->routeIs('admin.kategori.index') ? 'active' : '' }}">

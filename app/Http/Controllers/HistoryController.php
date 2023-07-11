@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HistoryController extends Controller
 {
+
+    public function index(){
+        return view('admin.history');
+    }
+
     public function storeTransaksi(Request $request, $id_pesanan)
     {
         $request->validate([
@@ -18,6 +23,7 @@ class HistoryController extends Controller
             'total_harga' => 'required',
             'foto_bukti' => 'required|image|mimes:jpg,png,jpeg|max:2048'
         ]);
+        
 
         if ($request->hasFile('foto_bukti'))
         {
