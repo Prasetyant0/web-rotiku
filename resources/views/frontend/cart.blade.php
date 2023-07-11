@@ -21,7 +21,7 @@
                     </div>
                     <a href="" class="btn hapus-cart">Hapus</a>
                 </div>
-                <div class="harga-cart">Rp{{ $data->itemRoti->harga }}</div>
+                <div class="harga-cart">Rp{{ $data->total_harga }}</div>
             </div>
             @endforeach
 

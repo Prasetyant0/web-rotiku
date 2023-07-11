@@ -8,21 +8,22 @@
         <div class="container-transaksi-conrent">
             <div class="container-product-info-transaksi">
                 <div class="img-menu-transaksi">
-                    <img src="{{asset('gallery/1685548360.jpg')}}" alt="">
+                    <img src="{{asset('gallery/' .  $produk->beliRoti->gambar)}}" alt="">
                 </div>
                 <div class="desctiption-transaksi">
-                    <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit. Quaerat, nostrum illo </p>
+                    <p>{{ $produk->beliRoti->description }}</p>
                     <h3>Siap Kirim <img src="{{asset(asset('assetsDriver/'))}}" alt=""></h3>
                 </div>
             </div>
             <div>
-                <form action="" class="form-input-transaksi" method="post" enctype="multipart/form-data"> 
-                    <input type="text" placeholder="Nama Penerima">
-                    <input type="text" placeholder="Kelas">
-                    <input type="text" placeholder="Total Biaya">
-                    <input type="file">
+                <form action="{{ route('storeTransaksi' , $produk->id_pesanan) }}" class="form-input-transaksi" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="text" placeholder="Nama Penerima" name="nama_penerima" required>
+                    <input type="text" placeholder="Alamat" name="alamat" value="{{ $produk->alamat }}">
+                    <input type="text" placeholder="Total Harga" name="total_harga" value="{{ $produk->total_bayar }}">
+                    <input type="file" name="foto_bukti" required>
                     <br>
-                    <button>Lakukan Transaksi</button>
+                    <button type="submit">Lakukan Transaksi</button>
                 </form>
             </div>
         </div>

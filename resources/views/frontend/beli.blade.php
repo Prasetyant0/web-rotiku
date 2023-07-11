@@ -51,7 +51,7 @@
                         <label for="" style="margin-left: 95px;">|</label>
                         <div class="jumlah-beli-Container">
                             <button type="button" id="kurang" class="tambah-dan-kurang">-</button>
-                            <input id="jumlah" class="jumlah jumlah-input" value="{{ session('bayar.stok') }}"
+                            <input id="jumlah" class="jumlah jumlah-input" value="{{ session('bayar.quantity') }}"
                                 disabled>
                             <button type="button" id="tambah" class="tambah-dan-kurang tambah-beli">+</button>
                         </div>
@@ -71,7 +71,7 @@
                                     <div class="lbl-ring">
                                         <p class="color-wt">Total Harga (<input type="number" disabled
                                                 id="jumlahBarang" class="input-barang-style-beli"
-                                                value="{{ session('bayar.stok') }}"> Barang)</p>
+                                                value="{{ session('bayar.quantity') }}"> Barang)</p>
                                     </div>
                                     <div class="total harga barang">
                                         <p class="total-harga-ring">Rp <input id="totalHarga"

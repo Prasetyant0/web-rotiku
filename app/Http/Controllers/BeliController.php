@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bayar;
 use App\Models\Roti;
+use App\Models\Bayar;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class BeliController extends Controller
 {
@@ -20,18 +21,18 @@ class BeliController extends Controller
     {
         $request->validate([
             'id_roti' => 'required|exists:roti,id_roti',
-            'stok' => 'required|integer|min:1',
+            'quantity' => 'required|integer|min:1',
             'alamat' => 'required',
         ]);
 
         $roti = Roti::findOrFail($request->input('id_roti'));
-        $stok = $request->input('stok');
-        $hargaTotal = $roti->harga * $stok;
+        $quantity = $request->input('quantity');
+        $hargaTotal = $roti->harga * $quantity;
         $alamat = $request->input('alamat');
 
         $bayar = [
             'id_roti' => $roti->id_roti,
-            'stok' => $stok,
+            'quantity' => $quantity,
             'total_bayar' => $hargaTotal,
             'alamat' => $alamat,
         ];
@@ -49,17 +50,15 @@ class BeliController extends Controller
         $bayarData = $request->session()->get('bayar');
 
         $bayar = new Bayar();
-        $bayar->id = rand(11111,99999);
+        $bayar->id_pesanan = rand(11111,99999);
         $bayar->id_roti = $bayarData['id_roti'];
-        $bayar->stok = $bayarData['stok'];
+        $bayar->nama_user = Auth::user()->name;
+        $bayar->quantity = $bayarData['quantity'];
         $bayar->alamat = $request->input('alamat');
         $bayar->total_bayar = $bayarData['total_bayar'];
         $bayar->save();
 
         $request->session()->forget('bayar');
-
-        // return redirect()->route('menu')
-        // ->with('success', 'Pesanan berhasil dikirim, harap tunggu dan siapkan uang pas!');
 
         return redirect('menu')->with('success', 'Pesanan berhasil di kirim, harap tunggu dan siapkan uang pas!');
 

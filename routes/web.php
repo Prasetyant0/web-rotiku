@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FiltermenuController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProdukKeluarController;
 use App\Http\Controllers\ProdukMasukController;
 
@@ -29,13 +30,9 @@ Route::get('/driver', function(){
     return view('driver.home');
 })->name('driver.home');
 
-Route::get('/listpesanan', function(){
-    return view('driver.listpesanan');
-})->name('driver.listpesanan');
-
-Route::get('/transaksi', function(){
-    return view('driver.transaksi');
-})->name('driver.transaksi');
+Route::get('/list-pesanan', [PesananController::class, 'showPesanan'])->name('showPesanan');
+Route::get('/transaksi/{id_pesanan}', [PesananController::class, 'transaksi'])->name('transaksi.form')->where('id_pesanan', '[0-9]+');
+Route::post('/pesanan/{id_pesanan}', [HistoryController::class, 'storeTransaksi'])->name('storeTransaksi');
 
 Route::get('/profile', function(){
     return view('driver.profile');
@@ -76,7 +73,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // PesananController
     Route::get('/pesanan', [PesananController::class, 'show'])->name('admin.pesanan.index');
-    Route::get('/pesanan/{id}', [PesananController::class, 'delete'])->name('delete');
+    Route::get('/pesanan/{id_pesanan}', [PesananController::class, 'delete'])->name('delete');
 
     // KategoriController
     Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');

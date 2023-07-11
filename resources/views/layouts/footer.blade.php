@@ -52,8 +52,8 @@
             var link = $(this).attr("href");
 
             const swalResult = await Swal.fire({
-                title: 'Apakah Pesanan Sudah Siap Di kirim?',
-                text: "Jika Sudah dikirm maka tidak dapat di cancel!",
+                title: 'Apakah pesanan sudah siap dikirim?',
+                text: "Jika sudah terkirim tidak dapat di batalkan!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -63,7 +63,7 @@
 
             if (swalResult.isConfirmed) {
                 await Swal.fire(
-                    'Dikirm!',
+                    'Dikirim!',
                     'Pesanan Berhasil Di Kirim!',
                     'success'
                 );
