@@ -139,22 +139,31 @@
     var tambah = document.getElementById('tambah');
 
     var hargaRill = document.getElementById('hargaRill');
+    var biayaLayananElement = document.getElementById('biayaLayanan');
+
     var totalHarga = document.getElementById('totalHarga');
     var totalTagihan = document.getElementById('totalTagihan');
 
     var angka = 1;
+    
+    function hitungTotalTagihan() {
+        var hargaRillValue = parseInt(hargaRill.value);
+        var jumlahValue = parseInt(jumlah.value);
+        var biayaLayananValue = parseInt(biayaLayananElement.value);
+
+        totalHarga.value = (hargaRillValue * jumlahValue).toString();
+        var totalTagihanValue = parseInt(totalHarga.value) + biayaLayananValue;
+        totalTagihan.value = totalTagihanValue.toString();
+    }
+
+    // panggil fungsi hitungTotalTagihan saat pertama kali halaman dimuat
+    hitungTotalTagihan();
 
     // event ketika tombol tambah di klik
     tambah.addEventListener('click', function() {
         angka += 1;
         jumlah.value = angka.toString();
-
-        // Jika penambahan berhasil, maka harga dalam subtotal akan berubah
-        var hargaRillValue = parseInt(hargaRill.value);
-        var jumlahValue = parseInt(jumlah.value);
-
-        totalHarga.value = (hargaRillValue * jumlahValue).toString();
-        totalTagihan.value = totalHarga.value;
+        hitungTotalTagihan();
     })
 
     kurang.addEventListener('click', function() {
@@ -165,12 +174,11 @@
 
         // tampilkan hasil tambah dari angka ke jumlah
         jumlah.value = angka.toString();
-
-        // jika pengurangan berhasil, maka harga dalam subtotal akan berubah
-        var hargaRillValue = parseInt(hargaRill.value);
-        var jumlahValue = parseInt(jumlah.value);
-
-        totalHarga.value = (hargaRillValue * jumlahValue).toString();
-        totalTagihan.value = totalHarga.value;
+        hitungTotalTagihan();
     })
+
+    // event ketika terjadi perubahan pada input hargaRill, jumlah, atau biayaLayanan
+    hargaRill.addEventListener('input', hitungTotalTagihan);
+    jumlah.addEventListener('input', hitungTotalTagihan);
+    biayaLayananElement.addEventListener('input', hitungTotalTagihan);
 </script>

@@ -11,6 +11,7 @@
     flex-wrap: wrap;
 }
 .image-itmes-and-description{
+    cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     padding: 15px;
@@ -66,7 +67,13 @@
 }
 .harga-intrac-cart{
     position: relative;
+    display: flex;
     margin-left: 65px;
+}
+.input-cart-total{
+    width: 76px;
+    border: none;
+    background-color: transparent;
 }
 .biaya-transaksi{
     display: flex;
@@ -89,4 +96,35 @@
 .btn-bayar-cart{
     border: none;
     margin-top: 25px;
+}
+.total-tagian-text{
+    font-size: 20px;
+    font-weight: 700;
+}
+.w-rp-card-cart-input{
+    display: flex;
+}
+.input-harga-tagian-cart{
+    width: 100px;
+    font-weight: bold;
+    color: black;
+    background-color: transparent;
+    border: none;
+}
+.total-tagian-cont{
+    display: flex;
+}
+.total-tagian{
+    position: relative;
+    left: 98px;
+
+    /* margin-left: 20px; */
+}
+.f-biaya-layanan{
+    display: flex;
+}
+.harga-cart-vall{
+    width: 95px;
+    background-color: transparent;
+    border: none;
 }
