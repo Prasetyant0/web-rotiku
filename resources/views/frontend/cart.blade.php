@@ -7,22 +7,22 @@
         <div class="subcontainer-cart">
             
             @foreach ($cart as $index => $data)
-            <div id="card_c_{{ $index }}" class="image-itmes-and-description">
-                <div>
-                    <img src="{{asset('gallery/' . $data->itemRoti->gambar)}}" width="200" alt="">
-                </div>
-                <div class="title-and-subtitle-cart">
-                    <h3 class="title-cart">{{ $data->itemRoti->roti }}</h3>
-                    <p class="subtitle-cart">{{ $data->itemRoti->description }}</p>
-                    <div class="jumlah-dan-stok-cart">
-                        <div>Jumlah {{ $data->jumlah }}</div>
-                        <div class="vertikal-cart"></div>
-                        <div class="stok-cart">Stok {{ $data->itemRoti->stok }}</div>
+                <div id="card_c_{{ $index }}" class="image-itmes-and-description">
+                    <div>
+                        <img src="{{asset('gallery/' . $data->itemRoti->gambar)}}" class="img-cart-s" alt="">
                     </div>
-                    <a href="" class="btn hapus-cart">Hapus</a>
+                    <div class="title-and-subtitle-cart">
+                        <h3 class="title-cart">{{ $data->itemRoti->roti }}</h3>
+                        <p class="subtitle-cart">{{ $data->itemRoti->description }}</p>
+                        <div class="jumlah-dan-stok-cart">
+                            <div>Jumlah {{ $data->jumlah }}</div>
+                            <div class="vertikal-cart"></div>
+                            <div class="stok-cart">Stok {{ $data->itemRoti->stok }}</div>
+                        </div>
+                        <a href="" class="btn hapus-cart">Hapus</a>
+                    </div>
+                    <div class="harga-cart">Rp<span><input id="harga_barang" type="number" class="harga-cart-vall" disabled value="{{ $data->total_harga }}"></span></div>
                 </div>
-                <div class="harga-cart">Rp<span><input id="harga_barang" type="number" class="harga-cart-vall" disabled value="{{ $data->total_harga }}"></span></div>
-            </div>
             @endforeach
 
             <div class="beli-intrac-cart">
