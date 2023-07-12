@@ -11,7 +11,6 @@
     flex-wrap: wrap;
 }
 .image-itmes-and-description{
-    cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     padding: 15px;
