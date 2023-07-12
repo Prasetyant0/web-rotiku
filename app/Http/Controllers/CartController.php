@@ -15,8 +15,11 @@ class CartController extends Controller
     public function index()
     {
         $cart = Cart::where('id_user', Auth::id() )->with('cartItem', 'itemRoti')->get();
+        $cartQuantityItems = $cart->count();
+        $subtotal = $cart->sum('total_harga');
+        $biayaLayanan = 1000;
         // dd($cart);
-        return view('frontend.cart', compact('cart'));
+        return view('frontend.cart', compact('cart', 'cartQuantityItems', 'subtotal', 'biayaLayanan'));
     }
 
     public function addToCart(Request $request)

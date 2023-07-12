@@ -5,7 +5,7 @@
 <main>
     <div class="cart-container container">
         <div class="subcontainer-cart">
-
+            
             @foreach ($cart as $index => $data)
             <div id="card_c_{{ $index }}" class="image-itmes-and-description">
                 <div>
@@ -29,8 +29,8 @@
                 <h1>Cart</h1>
                 <h3 class="title-intrac-cart">Total Belanja</h3>
                 <div class="total-harga-intrac-cart">
-                    <div>Total Harga (1 Barang)</div>
-                    <div class="harga-intrac-cart">Rp <span><input id="total_harga" type="number" class="input-cart-total" value="0"></span></div>
+                    <div>Total Harga ({{$cartQuantityItems}} Barang)</div>
+                    <div class="harga-intrac-cart">Rp <span><input id="total_harga" type="number" class="input-cart-total" disabled value="{{$subtotal}}"></span></div>
                 </div>
 
                 <h3 class="title-intrac-cart">Biaya Transaksi</h3>
@@ -40,7 +40,7 @@
                             <i class="bi bi-exclamation-circle-fill not-cart-harga"></i>
                         </div>
                         <div class="harga-biaya-transaksi f-biaya-layanan"> 
-                            <span>Rp</span><input id="biaya_layanan" class="input-cart-total" type="number" value="1000">
+                            <span>Rp</span><input id="biaya_layanan" class="input-cart-total" type="number" disabled value="1000">
                         </div>
                     </div>
                     <div class="biaya-jasa-aplikasi">
@@ -55,7 +55,7 @@
                                     Rp
                                 </span>
                                 <span>
-                                    <input id="total_tagian" class="input-harga-tagian-cart" type="number" disabled value="0">
+                                    <input id="total_tagian" class="input-harga-tagian-cart" type="number" disabled value="{{$subtotal + $biayaLayanan}}">
                                 </span>
                             </div>
                         </div>
@@ -66,29 +66,3 @@
         </div>
     </div>
 </main>
-
-
-
-<script>
-    // Melakukan perulangan untuk mendapatkan semua elemen dengan ID yang unik
-    var cards = document.querySelectorAll('[id^="card_c_"]');
-
-    cards.forEach(function(card) {
-        var hargaBarang = card.querySelector('.harga-cart-vall');
-        var totalHarga = document.getElementById('total_harga');
-        var biayaLayanan = document.getElementById('biaya_layanan');
-        var totalTagian = document.getElementById('total_tagian');
-
-        var hargaBarangInt = parseInt(hargaBarang.value);
-        var biayaLayananInt = parseInt(biayaLayanan.value);
-        var totalHargaInt = parseInt(totalHarga.value);
-
-        card.addEventListener('click', function() {
-            totalHarga.value = hargaBarangInt.toString();
-
-            var tagihanHit = totalHargaInt + hargaBarangInt + biayaLayananInt;
-
-            totalTagian.value = tagihanHit.toString();
-        });
-    });
-</script>
