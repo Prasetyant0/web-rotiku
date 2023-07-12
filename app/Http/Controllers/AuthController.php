@@ -21,9 +21,11 @@ class AuthController extends Controller
     {
         if ($user->isAdmin()) {
             return redirect()->route('dashboard');
+        } elseif ($user->isDriver()) {
+            return redirect()->route('driver.dashboard');
         } else {
             return redirect()->route('menu');
-    }
+        }
     }
 
     public function postlogin(Request $request)
@@ -39,12 +41,14 @@ class AuthController extends Controller
 
             if ($user->isAdmin()) {
                 return redirect('admin/dashboard');
+            } elseif ($user->isDriver()) {
+                return redirect()->route('driver.dashboard');
             } else {
                 return redirect()->route('menu');
             }
         } else {
             $request->flashOnly('email', 'password');
-            return redirect()->back()->with('error', 'Username atau password salah');
+            return redirect()->back()->with('error', 'Email atau password salah');
         }
     }
 

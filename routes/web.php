@@ -7,15 +7,16 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RotiController;
 use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\DriverController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FiltermenuController;
-use App\Http\Controllers\HistoryController;
-use App\Http\Controllers\ProdukKeluarController;
 use App\Http\Controllers\ProdukMasukController;
+use App\Http\Controllers\ProdukKeluarController;
 
 Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
 Route::post('/daftar/store', [DaftarController::class, 'store'])->name('daftar.store');
@@ -26,17 +27,22 @@ Route::middleware(['web'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::get('/driver', function(){
-    return view('driver.home');
-})->name('driver.home');
+// Driver Page
+// Route::group(['middleware' => ['driver']], function() {
+// });
 
-Route::get('/list-pesanan', [PesananController::class, 'showPesanan'])->name('showPesanan');
-Route::get('/transaksi/{id_pesanan}', [PesananController::class, 'transaksi'])->name('transaksi.form')->where('id_pesanan', '[0-9]+');
-Route::post('/pesanan/{id_pesanan}', [HistoryController::class, 'storeTransaksi'])->name('storeTransaksi');
+Route::middleware('driver')->prefix('driver')->group(function () {
+    Route::get('/dashboard', [DriverController::class, 'index'])->name('driver.dashboard');
+    Route::get('/list-pesanan', [PesananController::class, 'showPesanan'])->name('showPesanan');
+    Route::get('/transaksi/{id_pesanan}', [PesananController::class, 'transaksi'])->name('transaksi.form')->where('id_pesanan', '[0-9]+');
+    Route::post('/pesanan/{id_pesanan}', [HistoryController::class, 'storeTransaksi'])->name('storeTransaksi');
+});
+
 
 Route::get('/profile', function(){
     return view('driver.profile');
 })->name('driver.profile');
+// End Driver
 
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
 Route::get('/google/callback', [AuthController::class, 'callback'])->name('login.google.callback');
