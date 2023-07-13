@@ -19,16 +19,20 @@ class DriverMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-       if (Auth::check()) {
-       $user = Auth::user();
-       if ($user->role === 'driver') {
-       Alert::info('Anda bukan driver!', 'Silahkan akses halaman driver dengan akun yang
-       sesuai.')->persistent(true)->autoclose(3000);
-       return redirect()->route('menu');
-       }
-       }
+    //    if (Auth::check()) {
+    //    $user = Auth::user();
+    //    if ($user->role === 'driver') {
+    //    Alert::info('Anda bukan driver!', 'Silahkan akses halaman driver dengan akun yang
+    //    sesuai.')->persistent(true)->autoclose(3000);
+    //    return redirect()->route('menu');
+    //    }
+    //    }
 
-       Alert::info('Anda belum login!', 'Silahkan login terlebih dahulu.')->persistent(true)->autoclose(3000);
-       return redirect('/login');
+        if (Auth::check() && Auth::user()->role == 'driver') {
+        return $next($request);
+        }
+        Alert::info('Anda bukan driver!', 'Silahkan login terlebih dahulu jika ingin akses halaman driver.')->persistent(true)->autoclose(5000);
+        return redirect('/login');
+    //    Alert::info('Anda belum login!', 'Silahkan login terlebih dahulu.')->persistent(true)->autoclose(3000);
     }
 }

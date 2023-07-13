@@ -22,34 +22,33 @@
                                         <tr>
                                             <td>
                                                 <th class="d-none d-xl-table-cell">Nama Pemesan</th>
-                                                <td class="d-none d-xl-table-cell">Bowo Gaming</td>
+                                                <td class="d-none d-xl-table-cell">{{ $data2->nama_user }}</td>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <th class="d-none d-xl-table-cell">Quantity</th>
-                                                <td class="d-none d-xl-table-cell">2 Roti</td>
-
+                                                <th class="d-none d-xl-table-cell">Produk Yang Dibeli</th>
+                                                <td class="d-none d-xl-table-cell">{{ $dataRoti->roti }}</td>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <th class="d-none d-xl-table-cell">Total Bayar</th>
-                                                <td class="d-none d-xl-table-cell"> 100000</td>
+                                                <td class="d-none d-xl-table-cell">Rp{{ $data2->total_bayar }}</td>
 
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <th class="d-none d-xl-table-cell">Roti Yang Dibeli</th>
-                                                <td class="d-none d-xl-table-cell">Roti Bolillo / Pan blanco</td>
+                                                <th class="d-none d-xl-table-cell">Quantity</th>
+                                                <td class="d-none d-xl-table-cell">{{ $data2->quantity }} buah roti</td>
 
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <th class="d-none d-xl-table-cell">Alamat</th>
-                                                <td class="d-none d-xl-table-cell">catur tunggal, jalan taman kenari</td>
+                                                <td class="d-none d-xl-table-cell">{{ $data2->alamat }}</td>
                                             </td>
                                         </tr>
                                         <tr>
@@ -63,7 +62,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                       
                                 </tbody>
                             </table>
                         </div>

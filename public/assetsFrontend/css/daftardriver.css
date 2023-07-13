@@ -1,0 +1,16 @@
+.input-daftar-driver{
+    width: 100%;
+    padding: 5px;
+}
+.lsbrl-fsgtsr-friver{
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, .2);
+    border: 1px   solid  #FDC401;
+    border-radius: 5px;
+}
+.btn-kirim-lamaran{
+    padding: 5px;
+    background-color: #FDC401;
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, .5);
+}

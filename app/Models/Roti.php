@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Bayar;
+use App\Models\History;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Roti extends Model
 {
@@ -77,5 +79,10 @@ class Roti extends Model
     public function produkKeluar()
     {
         return $this->hasMany(Produk_keluar::class, 'id_roti');
+    }
+
+    public function nama_roti()
+    {
+        return $this->hasMany(History::class);
     }
 }

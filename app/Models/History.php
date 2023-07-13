@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Roti;
 use App\Models\Bayar;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,6 +24,11 @@ class History extends Model
     public function hisPesanan()
     {
         return $this->belongsTo(Bayar::class, 'id_pesanan');
+    }
+
+    public function nama_roti()
+    {
+        return $this->belongsTo(Roti::class);
     }
 
 }

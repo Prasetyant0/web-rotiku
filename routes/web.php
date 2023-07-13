@@ -27,10 +27,6 @@ Route::middleware(['web'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-// Driver Page
-// Route::group(['middleware' => ['driver']], function() {
-// });
-
 Route::middleware('driver')->prefix('driver')->group(function () {
     Route::get('/dashboard', [DriverController::class, 'index'])->name('driver.dashboard');
     Route::get('/list-pesanan', [PesananController::class, 'showPesanan'])->name('showPesanan');
@@ -38,7 +34,7 @@ Route::middleware('driver')->prefix('driver')->group(function () {
     Route::post('/pesanan/{id_pesanan}', [HistoryController::class, 'storeTransaksi'])->name('storeTransaksi');
 });
 
-
+// Route::get('/profile', [DriverController::class, 'profile'])
 Route::get('/profile', function(){
     return view('driver.profile');
 })->name('driver.profile');
@@ -54,6 +50,13 @@ Route::get('search', [MenuController::class, 'search'])->name('search');
 Route::get('filterView/{id_kategori}/filter', [FiltermenuController::class, 'filterView'])->name('filter.menu');
 Route::get('filter', [FiltermenuController::class, 'filter'])->name('filter');
 
+
+// berbagai penawaran
+Route::view('/berbagaipenawaran', 'frontend.berbagaipenawaran')->name('user.berbagaipenawaran');
+
+// daftar driver
+Route::view('/daftardriver', 'frontend.daftardriver')->name('user.daftardriver');
+
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
     Route::get('/beli', [BeliController::class, 'index'])->name('beli');
@@ -63,9 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.view');
 });
 
-
 // admin/dataroti
-
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -84,7 +85,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // History
     Route::get('/history', [HistoryController::class, 'index'])->name('admin.history.index');
-    Route::view('/history/detail', 'admin.detailhistory')->name('admin.history.detail');
+    Route::get('/history/detail/{id_history}', [HistoryController::class, 'detail'])->name('admin.history.detail');
 
     // KategoriController
     Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');
@@ -110,6 +111,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::put('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'updateProduk'])->name('admin.produk_keluar.update');
     Route::get('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'destroy'])->name('admin.produk_keluar.destroy');
 
-
+    // berbagai penawaran
 
 });
