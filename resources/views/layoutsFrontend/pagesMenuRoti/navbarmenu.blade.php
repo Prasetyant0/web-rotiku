@@ -3,7 +3,7 @@
         <a href="{{Route('user.dashboard')}}" class="line-text">Home</a>
         <a href="{{Route('user.about')}}" class="line-text">Tentang Rotiku</a>
         <a href="#" class="line-text">Hubungi Kami</a>
-        <a href="#" class="line-text">Berbagai Penawaran</a>
+        <a href="{{Route('user.berbagaipenawaran')}}" class="line-text">Berbagai Penawaran</a>
     </div>
 </div>
 <nav class="nav-bar">

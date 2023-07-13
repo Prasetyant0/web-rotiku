@@ -26,6 +26,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+// driver routes
 Route::get('/driver', function(){
     return view('driver.home');
 })->name('driver.home');
@@ -48,6 +49,13 @@ Route::get('search', [MenuController::class, 'search'])->name('search');
 Route::get('filterView/{id_kategori}/filter', [FiltermenuController::class, 'filterView'])->name('filter.menu');
 Route::get('filter', [FiltermenuController::class, 'filter'])->name('filter');
 
+
+// berbagai penawaran
+Route::view('/berbagaipenawaran', 'frontend.berbagaipenawaran')->name('user.berbagaipenawaran');
+
+// daftar driver
+Route::view('/daftardriver', 'frontend.daftardriver')->name('user.daftardriver');
+
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
     Route::get('/beli', [BeliController::class, 'index'])->name('beli');
@@ -58,8 +66,13 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// admin/dataroti
 
+
+
+
+
+
+// admin/dataroti
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -104,6 +117,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::put('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'updateProduk'])->name('admin.produk_keluar.update');
     Route::get('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'destroy'])->name('admin.produk_keluar.destroy');
 
-
+    // berbagai penawaran
 
 });
