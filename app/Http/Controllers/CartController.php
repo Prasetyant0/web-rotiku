@@ -44,7 +44,22 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->route('invoice.menu', ['id_roti' => $idRoti])->with('message', 'Produk berhasil dimasukkan ke keranjang');
+        // return redirect()->route('invoice.menu', ['id_roti' => $idRoti])->with('message', 'Produk berhasil dimasukkan ke keranjang');
+        return redirect()->route('user.cart.view', ['id_roti' => $idRoti])->with('message', 'Produk berhasil dimasukkan
+        ke keranjang');
 
+    }
+
+    public function delete($id_cart)
+    {
+        $cart = Cart::find($id_cart);
+        $cart->delete();
+
+        return redirect()->back();
+    }
+
+    public function pesan()
+    {
+        
     }
 }

@@ -48,16 +48,17 @@ class HistoryController extends Controller
 
             try {
 
-                $cari = Bayar::findOrFail($id_pesanan);
                 $history = new History;
                 $history->id_pesanan = $id_pesanan;
                 $history->nama_penerima = $request->input('nama_penerima');
                 $history->alamat = $request->input('alamat');
                 $history->total_harga = $request->input('total_harga');
                 $history->foto_bukti = $fileName;
+                $history->save();
+                
+                $cari = Bayar::findOrFail($id_pesanan);
                 $cari->visibility = 2;
                 $cari->save();
-                $history->save();
                 return redirect()->route('driver.dashboard')->with('success', 'Terimakasih telah mengirimkan pesanan.');
             } catch (ModelNotFoundException $e) {
                 return redirect()->route('driver.dashboard')->with('error', 'Gagal mengirim data ke admin!');

@@ -12,10 +12,8 @@ class Bayar extends Model
     use HasFactory;
     protected $table = 'bayar';
     protected $primaryKey = 'id_pesanan';
-    protected $incrementing = false;
-    protected $keyType = 'string';
-    protected $prefix = 'TRS';
     protected $fillable = [
+        'kode_pesanan',
         'nama_user',
         'quantity',
         'total_bayar',
@@ -39,11 +37,11 @@ class Bayar extends Model
         return $this->hasMany(History::class, 'id_pesanan');
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            $model->id_history = $model->prefix . str_pad(static::max('id_history') + 1, 3, '0', STR_PAD_LEFT);
-        });
-    }
+    // protected static function boot()
+    // {
+    //     parent::boot();
+    //     static::creating(function ($model) {
+    //         $model->id_pesanan = $model->prefix . str_pad(static::max('id_pesanan') + 1, 3, '0', STR_PAD_LEFT);
+    //     });
+    // }
 }

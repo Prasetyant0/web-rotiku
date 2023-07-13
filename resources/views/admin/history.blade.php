@@ -32,7 +32,7 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td class="d-none d-xl-table-cell">{{ $d->id_pesanan }}</td>
+                                        <td class="d-none d-xl-table-cell">{{ $d->kode_pesanan }}</td>
                                         <td class="d-none d-xl-table-cell">{{ $d->nama_penerima }}</td>
                                         <td class="d-none d-xl-table-cell">{{ $d->alamat }}</td>
                                         <td class="d-none d-md-table-cell">

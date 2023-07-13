@@ -123,7 +123,7 @@
                             @endforeach
                             <button type="submit" style="width: 100%; border-radius:10px;"
                                 class="btn btn-primary button btn-bayar">
-                                <span>Bayar</span>
+                                <span>Pesan</span>
                             </button>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
     var totalTagihan = document.getElementById('totalTagihan');
 
     var angka = 1;
-    
+
     function hitungTotalTagihan() {
         var hargaRillValue = parseInt(hargaRill.value);
         var jumlahValue = parseInt(jumlah.value);

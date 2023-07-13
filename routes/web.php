@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/confirm', [BeliController::class, 'beli'])->name('confirm');
     Route::post('/bayar', [BeliController::class, 'bayar'])->name('bayar');
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::get('/hapus/{id_cart}', [CartController::class, 'delete'])->name('delete.cart');
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.view');
 });
 

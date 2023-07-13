@@ -195,10 +195,10 @@
                 'id_roti': idRoti
             },
             success: function(response) {
-                Swal.fire('Sukses', response.message, 'success')
+                Swal.fire('Produk berhasil dimasukkan ke keranjang.', response.message, 'success')
                     .then(() => {
                         window.location.href =
-                            '{{ route('invoice.menu', ['id_roti' => $invoice->id_roti]) }}';
+                            '{{ route('user.cart.view', ['id_roti' => $invoice->id_roti]) }}';
                     });
             },
             error: function(xhr, status, error) {

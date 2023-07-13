@@ -50,7 +50,7 @@ class BeliController extends Controller
         $bayarData = $request->session()->get('bayar');
 
         $bayar = new Bayar();
-        $bayar->id_pesanan = rand(11111,99999);
+        // $bayar->id_pesanan = rand(11111,99999);
         $bayar->id_roti = $bayarData['id_roti'];
         $bayar->nama_user = Auth::user()->name;
         $bayar->quantity = $bayarData['quantity'];

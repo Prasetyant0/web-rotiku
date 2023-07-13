@@ -5,7 +5,7 @@
 <main>
     <div class="cart-container container">
         <div class="subcontainer-cart">
-            
+
             @foreach ($cart as $index => $data)
                 <div id="card_c_{{ $index }}" class="image-itmes-and-description">
                     <div>
@@ -19,27 +19,28 @@
                             <div class="vertikal-cart"></div>
                             <div class="stok-cart">Stok {{ $data->itemRoti->stok }}</div>
                         </div>
-                        <a href="" class="btn hapus-cart">Hapus</a>
+                        <a href="{{ route('delete.cart', $data->id_cart) }}" class="btn hapus-cart" id="delete">Hapus</a>
                     </div>
                     <div class="harga-cart">Rp<span><input id="harga_barang" type="number" class="harga-cart-vall" disabled value="{{ $data->total_harga }}"></span></div>
                 </div>
             @endforeach
 
             <div class="beli-intrac-cart">
-                <h1>Cart</h1>
-                <h3 class="title-intrac-cart">Total Belanja</h3>
-                <div class="total-harga-intrac-cart">
-                    <div>Total Harga ({{$cartQuantityItems}} Barang)</div>
-                    <div class="harga-intrac-cart">Rp <span><input id="total_harga" type="number" class="input-cart-total" disabled value="{{$subtotal}}"></span></div>
-                </div>
+                <form action="" method="post">
+                    <h1>Cart</h1>
+                    <h3 class="title-intrac-cart">Total Belanja</h3>
+                    <div class="total-harga-intrac-cart">
+                        <div>Total Harga ({{$cartQuantityItems}} Barang)</div>
+                        <div class="harga-intrac-cart">Rp <span><input id="total_harga" type="number" class="input-cart-total" disabled value="{{$subtotal}}"></span></div>
+                    </div>
 
-                <h3 class="title-intrac-cart">Biaya Transaksi</h3>
-                <div>
-                    <div class="biaya-transaksi">
-                        <div>Biaya Layanan 
-                            <i class="bi bi-exclamation-circle-fill not-cart-harga"></i>
-                        </div>
-                        <div class="harga-biaya-transaksi f-biaya-layanan"> 
+                    <h3 class="title-intrac-cart">Biaya Transaksi</h3>
+                    <div>
+                        <div class="biaya-transaksi">
+                            <div>Biaya Layanan
+                                <i class="bi bi-exclamation-circle-fill not-cart-harga"></i>
+                            </div>
+                            <div class="harga-biaya-transaksi f-biaya-layanan">
                             <span>Rp</span><input id="biaya_layanan" class="input-cart-total" type="number" disabled value="1000">
                         </div>
                     </div>
@@ -49,7 +50,7 @@
                     </div>
                     <hr>
                     <div class="biaya-jasa-aplikasi ">
-                        <div class="total-tagian-text total-tagian-cont">Total Tagihan 
+                        <div class="total-tagian-text total-tagian-cont">Total Tagihan
                             <div class="w-rp-card-cart-input total-tagian">
                                 <span>
                                     Rp
@@ -61,8 +62,42 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" style="width: 100%; border-radius:10px;" class="btn btn-primary button btn-bayar-cart"><span>Bayar</span></button>
+                <button type="submit" style="width: 100%; border-radius:10px;" class="btn btn-primary button btn-bayar-cart"><span>Pesan</span></button>
+            </form>
             </div>
         </div>
     </div>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $(document).on('click', '#delete', async function(e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+
+            const swalResult = await Swal.fire({
+                title: 'Apakah kamu ingin menghapus data ini?',
+                text: "Data akan terhapus permanen!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            });
+
+            if (swalResult.isConfirmed) {
+                await Swal.fire(
+                    'Terhapus!',
+                    'Data telah terhapus!',
+                    'success'
+                );
+                window.location.href = link;
+            }
+        });
+    });
+</script>
+
+@include('sweetalert::alert')
