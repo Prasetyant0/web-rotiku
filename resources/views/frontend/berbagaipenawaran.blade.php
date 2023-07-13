@@ -9,7 +9,7 @@
         </head>
         <div class="container">
             <div class="content c-p">
-                Menu / Berbagai Penawaran/
+                Menu / Berbagai Penawaran
                 <h3 class="berbagai-penawaran-title">Berbagai Penawaran</h3>
                 <div class="container-card-berbagaipenawaran">
                     <div class="card-berbagai-penawaran">
