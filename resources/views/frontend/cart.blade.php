@@ -27,6 +27,7 @@
 
             <div class="beli-intrac-cart">
                 <form action="" method="post">
+                    @csrf
                     <h1>Cart</h1>
                     <h3 class="title-intrac-cart">Total Belanja</h3>
                     <div class="total-harga-intrac-cart">
@@ -62,6 +63,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="text" name="address" class="address-cart" id="" placeholder="address">
                 <button type="submit" style="width: 100%; border-radius:10px;" class="btn btn-primary button btn-bayar-cart"><span>Pesan</span></button>
             </form>
             </div>
