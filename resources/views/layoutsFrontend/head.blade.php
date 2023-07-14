@@ -85,4 +85,12 @@
 	<link rel="stylesheet" href="{{asset('assetsFrontend/css/cart.css')}}">
 	{{-- //cart --}}
 
+	{{-- berbagai-penawaran --}}
+	<link rel="stylesheet" href="{{asset('assetsFrontend/css/berbagaipenawaran.css')}}">
+	{{-- //berbagai-penawaran --}}
+
+	{{-- daftar driver --}}
+	<link rel="stylesheet" href="{{asset('assetsFrontend/css/daftardriver.css')}}">
+	{{-- //daftar driver --}}
+
 </head>

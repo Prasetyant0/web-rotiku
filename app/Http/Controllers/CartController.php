@@ -15,8 +15,11 @@ class CartController extends Controller
     public function index()
     {
         $cart = Cart::where('id_user', Auth::id() )->with('cartItem', 'itemRoti')->get();
+        $cartQuantityItems = $cart->count();
+        $subtotal = $cart->sum('total_harga');
+        $biayaLayanan = 1000;
         // dd($cart);
-        return view('frontend.cart', compact('cart'));
+        return view('frontend.cart', compact('cart', 'cartQuantityItems', 'subtotal', 'biayaLayanan'));
     }
 
     public function addToCart(Request $request)
@@ -41,7 +44,22 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->route('invoice.menu', ['id_roti' => $idRoti])->with('message', 'Produk berhasil dimasukkan ke keranjang');
+        // return redirect()->route('invoice.menu', ['id_roti' => $idRoti])->with('message', 'Produk berhasil dimasukkan ke keranjang');
+        return redirect()->route('user.cart.view', ['id_roti' => $idRoti])->with('message', 'Produk berhasil dimasukkan
+        ke keranjang');
 
+    }
+
+    public function delete($id_cart)
+    {
+        $cart = Cart::find($id_cart);
+        $cart->delete();
+
+        return redirect()->back();
+    }
+
+    public function pesan()
+    {
+        
     }
 }

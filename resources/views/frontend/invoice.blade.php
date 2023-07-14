@@ -151,14 +151,14 @@
 
         // Mengambil nilai input yang ingin disimpan ke dalam sesi
         var idRoti = document.getElementById('idRoti').value;
-        var stok = jumlah.value;
+        var quantity = jumlah.value;
         var alamat = document.getElementById('catatan').value;
         var totalBayar = subtotal.firstChild.value;
 
         // Membuat objek data yang akan disimpan di sesi
         var bayarData = {
             id_roti: idRoti,
-            stok: stok,
+            quantity: quantity,
             alamat: alamat,
             total_bayar: totalBayar
         };
@@ -195,10 +195,10 @@
                 'id_roti': idRoti
             },
             success: function(response) {
-                Swal.fire('Sukses', response.message, 'success')
+                Swal.fire('Produk berhasil dimasukkan ke keranjang.', response.message, 'success')
                     .then(() => {
                         window.location.href =
-                            '{{ route('invoice.menu', ['id_roti' => $invoice->id_roti]) }}';
+                            '{{ route('user.cart.view', ['id_roti' => $invoice->id_roti]) }}';
                     });
             },
             error: function(xhr, status, error) {

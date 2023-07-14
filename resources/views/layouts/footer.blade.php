@@ -3,7 +3,7 @@
         <div class="row text-muted">
             <div class="col-6 text-start">
                 <p class="mb-0">
-                    <a class="text-muted" href="https://www.instagram.com/prasty_08/"
+                    <a class="text-muted" href=""
                         target="_blank"><strong>Rotiku</strong></a> &copy;
                 </p>
             </div>
@@ -52,8 +52,8 @@
             var link = $(this).attr("href");
 
             const swalResult = await Swal.fire({
-                title: 'Apakah Pesanan Sudah Siap Di kirim?',
-                text: "Jika Sudah dikirm maka tidak dapat di cancel!",
+                title: 'Apakah pesanan sudah siap dikirim?',
+                text: "Jika sudah terkirim tidak dapat di batalkan!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -63,7 +63,7 @@
 
             if (swalResult.isConfirmed) {
                 await Swal.fire(
-                    'Dikirm!',
+                    'Dikirim!',
                     'Pesanan Berhasil Di Kirim!',
                     'success'
                 );

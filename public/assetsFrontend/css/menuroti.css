@@ -245,6 +245,14 @@ a:hover{
     .image-logo{
         display: none;
     }
+    .profile{
+        right: -35px;
+        bottom: 0px;
+        top: 20px;
+        margin-top: 8px;
+        margin-bottom: 15px;
+        margin-right: 50px;
+    }
     .category-list{
         display: none;
     }
@@ -271,27 +279,6 @@ a:hover{
     }
 
 }
-
-
-
-
-
-
-
-/* //navabar */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

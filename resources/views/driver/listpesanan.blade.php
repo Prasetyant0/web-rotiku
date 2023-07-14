@@ -6,51 +6,17 @@
             <h3 class="title-semua-pesanan">#List Pesanan</h3>
             <p class="link-text"><a href="/driver">Home</a>/<a class="list-pesanan-link" href="">Listpesanan</a></p>
             <div class="container-listpesanan">
+                @foreach ($showPesanan as $pesanan)
                 <div class="card-semua-pesanan-driver">
                     <div class="img-list-pensanan">
-                        <img src="{{asset('gallery/1685548360.jpg')}}" alt="">
+                        <img src="{{asset('gallery/' . $pesanan->beliRoti->gambar)}}" alt="">
                     </div>
                     <div class="message-text">
-                        <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="/transaksi" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
+                        <p>{{ $pesanan->beliRoti->description }}</p>
+                        <a href="{{ route('transaksi.form', $pesanan->id_pesanan) }}" class="btn-siap-kirim">Terkirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
                     </div>
                 </div>
-                <div class="card-semua-pesanan-driver">
-                    <div class="img-list-pensanan">
-                        <img src="{{asset('gallery/1684421269.jpg')}}" alt="">
-                    </div>
-                    <div class="message-text">
-                        <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
-                    </div>
-                </div>
-                <div class="card-semua-pesanan-driver">
-                    <div class="img-list-pensanan">
-                        <img src="{{asset('gallery/1685548945.jpg')}}" alt="">
-                    </div>
-                    <div class="message-text">
-                        <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
-                    </div>
-                </div>
-                <div class="card-semua-pesanan-driver">
-                    <div class="img-list-pensanan">
-                        <img src="{{asset('gallery/1685548694.jpg')}}" alt="">
-                    </div>
-                    <div class="message-text">
-                        <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
-                    </div>
-                </div>
-                <div class="card-semua-pesanan-driver">
-                    <div class="img-list-pensanan">
-                        <img src="{{asset('gallery/1685548429.jpg')}}" alt="">
-                    </div>
-                    <div class="message-text">
-                        <p>Lorem Lorem ipsum dolor sit Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. lorem amet, consectetur adipisicing elit.</p>
-                        <a href="" class="btn-siap-kirim">Siap Kirim <img src="{{asset('assetsDriver/images/icon/verry.png')}}" alt=""></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </main>
     @include('layoutsDriver.navigation.navbarbottom')

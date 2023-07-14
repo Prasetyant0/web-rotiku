@@ -7,14 +7,16 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RotiController;
 use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\DriverController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FiltermenuController;
-use App\Http\Controllers\ProdukKeluarController;
 use App\Http\Controllers\ProdukMasukController;
+use App\Http\Controllers\ProdukKeluarController;
 
 Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.user');
 Route::post('/daftar/store', [DaftarController::class, 'store'])->name('daftar.store');
@@ -25,18 +27,18 @@ Route::middleware(['web'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::get('/driver', function(){
-    return view('driver.home');
+Route::middleware('driver')->prefix('driver')->group(function () {
+    Route::get('/dashboard', [DriverController::class, 'index'])->name('driver.dashboard');
+    Route::get('/list-pesanan', [PesananController::class, 'showPesanan'])->name('showPesanan');
+    Route::get('/transaksi/{id_pesanan}', [PesananController::class, 'transaksi'])->name('transaksi.form')->where('id_pesanan', '[0-9]+');
+    Route::post('/pesanan/{id_pesanan}', [HistoryController::class, 'storeTransaksi'])->name('storeTransaksi');
 });
-Route::get('/listpesanan', function(){
-    return view('driver.listpesanan');
-});
-Route::get('/transaksi', function(){
-    return view('driver.transaksi');
-});
+
+// Route::get('/profile', [DriverController::class, 'profile'])
 Route::get('/profile', function(){
     return view('driver.profile');
-});
+})->name('driver.profile');
+// End Driver
 
 Route::get('/masuk/google', [AuthController::class, 'login'])->name('login.google');
 Route::get('/google/callback', [AuthController::class, 'callback'])->name('login.google.callback');
@@ -48,18 +50,24 @@ Route::get('search', [MenuController::class, 'search'])->name('search');
 Route::get('filterView/{id_kategori}/filter', [FiltermenuController::class, 'filterView'])->name('filter.menu');
 Route::get('filter', [FiltermenuController::class, 'filter'])->name('filter');
 
+
+// berbagai penawaran
+Route::view('/berbagaipenawaran', 'frontend.berbagaipenawaran')->name('user.berbagaipenawaran');
+
+// daftar driver
+Route::view('/daftardriver', 'frontend.daftardriver')->name('user.daftardriver');
+
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logoutGoogle'])->name('logout.google');
     Route::get('/beli', [BeliController::class, 'index'])->name('beli');
     Route::post('/confirm', [BeliController::class, 'beli'])->name('confirm');
     Route::post('/bayar', [BeliController::class, 'bayar'])->name('bayar');
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::get('/hapus/{id_cart}', [CartController::class, 'delete'])->name('delete.cart');
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.view');
 });
 
-
 // admin/dataroti
-
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -73,7 +81,12 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // PesananController
     Route::get('/pesanan', [PesananController::class, 'show'])->name('admin.pesanan.index');
-    Route::get('/pesanan/{id}', [PesananController::class, 'delete'])->name('delete');
+    Route::get('/pesanan/{id_pesanan}', [PesananController::class, 'delete'])->name('delete');
+
+
+    // History
+    Route::get('/history', [HistoryController::class, 'index'])->name('admin.history.index');
+    Route::get('/history/detail/{id_history}', [HistoryController::class, 'detail'])->name('admin.history.detail');
 
     // KategoriController
     Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');
@@ -98,4 +111,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/produk_keluar/edit/{id_keluar}', [ProdukKeluarController::class, 'editForm'])->name('admin.produk_keluar.edit');
     Route::put('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'updateProduk'])->name('admin.produk_keluar.update');
     Route::get('/produk_keluar/{id_keluar}', [ProdukKeluarController::class, 'destroy'])->name('admin.produk_keluar.destroy');
+
+    // berbagai penawaran
+
 });

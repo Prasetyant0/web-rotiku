@@ -106,20 +106,20 @@ body{
 .content-bg-2{
     position: relative;
     top: 95px;
-    width: 92%;
-    margin-left: 30px;
+    width: 100%;
+    /* margin-left: 30px; */
     /* border: 1px solid red; */
 }
 .promotion{
     position: relative;
-    width: 100%;
+    width: 93%;
+    margin-left: 28px;
     /* background-color: red; */
 }
 .image-promotion{
     display: flex;
     position: relative;
     overflow-x: scroll;
-    
 }
 .img-slide{
     margin-left: 20px;
@@ -133,21 +133,34 @@ body{
 .semua-pesanan-title{
     position: relative;
     top: 15px;
+    margin-left: 25px;
 }
+.underline{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.container-semua-pesanan{
+    /* background-color: red; */
+    height: 700px;
+    position: relative;
+}   
 .card-container-pesanan-drive{
     display: flex;
+    height: 575px;
+    flex-wrap: wrap;
     /* background-color: red; */
-    overflow-x: scroll;
+    overflow-y: scroll;
     position: relative;
 }
 .card-pesanan-drive{
-    width: 99px;
+    width: 150px;
     border-radius: 6px;
-    height: 142px;
+    height: 192px;
     background-color: #D9D9D9;
 }
 .size-card-drive{
-    margin-left: 21px;
+    margin-top: 15px;
+    margin-left: 30px;
 }
 .menu-position-bott{
     margin-top: 20px;

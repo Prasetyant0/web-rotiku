@@ -1,0 +1,22 @@
+.container-card-berbagaipenawaran{
+    display: flex;   
+    flex-wrap: wrap; 
+}
+.berbagai-penawaran-title{
+    font-weight: 600;
+}
+.list-sty{
+    list-style: disc; 
+}
+.card-title{
+    margin-bottom: 5px;
+}
+.berbagai-penawaran-title{
+    margin-bottom: 30px;
+}
+.list-tawaran{
+    padding: 20px;
+}
+.list-tawaran > a{
+    display: block !important;
+}

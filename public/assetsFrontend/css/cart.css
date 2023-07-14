@@ -15,6 +15,11 @@
     flex-wrap: wrap;
     padding: 15px;
 }
+.img-cart-s{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
 .title-and-subtitle-cart{
     margin-left: 25px;
 }
@@ -53,10 +58,7 @@
 }
 .beli-intrac-cart{
     padding: 10px;
-    /* border: 1px solid black; */
-    /* border-left: 2px solid rgba(0, 0, 0, .1); */
     width: 345px;
-    /* border-radius: 20px; */
     position: absolute;
     right: 0;
     top: 0;
@@ -66,7 +68,13 @@
 }
 .harga-intrac-cart{
     position: relative;
+    display: flex;
     margin-left: 65px;
+}
+.input-cart-total{
+    width: 76px;
+    border: none;
+    background-color: transparent;
 }
 .biaya-transaksi{
     display: flex;
@@ -89,4 +97,45 @@
 .btn-bayar-cart{
     border: none;
     margin-top: 25px;
+}
+.total-tagian-text{
+    font-size: 20px;
+    font-weight: 700;
+}
+.w-rp-card-cart-input{
+    display: flex;
+}
+.input-harga-tagian-cart{
+    width: 100px;
+    font-weight: bold;
+    color: black;
+    background-color: transparent;
+    border: none;
+}
+.total-tagian-cont{
+    display: flex;
+}
+.total-tagian{
+    position: relative;
+    left: 98px;
+
+    /* margin-left: 20px; */
+}
+.f-biaya-layanan{
+    display: flex;
+}
+.harga-cart-vall{
+    width: 95px;
+    background-color: transparent;
+    border: none;
+}
+
+@media only screen and (max-width: 890px) {
+    .beli-intrac-cart{
+        position: relative;
+        width: 100%;
+    }
+    .title-and-subtitle-cart{
+    margin-left: 0px;
+    }
 }
