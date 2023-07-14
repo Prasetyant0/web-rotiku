@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" style="width: 100%; border-radius:10px;" class="btn btn-primary button btn-bayar-cart"><span>Pesan</span></button>
+                <button type="submit" style="width: 100%; border-radius:10px;" class="btn btn-primary button btn-bayar-cart"><span>Checkout</span></button>
             </form>
             </div>
         </div>

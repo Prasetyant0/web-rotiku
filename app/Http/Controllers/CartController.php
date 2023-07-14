@@ -58,8 +58,10 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function pesan()
+    public function checkout()
     {
+        $user = Auth::user();
+        $cartItems = Cart::where('id_user', $user->id)->get();
         
     }
 }
